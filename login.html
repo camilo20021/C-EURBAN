@@ -39,7 +39,23 @@
     <main class="auth-page">
         <section class="auth-card">
             <h1>Iniciar sesión con Google</h1>
-            <div id="google-button"></div>
+            
+            <div id="g_id_onload"
+                 data-client_id="96439361582-vlr4e3bdiabhaoog22o040pbafjrrd96.apps.googleusercontent.com"
+                 data-context="signin"
+                 data-ux_mode="popup"
+                 data-callback="handleCredentialResponse"
+                 data-auto_prompt="false">
+            </div>
+            
+            <div class="g_id_signin"
+                 data-type="standard"
+                 data-shape="rectangular"
+                 data-theme="outline"
+                 data-text="signin_with"
+                 data-size="large"
+                 data-logo_alignment="left">
+            </div>
             <div id="logged-user" class="user-card hidden">
                 <img id="user-picture" src="" alt="Perfil">
                 <div>
