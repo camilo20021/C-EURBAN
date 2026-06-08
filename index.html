@@ -8,13 +8,30 @@
     <link rel="icon" href="IMAGENES/favicon.png">
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="CSS/ux-improvements.css">
+    
+    <style>
+        .card {
+            position: relative; 
+        }
+        .badge-stock {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff3333; 
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+    </style>
 </head>
 
 <body>
 
-   
     <header class="header">
-
         <a href="index.html" class="logo">
             <img src="IMAGENES/favicon.png" alt="Logo">
             <h1>C&E URBAN</h1>
@@ -41,27 +58,19 @@
         <div class="menu-toggle">☰</div>
 
         <div class="icons">
-            <!-- Buscador Premium Integrado -->
             <div class="search-container">
                 <input type="text" id="search-input" placeholder="Buscar hoodies, gorras...">
                 <span class="search-icon">🔍</span>
             </div>
-
             <a href="login.html" class="user-icon" title="Iniciar sesión">👤</a>
-
             <div class="cart-icon">
                 🛒
                 <span id="cart-count">0</span>
             </div>
         </div>
-
     </header>
 
-    <!-- ========================= -->
-    <!-- PANEL CARRITO -->
-    <!-- ========================= -->
     <div class="cart-panel">
-        <!-- HEADER -->
         <div class="cart-header">
             <h2>Tu Carrito</h2>
             <div class="cart-header-actions">
@@ -69,13 +78,9 @@
                 <span class="close-cart">✖</span>
             </div>
         </div>
-
-        <!-- PRODUCTOS -->
         <div class="cart-items">
             <p class="empty-cart">Tu carrito está vacío</p>
         </div>
-
-        <!-- FOOTER -->
         <div class="cart-footer">
             <h3>Total: <span id="cart-total">$0</span></h3>
             <a href="pago.html">
@@ -84,9 +89,6 @@
         </div>
     </div>
 
-    <!-- ========================= -->
-    <!-- HERO -->
-    <!-- ========================= -->
     <section class="hero">
         <div class="hero-text">
             <p class="subtitulo">NUEVA COLECCIÓN 2026</p>
@@ -96,15 +98,11 @@
             </p>
             <button>DESCUBRIR COLECCIÓN</button>
         </div>
-
         <div class="hero-img">
             <img src="IMAGENES/1716945775WhatsApp Image 2024-05-27 at 9.38.36 PM.jpeg" alt="Hero Banner">
         </div>
     </section>
 
-    <!-- ========================= -->
-    <!-- SLIDER -->
-    <!-- ========================= -->
     <section class="slider">
       <div class="carrusel-contenedor">
         <div class="carrusel-imagenes">
@@ -115,20 +113,15 @@
     </div>
     </section>
 
-    <!-- ========================= -->
-    <!-- CATÁLOGO DE PRODUCTOS (DINÁMICO) -->
-    <!-- ========================= -->
     <section class="productos">
         <div class="productos-header">
             <h2>LO MÁS NUEVO</h2>
             <a href="#">VER TODO</a>
         </div>
 
-        <!-- FILTROS AVANZADOS -->
         <div class="filter-section">
             <h3>🔍 Filtros</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-                <!-- Filtro de Categoría -->
                 <div class="category-filter">
                     <strong style="color: #ff6600; margin-bottom: 8px;">Categoría</strong>
                     <label><input type="radio" name="category" value="todos" checked> Todos</label>
@@ -138,7 +131,6 @@
                     <label><input type="radio" name="category" value="tecnologia"> Tecnología</label>
                 </div>
 
-                <!-- Filtro de Precio -->
                 <div>
                     <strong style="color: #ff6600; margin-bottom: 8px; display: block;">Rango de Precio</strong>
                     <div class="price-range-slider">
@@ -148,7 +140,6 @@
                     <button onclick="applyFilters()" style="width: 100%; margin-top: 8px; padding: 8px; background: #ff6600; color: white; border: none; border-radius: 6px; cursor: pointer;">Aplicar</button>
                 </div>
 
-                <!-- Ordenamiento -->
                 <div class="sort-filter">
                     <strong style="color: #ff6600; margin-bottom: 8px;">Ordenar por:</strong>
                     <select id="sort-select" onchange="applySort()">
@@ -162,7 +153,6 @@
             </div>
         </div>
 
-        <!-- Botones de filtrado conectados con el JSON -->
         <div class="categorias">
             <button class="btn-categoria" data-category="todos" style="background: #ff6600;">Todos</button>
             <button class="btn-categoria" data-category="ropa">Ropa</button>
@@ -171,48 +161,11 @@
             <button class="btn-categoria" data-category="tecnologia">Tecnología</button>
         </div>
 
-        <!-- Contenedor con 5 productos estáticos (para habilitar carrito) -->
         <div class="productos-grid" id="productos-container">
-            <article class="card">
-                <img src="IMAGENES/Nueva coleccion (1).jpeg" alt="Hoodie Marfil">
-                <h3>Hoodie Marfil</h3>
-                <p>$85,000</p>
-                <button class="add-cart" data-name="Hoodie Marfil" data-price="85000" data-img="IMAGENES/Nueva coleccion (1).jpeg">Agregar al carrito</button>
-            </article>
-
-            <article class="card">
-                <img src="IMAGENES/Nueva colleccion.jpeg" alt="Hoodie Negro">
-                <h3>Hoodie Negro</h3>
-                <p>$79,000</p>
-                <button class="add-cart" data-name="Hoodie Negro" data-price="79000" data-img="IMAGENES/Nueva colleccion.jpeg">Agregar al carrito</button>
-            </article>
-
-            <article class="card">
-                <img src="IMAGENES/1764421015MARSHMELLO RAMON MARFIL.jpg" alt="Hoodie Marshmello">
-                <h3>Hoodie Marshmello</h3>
-                <p>$92,000</p>
-                <button class="add-cart" data-name="Hoodie Marshmello" data-price="92000" data-img="IMAGENES/1764421015MARSHMELLO RAMON MARFIL.jpg">Agregar al carrito</button>
-            </article>
-
-            <article class="card">
-                <img src="IMAGENES/1716945775WhatsApp Image 2024-05-27 at 9.38.36 PM.jpeg" alt="Sudadera Urbana">
-                <h3>Sudadera Urbana</h3>
-                <p>$68,000</p>
-                <button class="add-cart" data-name="Sudadera Urbana" data-price="68000" data-img="IMAGENES/1716945775WhatsApp Image 2024-05-27 at 9.38.36 PM.jpeg">Agregar al carrito</button>
-            </article>
-
-            <article class="card">
-                <img src="IMAGENES/Nueva coleccion (1).jpeg" alt="Gorra Classic">
-                <h3>Gorra Classic</h3>
-                <p>$35,000</p>
-                <button class="add-cart" data-name="Gorra Classic" data-price="35000" data-img="IMAGENES/Nueva coleccion (1).jpeg">Agregar al carrito</button>
-            </article>
+            <p style="text-align: center; grid-column: 1 / -1; padding: 20px;">Cargando inventario...</p>
         </div>
     </section>
 
-    <!-- ========================= -->
-    <!-- PERSONALIZADOS -->
-    <!-- ========================= -->
     <section class="personalizados">
         <div class="personalizados-texto">
             <p class="subtitulo-personalizados">HAZLO ÚNICO</p>
@@ -220,34 +173,27 @@
             <p>Crea hoodies, camisetas y accesorios con tu propio diseño.</p>
             <button>PERSONALIZAR AHORA</button>
         </div>
-
         <div class="personalizados-img">
             <img src="IMAGENES/personaliza.jpg" alt="Personalizados">
         </div>
     </section>
 
-    <!-- ========================= -->
-    <!-- BENEFICIOS -->
-    <!-- ========================= -->
     <section class="beneficios">
         <article class="beneficio-card">
             <div class="icono">🚚</div>
             <h3>Envíos Rápidos</h3>
             <p>Realizamos envíos a todo el país de forma rápida y segura.</p>
         </article>
-
         <article class="beneficio-card">
             <div class="icono">🔒</div>
             <h3>Pagos Seguros</h3>
             <p>Protegemos todas tus compras con métodos de pago seguros.</p>
         </article>
-
         <article class="beneficio-card">
             <div class="icono">⭐</div>
             <h3>Calidad Premium</h3>
             <p>Productos modernos con materiales de excelente calidad.</p>
         </article>
-
         <article class="beneficio-card">
             <div class="icono">🎧</div>
             <h3>Soporte 24/7</h3>
@@ -255,16 +201,12 @@
         </article>
     </section>
 
-    <!-- ========================= -->
-    <!-- FOOTER -->
-    <!-- ========================= -->
     <footer class="footer">
         <div class="footer-box">
             <img src="IMAGENES/favicon.png" alt="Logo" width="80">
             <h2>C&E URBAN</h2>
             <p>Moda urbana, accesorios y productos modernos para todos los estilos.</p>
         </div>
-
         <div class="footer-box">
             <h3>Enlaces</h3>
             <a href="#">Inicio</a>
@@ -273,7 +215,6 @@
             <a href="#">Nosotros</a>
             <a href="#">Contacto</a>
         </div>
-
         <div class="footer-box">
             <h3>Categorías</h3>
             <a href="ropa.html">Ropa</a>
@@ -281,7 +222,6 @@
             <a href="vehiculos.html">Vehículos</a>
             <a href="tecnologia.html">Tecnología</a>
         </div>
-
         <div class="footer-box">
             <h3>Contacto</h3>
             <p>📍 Bogotá, Colombia</p>
@@ -290,62 +230,128 @@
         </div>
     </footer>
 
-    <!-- COPYRIGHT -->
     <div class="copyright">
         <p>© 2026 C&E Urban Wear | Todos los derechos reservados</p>
     </div>
 
-    <!-- TOAST NOTIFICACIÓN -->
     <div class="toast">
         Producto agregado al carrito ✅
     </div>
 
-    <!-- ========================= -->
-    <!-- SCRIPTS (ORDEN DE CARGA CORRECTO) -->
-    <!-- ========================= -->
-    <!-- Scripts de características avanzadas -->
     <script src="jvs/advanced-features.js"></script>
-    <script src="jvs/ux-enhancements.js"></script>    <script src=\"jvs/user-dashboard.js\"></script>    
-    <!-- Scripts principales -->
+    <script src="jvs/ux-enhancements.js"></script>    
+    <script src="jvs/user-dashboard.js"></script>    
     <script src="jvs/index.js"></script>
     <script src="jvs/carrito.js"></script>
     <script src="jvs/user-state.js"></script>
 
-    <!-- Script para filtros avanzados y vista rápida -->
     <script>
-        // Actualizar UI del carrito al cargar
-        document.addEventListener('DOMContentLoaded', updateCartUI);
+        // Variable global para almacenar lo que llega de Python
+        let listaProductosBD = [];
 
-        // Agregar vista rápida a productos
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('quick-view-btn')) {
-                const productId = parseInt(e.target.dataset.productId);
-                const product = listaProductos.find(p => p.id === productId);
-                if (product) quickViewModal.open(product);
+        async function cargarCatalogoBD() {
+            try {
+                const respuesta = await fetch('http://127.0.0.1:5000/api/productos-stock');
+                const datos = await respuesta.json();
+
+                const productosAgrupados = {};
+                datos.forEach(item => {
+                    if (!productosAgrupados[item.nombre]) {
+                        productosAgrupados[item.nombre] = {
+                            id: item.producto_id,
+                            nombre: item.nombre,
+                            precio: item.precio,
+                            categoria: item.categoria.toLowerCase(),
+                            totalStock: 0,
+                            tallas: []
+                        };
+                    }
+                    productosAgrupados[item.nombre].totalStock += item.cantidad;
+                    productosAgrupados[item.nombre].tallas.push(item.talla);
+                });
+
+                listaProductosBD = Object.values(productosAgrupados);
+                mostrarProductosGrid(listaProductosBD);
+
+            } catch (error) {
+                console.error("Error al conectar con la base de datos:", error);
+                document.getElementById('productos-container').innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: red;">No se pudo cargar el inventario. Verifica que el servidor Python esté encendido.</p>';
             }
-        });
+        }
 
-        // Aplicar filtros
+        function mostrarProductosGrid(productosA_Mostrar) {
+            const contenedor = document.getElementById('productos-container');
+            contenedor.innerHTML = ''; 
+
+            if(productosA_Mostrar.length === 0) {
+                contenedor.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No se encontraron productos con estos filtros.</p>';
+                return;
+            }
+
+            productosA_Mostrar.forEach(prod => {
+                let etiquetaPocasUnidades = '';
+                if (prod.totalStock <= 15) {
+                    etiquetaPocasUnidades = `<div class="badge-stock">🔥 Pocas unidades</div>`;
+                }
+
+                let imgProd = "IMAGENES/Nueva coleccion (1).jpeg"; 
+                if(prod.nombre.includes("Negro")) imgProd = "IMAGENES/Nueva colleccion.jpeg";
+                if(prod.nombre.includes("Marshmello")) imgProd = "IMAGENES/1764421015MARSHMELLO RAMON MARFIL.jpg";
+
+                const precioFormateado = parseFloat(prod.precio).toLocaleString('es-CO');
+
+                // Convertir la lista de tallas en opciones para un menú desplegable
+                let opcionesTallas = prod.tallas.map(talla => `<option value="${talla}">${talla}</option>`).join('');
+
+                const tarjetaHTML = `
+                    <article class="card">
+                        ${etiquetaPocasUnidades}
+                        <img src="${imgProd}" alt="${prod.nombre}">
+                        <h3>${prod.nombre}</h3>
+                        <p>$${precioFormateado}</p>
+                        
+                        <div style="margin: 10px 0;">
+                            <label for="talla-${prod.id}" style="font-size: 13px; color: #555;">Elige tu talla:</label>
+                            <select id="talla-${prod.id}" style="padding: 5px; border-radius: 4px; border: 1px solid #ccc; width: 100%;">
+                                ${opcionesTallas}
+                            </select>
+                        </div>
+
+                        <button class="add-cart" 
+                            data-id="${prod.id}"
+                            data-name="${prod.nombre}" 
+                            data-price="${prod.precio}" 
+                            data-img="${imgProd}"
+                            onclick="agregarAlCarritoConTalla(${prod.id}, '${prod.nombre}', ${prod.precio})">
+                            Agregar al carrito
+                        </button>
+                    </article>
+                `;
+                contenedor.innerHTML += tarjetaHTML;
+            });
+        }
+
+        // --- SISTEMA DE FILTROS ADAPTADO A LA BASE DE DATOS ---
+
         function applyFilters() {
             const category = document.querySelector('input[name="category"]:checked').value;
             const minPrice = parseInt(document.getElementById('min-price').value) || 0;
             const maxPrice = parseInt(document.getElementById('max-price').value) || Infinity;
             const searchText = document.getElementById('search-input').value.toLowerCase();
 
-            let filtered = listaProductos.filter(p => {
+            let filtered = listaProductosBD.filter(p => {
                 const categoryMatch = category === 'todos' || p.categoria === category;
                 const priceMatch = p.precio >= minPrice && p.precio <= maxPrice;
                 const searchMatch = p.nombre.toLowerCase().includes(searchText);
                 return categoryMatch && priceMatch && searchMatch;
             });
 
-            mostrarProductos(filtered);
+            mostrarProductosGrid(filtered);
         }
 
-        // Ordenar productos
         function applySort() {
             const sortValue = document.getElementById('sort-select').value;
-            let sorted = [...listaProductos];
+            let sorted = [...listaProductosBD];
 
             switch(sortValue) {
                 case 'price-asc':
@@ -362,15 +368,73 @@
                     break;
             }
 
-            mostrarProductos(sorted);
+            mostrarProductosGrid(sorted);
         }
 
-        // Combinar filtros y búsqueda
+        // Cargar todo al iniciar
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarCatalogoBD();
+            if (typeof updateCartUI === 'function') updateCartUI();
+        });
+
+        // Eventos de los filtros
         document.getElementById('search-input').addEventListener('input', applyFilters);
         document.querySelectorAll('input[name="category"]').forEach(radio => {
             radio.addEventListener('change', applyFilters);
         });
-    </script>
+        
+        // Modal de vista rápida 
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('quick-view-btn')) {
+                const productId = parseInt(e.target.dataset.productId);
+                const product = listaProductosBD.find(p => p.id === productId);
+                if (product && typeof quickViewModal !== 'undefined') quickViewModal.open(product);
+            }
+        });
 
+        // =========================================================
+        // NUEVAS FUNCIONES PARA DESCONTAR STOCK EN LA BASE DE DATOS
+        // =========================================================
+
+        // Función para enviar la petición a Python para descontar stock
+        async function confirmarCompra(producto_id, talla_seleccionada, cantidad_comprada) {
+            try {
+                const respuesta = await fetch('http://127.0.0.1:5000/api/descontar-stock', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        producto_id: producto_id,
+                        talla: talla_seleccionada,
+                        cantidad: cantidad_comprada
+                    })
+                });
+
+                const resultado = await respuesta.json();
+                
+                if (respuesta.ok) {
+                    alert("¡Compra realizada con éxito! El stock ha sido descontado.");
+                    cargarCatalogoBD(); // Recarga los productos para mostrar el nuevo stock
+                } else {
+                    alert("Error en la compra: " + resultado.error);
+                }
+            } catch (error) {
+                console.error("Error al procesar la compra:", error);
+            }
+        }
+
+        // Función que captura el ID y la talla elegida en el menú desplegable
+        function agregarAlCarritoConTalla(idProducto, nombre, precio) {
+            const selectorTalla = document.getElementById(`talla-${idProducto}`);
+            const tallaElegida = selectorTalla.value;
+
+            console.log(`Se va a comprar el producto ${idProducto}, talla ${tallaElegida}`);
+            
+            // Enviamos la orden a Python descontando 1 unidad
+            confirmarCompra(idProducto, tallaElegida, 1);
+        }
+
+    </script>
 </body>
 </html>
