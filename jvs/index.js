@@ -53,7 +53,6 @@ function mostrarProductos(productos) {
         const card = document.createElement("article");
         card.classList.add("card");
         
-        // Verificar si es favorito
         const isFavorite = wishlist && wishlist.isInWishlist(producto.id);
         
         card.innerHTML = `
@@ -85,7 +84,6 @@ function mostrarProductos(productos) {
             </div>
         `;
         
-        // Agregar listeners a los botones de favorito
         const wishlistBtn = card.querySelector('.wishlist-btn');
         if (wishlistBtn && wishlist) {
             wishlistBtn.addEventListener('click', (e) => {
@@ -148,7 +146,6 @@ function configurarBuscador() {
     });
 }
 
-// Inicia la rotación automática del carrusel
 function iniciarCarrusel(interval = 2500, visibleDesktop = 3) {
     const container = document.querySelector('.carrusel-contenedor');
     const track = document.querySelector('.carrusel-imagenes');
@@ -163,7 +160,6 @@ function iniciarCarrusel(interval = 2500, visibleDesktop = 3) {
     let autoTimer = null;
 
     function setup() {
-        // limpiar clones previos
         const clones = track.querySelectorAll('.clone-item');
         clones.forEach(c => c.remove());
 
@@ -171,27 +167,22 @@ function iniciarCarrusel(interval = 2500, visibleDesktop = 3) {
         visible = window.innerWidth < 768 ? 1 : visibleDesktop;
         itemWidth = container.clientWidth / visible;
 
-        // fijar ancho de cada item
         items.forEach(it => {
             it.style.flex = `0 0 ${itemWidth}px`;
             it.style.width = `${itemWidth}px`;
         });
 
-        // clonar primeros visibles para bucle infinito
         for (let i = 0; i < visible; i++) {
             const clone = items[i].cloneNode(true);
             clone.classList.add('clone-item');
-            // asegurar que el clone tenga el mismo tamaño
             clone.style.flex = `0 0 ${itemWidth}px`;
             clone.style.width = `${itemWidth}px`;
             track.appendChild(clone);
         }
 
-        // reset posición
         track.style.transition = 'none';
         index = 0;
         track.style.transform = `translateX(0px)`;
-        // forzar reflow
         void track.offsetWidth;
         track.style.transition = 'transform 0.6s ease';
     }
@@ -201,13 +192,11 @@ function iniciarCarrusel(interval = 2500, visibleDesktop = 3) {
         track.style.transform = `translateX(${-index * itemWidth}px)`;
 
         const totalOriginal = items.length;
-        // cuando lleguemos al final (mostrando clones), saltar al inicio sin animación
         if (index >= totalOriginal) {
             setTimeout(() => {
                 track.style.transition = 'none';
                 index = 0;
                 track.style.transform = `translateX(0px)`;
-                // reactivar transición
                 void track.offsetWidth;
                 track.style.transition = 'transform 0.6s ease';
             }, 620);
@@ -226,7 +215,6 @@ function iniciarCarrusel(interval = 2500, visibleDesktop = 3) {
         }
     }
 
-    // manejar redimensionado
     let resizeTimer = null;
     function onResize() {
         clearTimeout(resizeTimer);
@@ -235,17 +223,14 @@ function iniciarCarrusel(interval = 2500, visibleDesktop = 3) {
         }, 150);
     }
 
-    // inicializar
     setup();
     start();
 
-    // pausar al hover
     container.addEventListener('mouseenter', stop);
     container.addEventListener('mouseleave', start);
     window.addEventListener('resize', onResize);
 }
 
-// Maneja el botón hamburguesa en mobile
 function configurarMenuHamburguesa() {
     const toggle = document.querySelector('.menu-toggle');
     const header = document.querySelector('.header');
@@ -254,11 +239,9 @@ function configurarMenuHamburguesa() {
 
     toggle.addEventListener('click', () => {
         header.classList.toggle('open');
-        // cambiar icono simple
         toggle.textContent = header.classList.contains('open') ? '✖' : '☰';
     });
 
-    // cerrar al pulsar un link
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (header.classList.contains('open')) {

@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalEl = document.getElementById("checkout-total");
     const formulario = document.getElementById("payment-form");
 
-    // Traer el carrito guardado
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
     if (carrito.length === 0) {
@@ -14,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // Dibujar cada elemento en la interfaz de pago
     let acumulado = 0;
     container.innerHTML = "";
 
@@ -40,18 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
         acumulado += producto.precio;
     });
 
-    // Pintar totales calculados
     subtotalEl.textContent = `$${acumulado.toLocaleString()}`;
     totalEl.textContent = `$${acumulado.toLocaleString()}`;
 
-    // Autocompletar datos si el usuario ya inició sesión
     const usuarioGuardado = JSON.parse(localStorage.getItem('ceurbanUser') || 'null');
     if (usuarioGuardado) {
         document.getElementById('customer-name').value = usuarioGuardado.nombre || '';
         document.getElementById('customer-email').value = usuarioGuardado.email || '';
     }
 
-    // Captura del envío del formulario
     if(formulario) {
         formulario.addEventListener("submit", async (e) => {
             e.preventDefault();

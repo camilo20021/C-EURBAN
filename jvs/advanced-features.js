@@ -1,16 +1,4 @@
-/**
- * CARACTERÍSTICAS AVANZADAS - C&E Urban
- * - Sistema de favoritos/wishlist
- * - Sistema de puntos y lealtad
- * - Carrito mejorado con cantidades
- * - Productos destacados
- * - Historial de visualización
- * - Recomendaciones personalizadas
- */
 
-// ========================================
-// 1. SISTEMA DE FAVORITOS/WISHLIST
-// ========================================
 class WishlistManager {
     constructor() {
         this.wishlistKey = 'ceurban-wishlist';
@@ -55,9 +43,6 @@ class WishlistManager {
     }
 }
 
-// ========================================
-// 2. SISTEMA DE PUNTOS Y LEALTAD
-// ========================================
 class LoyaltySystem {
     constructor() {
         this.pointsKey = 'ceurban-loyalty-points';
@@ -98,7 +83,7 @@ class LoyaltySystem {
             amount,
             items,
             date: new Date().toISOString(),
-            points: Math.floor(amount * 0.1) // 10% de puntos por compra
+            points: Math.floor(amount * 0.1) 
         };
         this.history.push(purchase);
         this.addPoints(purchase.points);
@@ -119,9 +104,6 @@ class LoyaltySystem {
     }
 }
 
-// ========================================
-// 3. CARRITO MEJORADO CON CANTIDADES
-// ========================================
 class ShoppingCart {
     constructor() {
         this.cartKey = 'carrito';
@@ -185,9 +167,6 @@ class ShoppingCart {
     }
 }
 
-// ========================================
-// 4. HISTORIAL DE VISUALIZACIÓN
-// ========================================
 class ViewHistory {
     constructor() {
         this.historyKey = 'ceurban-view-history';
@@ -196,10 +175,8 @@ class ViewHistory {
     }
 
     addView(product) {
-        // Eliminar si ya existe
         this.history = this.history.filter(p => p.id !== product.id);
         
-        // Agregar al inicio
         this.history.unshift({
             id: product.id,
             nombre: product.nombre,
@@ -209,7 +186,6 @@ class ViewHistory {
             viewedAt: new Date().toISOString()
         });
 
-        // Limitar a maxItems
         if (this.history.length > this.maxItems) {
             this.history = this.history.slice(0, this.maxItems);
         }
@@ -231,9 +207,6 @@ class ViewHistory {
     }
 }
 
-// ========================================
-// 5. RECOMENDACIONES PERSONALIZADAS
-// ========================================
 class RecommendationEngine {
     constructor(allProducts) {
         this.products = allProducts;
@@ -245,19 +218,16 @@ class RecommendationEngine {
         const history = this.viewHistory.getHistory();
         if (history.length === 0) return this.getPopularProducts(count);
 
-        // Obtener categorías vistas
         const viewedCategories = [...new Set(history.map(p => p.categoria))];
         
-        // Recomendar productos de categorías similares que no haya visto
         const recommendations = this.products
             .filter(product => 
                 !history.find(h => h.id === product.id) &&
                 viewedCategories.includes(product.categoria)
             )
-            .sort((a, b) => b.precio - a.precio) // Ordenar por precio
+            .sort((a, b) => b.precio - a.precio) 
             .slice(0, count);
 
-        // Si no hay suficientes, llenar con productos populares
         if (recommendations.length < count) {
             const popular = this.getPopularProducts(count - recommendations.length);
             recommendations.push(...popular);
@@ -280,9 +250,6 @@ class RecommendationEngine {
     }
 }
 
-// ========================================
-// 6. FILTRO DE PRECIOS AVANZADO
-// ========================================
 class PriceFilter {
     constructor(products) {
         this.products = products;
@@ -311,9 +278,6 @@ class PriceFilter {
     }
 }
 
-// ========================================
-// 7. NOTIFICADOR MEJORADO
-// ========================================
 class NotificationManager {
     constructor() {
         this.toastContainer = document.querySelector('.toast') || this.createToastContainer();
@@ -371,16 +335,12 @@ class NotificationManager {
     info(message) { this.show(message, 'info'); }
 }
 
-// ========================================
-// 8. INICIALIZACIÓN GLOBAL
-// ========================================
 const wishlist = new WishlistManager();
 const loyalty = new LoyaltySystem();
 const cart = new ShoppingCart();
 const viewHistory = new ViewHistory();
 const notifier = new NotificationManager();
 
-// Exportar para usar en otros archivos
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         WishlistManager,

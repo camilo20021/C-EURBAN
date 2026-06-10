@@ -1,10 +1,3 @@
-/**
- * PANEL DE USUARIO MEJORADO
- * - Puntos de lealtad
- * - Historial de compras
- * - Favoritos
- * - Configuración de usuario
- */
 
 class UserDashboardPanel {
     constructor() {
@@ -22,36 +15,28 @@ class UserDashboardPanel {
                     <button class="tab-btn" data-tab="points">🎁 Puntos</button>
                 </div>
 
-                <!-- TAB: LEALTAD -->
                 <div class="tab-content active" id="tab-loyalty">
                     <div class="loyalty-section">
                         <h3>Nivel de Membresía</h3>
                         <div id="loyalty-info" class="loyalty-info">
-                            <!-- Se llena dinámicamente -->
                         </div>
                     </div>
                 </div>
 
-                <!-- TAB: FAVORITOS -->
                 <div class="tab-content" id="tab-favorites">
                     <div id="favorites-list" class="favorites-list">
-                        <!-- Se llena dinámicamente -->
                     </div>
                 </div>
 
-                <!-- TAB: HISTORIAL -->
                 <div class="tab-content" id="tab-history">
                     <div id="history-list" class="history-list">
-                        <!-- Se llena dinámicamente -->
                     </div>
                 </div>
 
-                <!-- TAB: PUNTOS -->
                 <div class="tab-content" id="tab-points">
                     <div class="points-section">
                         <h3>Mis Puntos</h3>
                         <div id="points-info" class="points-info">
-                            <!-- Se llena dinámicamente -->
                         </div>
                     </div>
                 </div>
@@ -290,12 +275,10 @@ class UserDashboardPanel {
     }
 
     init() {
-        // Agregar estilos
         if (!document.querySelector('#dashboard-styles')) {
             document.head.insertAdjacentHTML('beforeend', this.style);
         }
 
-        // Agregar panel HTML
         if (!document.getElementById('user-dashboard-panel')) {
             document.body.insertAdjacentHTML('beforeend', this.panelHTML);
         }
@@ -348,7 +331,6 @@ class UserDashboardPanel {
     updateContent() {
         if (typeof loyalty === 'undefined') return;
 
-        // Tab Lealtad
         const loyaltyLevel = loyalty.getLevel();
         const points = loyalty.getPoints();
         const loyaltyInfo = this.panel.querySelector('#loyalty-info');
@@ -368,7 +350,6 @@ class UserDashboardPanel {
             </div>
         `;
 
-        // Tab Favoritos
         const favoritesListEl = this.panel.querySelector('#favorites-list');
         const favorites = wishlist.getWishlist();
         
@@ -387,7 +368,6 @@ class UserDashboardPanel {
             `).join('');
         }
 
-        // Tab Historial
         const historyListEl = this.panel.querySelector('#history-list');
         const history = viewHistory.getHistory();
         
@@ -405,7 +385,6 @@ class UserDashboardPanel {
             `).join('');
         }
 
-        // Tab Puntos
         const pointsInfo = this.panel.querySelector('#points-info');
         const totalSpent = loyalty.getTotalSpent();
         pointsInfo.innerHTML = `
@@ -420,13 +399,11 @@ class UserDashboardPanel {
     }
 }
 
-// Crear instancia global
 let userDashboard;
 
 document.addEventListener('DOMContentLoaded', () => {
     userDashboard = new UserDashboardPanel();
 
-    // Agregar botón para abrir el dashboard al header
     const userIcon = document.querySelector('.user-icon');
     if (userIcon) {
         userIcon.addEventListener('click', (e) => {

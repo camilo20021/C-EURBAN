@@ -7,19 +7,16 @@ const cartPanel = document.querySelector(".cart-panel");
 const closeCart = document.querySelector(".close-cart");
 const clearCartBtn = document.querySelector(".clear-cart");
 
-// Usar el carrito mejorado si está disponible, sino usar el antiguo
 let carrito = [];
 let cantidad = 0;
 let totalCompra = 0;
 
 function actualizarInterfazInicial() {
-    // Si tenemos el objeto cart mejorado (de advanced-features.js)
     if (typeof cart !== 'undefined' && cart.getCart) {
         carrito = cart.getCart();
         cantidad = cart.getItemCount();
         totalCompra = cart.getTotal();
     } else {
-        // Fallback al sistema antiguo
         carrito = JSON.parse(localStorage.getItem("carrito")) || [];
         cantidad = carrito.length;
         totalCompra = carrito.reduce((sum, item) => sum + (item.precio * (item.quantity || 1)), 0);
@@ -80,13 +77,11 @@ document.addEventListener("click", (e) => {
         const imagen = boton.dataset.img;
         const id = parseInt(boton.dataset.id) || Date.now();
 
-        // Usar el carrito mejorado si está disponible
         if (typeof cart !== 'undefined' && cart.addItem) {
             const product = { id, nombre, precio, imagen };
             cart.addItem(product, 1);
             updateCartUI();
         } else {
-            // Sistema antiguo
             carrito.push({ id, nombre, precio, imagen, quantity: 1 });
             localStorage.setItem("carrito", JSON.stringify(carrito));
 
@@ -130,7 +125,6 @@ function crearItemEnCarritoHTML(nombre, precio, imagen, index, productId = index
 
     cartItems.appendChild(item);
 
-    // Botón de disminuir cantidad
     item.querySelector(".qty-decrease").addEventListener("click", (e) => {
         e.stopPropagation();
         const pId = parseInt(e.target.dataset.productId);
@@ -150,7 +144,6 @@ function crearItemEnCarritoHTML(nombre, precio, imagen, index, productId = index
         }
     });
 
-    // Botón de aumentar cantidad
     item.querySelector(".qty-increase").addEventListener("click", (e) => {
         e.stopPropagation();
         const pId = parseInt(e.target.dataset.productId);
@@ -170,7 +163,6 @@ function crearItemEnCarritoHTML(nombre, precio, imagen, index, productId = index
         }
     });
 
-    // Botón de remover
     item.querySelector(".remove-item").addEventListener("click", (e) => {
         e.stopPropagation();
         const pId = parseInt(e.target.dataset.productId);
@@ -195,6 +187,5 @@ function crearItemEnCarritoHTML(nombre, precio, imagen, index, productId = index
 
 document.addEventListener("DOMContentLoaded", () => {
     actualizarInterfazInicial();
-    // Actualizar carrito cuando hay cambios en otro tab
     window.addEventListener('storage', actualizarInterfazInicial);
 });

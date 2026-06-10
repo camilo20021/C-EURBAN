@@ -22,25 +22,22 @@ CSS/
 
 **Métodos**:
 ```javascript
-addToWishlist(product)           // Agregar producto
-removeFromWishlist(productId)    // Remover producto
-isInWishlist(productId)          // Verificar si está en lista
-getWishlist()                    // Obtener toda la lista
-clear()                          // Limpiar la lista
+addToWishlist(product)           
+removeFromWishlist(productId)    
+isInWishlist(productId)          
+getWishlist()                    
+clear()                          
 ```
 
 **Ejemplo de uso**:
 ```javascript
-// Agregar a favoritos
 const product = { id: 1, nombre: "Hoodie", precio: 85000, imagen: "..." };
 wishlist.addToWishlist(product);
 
-// Verificar si es favorito
 if (wishlist.isInWishlist(1)) {
     console.log("Es favorito");
 }
 
-// Remover de favoritos
 wishlist.removeFromWishlist(1);
 ```
 
@@ -54,35 +51,27 @@ wishlist.removeFromWishlist(1);
 
 **Métodos**:
 ```javascript
-addPoints(amount)              // Agregar puntos
-removePoints(amount)           // Remover puntos
-getPoints()                    // Obtener puntos actuales
-getLevel()                     // Obtener nivel actual
-addPurchase(amount, items)    // Registrar compra
-getPurchaseHistory()          // Obtener historial
-getTotalSpent()               // Total gastado
+addPoints(amount)              
+removePoints(amount)           
+getPoints()                    
+getLevel()                     
+addPurchase(amount, items)    
+getPurchaseHistory()          
+getTotalSpent()               
 ```
 
 **Niveles**:
 ```javascript
-// Devuelve objeto con: { name, color, discount }
 getLevel()
-// Bronze:   0-999      (0% descuento)
-// Silver:   1000-2999  (5% descuento)
-// Gold:     3000-4999  (10% descuento)
-// Platinum: 5000+      (15% descuento)
 ```
 
 **Ejemplo de uso**:
 ```javascript
-// Agregar puntos por compra
-loyalty.addPoints(50000 * 0.1); // 10% de puntos
+loyalty.addPoints(50000 * 0.1); 
 
-// Obtener información del usuario
 const nivel = loyalty.getLevel();
 console.log(`${nivel.name} - ${nivel.discount * 100}% descuento`);
 
-// Registrar compra
 const compra = loyalty.addPurchase(50000, items);
 ```
 
@@ -98,29 +87,25 @@ const compra = loyalty.addPurchase(50000, items);
 
 **Métodos**:
 ```javascript
-addItem(product, quantity)     // Agregar producto (con cantidad)
-updateQuantity(productId, qty) // Actualizar cantidad
-removeItem(productId)          // Remover producto
-getCart()                      // Obtener carrito completo
-getTotal()                     // Obtener total
-getItemCount()                 // Contar artículos
-clear()                        // Vaciar carrito
-applyDiscount(percent)         // Aplicar descuento %
+addItem(product, quantity)     
+updateQuantity(productId, qty) 
+removeItem(productId)          
+getCart()                      
+getTotal()                     
+getItemCount()                 
+clear()                        
+applyDiscount(percent)         
 ```
 
 **Ejemplo de uso**:
 ```javascript
-// Agregar producto con cantidad
 const product = { id: 1, nombre: "Hoodie", precio: 85000, imagen: "..." };
 cart.addItem(product, 2);
 
-// Actualizar cantidad
 cart.updateQuantity(1, 3);
 
-// Obtener total
 const total = cart.getTotal();
 
-// Contar items
 const count = cart.getItemCount();
 ```
 
@@ -134,19 +119,17 @@ const count = cart.getItemCount();
 
 **Métodos**:
 ```javascript
-addView(product)   // Agregar visualización
-getHistory()       // Obtener historial
-clear()            // Limpiar historial
+addView(product)   
+getHistory()       
+clear()            
 ```
 
 **Límite**: 10 productos máximo
 
 **Ejemplo de uso**:
 ```javascript
-// Agregar a historial (automático en mostrarProductos)
 viewHistory.addView(product);
 
-// Obtener historial
 const historial = viewHistory.getHistory();
 historial.forEach(item => {
     console.log(`${item.nombre} - $${item.precio}`);
@@ -163,9 +146,9 @@ historial.forEach(item => {
 
 **Métodos**:
 ```javascript
-getRecommendations(count)      // Obtener recomendaciones (def: 5)
-getPopularProducts(count)      // Productos populares
-getSimilarProducts(productId)  // Productos similares
+getRecommendations(count)      
+getPopularProducts(count)      
+getSimilarProducts(productId)  
 ```
 
 **Algoritmo**:
@@ -179,7 +162,6 @@ getSimilarProducts(productId)  // Productos similares
 const engine = new RecommendationEngine(listaProductos);
 const recomendaciones = engine.getRecommendations(5);
 
-// Productos similares
 const similares = engine.getSimilarProducts(1);
 ```
 
@@ -191,19 +173,17 @@ const similares = engine.getSimilarProducts(1);
 
 **Métodos**:
 ```javascript
-filterByPriceRange(min, max)       // Filtrar por rango
-getMinMaxPrice()                   // Obtener min y max
-filterByMultipleCriteria(filters)  // Filtrado avanzado
+filterByPriceRange(min, max)       
+getMinMaxPrice()                   
+filterByMultipleCriteria(filters)  
 ```
 
 **Ejemplo de uso**:
 ```javascript
 const filter = new PriceFilter(listaProductos);
 
-// Filtro simple
 const porPrecio = filter.filterByPriceRange(50000, 100000);
 
-// Filtro múltiple
 const filtrados = filter.filterByMultipleCriteria({
     category: 'ropa',
     minPrice: 50000,
@@ -220,11 +200,11 @@ const filtrados = filter.filterByMultipleCriteria({
 
 **Métodos**:
 ```javascript
-show(message, type, duration)  // Mostrar notificación
-success(message)               // Notificación éxito
-error(message)                 // Notificación error
-warning(message)               // Notificación advertencia
-info(message)                  // Notificación información
+show(message, type, duration)  
+success(message)               
+error(message)                 
+warning(message)               
+info(message)                  
 ```
 
 **Tipos**:
@@ -249,20 +229,18 @@ notifier.info("Información importante");
 
 **Métodos**:
 ```javascript
-open(product)           // Abrir modal con producto
-close()                 // Cerrar modal
-changeQuantity(change)  // Cambiar cantidad (+1 o -1)
-addToCart()            // Agregar al carrito
-toggleWishlist()       // Agregar/remover de favoritos
+open(product)           
+close()                 
+changeQuantity(change)  
+addToCart()            
+toggleWishlist()       
 ```
 
 **Ejemplo de uso**:
 ```javascript
-// Abrir vista rápida
 const product = listaProductos[0];
 quickViewModal.open(product);
 
-// Se cierra con el botón ✖ o click afuera
 ```
 
 ---
@@ -273,22 +251,20 @@ quickViewModal.open(product);
 
 **Métodos**:
 ```javascript
-addAnimation(element, name, duration)  // Animación genérica
-fadeIn(element, duration)              // Desvanecer entrada
-fadeOut(element, duration)             // Desvanecer salida
-slideDown(element, duration)           // Deslizar abajo
-slideUp(element, duration)             // Deslizar arriba
-scaleIn(element, duration)             // Escalar entrada
-bounce(element, duration)              // Rebote
-pulse(element)                         // Pulso infinito
+addAnimation(element, name, duration)  
+fadeIn(element, duration)              
+fadeOut(element, duration)             
+slideDown(element, duration)           
+slideUp(element, duration)             
+scaleIn(element, duration)             
+bounce(element, duration)              
+pulse(element)                         
 ```
 
 **Ejemplo de uso**:
 ```javascript
-// Animación simple
 AnimationManager.fadeIn(miElemento, 400);
 
-// Con espera
 await AnimationManager.scaleIn(elemento, 500);
 console.log("Animación completada");
 ```
@@ -301,12 +277,12 @@ console.log("Animación completada");
 
 **Métodos**:
 ```javascript
-addProduct(product)           // Agregar a comparación
-removeProduct(productId)      // Remover de comparación
-isSelected(productId)         // Verificar si está seleccionado
-getComparableItems()         // Obtener items comparables
-clear()                      // Limpiar comparación
-generateComparisonHTML()     // Generar tabla HTML
+addProduct(product)           
+removeProduct(productId)      
+isSelected(productId)         
+getComparableItems()         
+clear()                      
+generateComparisonHTML()     
 ```
 
 **Límite**: 4 productos máximo
@@ -316,7 +292,6 @@ generateComparisonHTML()     // Generar tabla HTML
 comparator.addProduct(product1);
 comparator.addProduct(product2);
 
-// Generar tabla
 const html = comparator.generateComparisonHTML();
 document.getElementById('comparison').innerHTML = html;
 ```
@@ -331,29 +306,26 @@ document.getElementById('comparison').innerHTML = html;
 
 **Métodos**:
 ```javascript
-addReview(productId, rating, comment, authorName)  // Agregar reseña
-getReviews(productId)                               // Obtener reseñas
-getAverageRating(productId)                        // Promedio
-getRatingDistribution(productId)                   // Distribución
-deleteReview(productId, reviewId)                  // Eliminar
-renderStars(rating)                                // Renderizar ⭐
+addReview(productId, rating, comment, authorName)  
+getReviews(productId)                               
+getAverageRating(productId)                        
+getRatingDistribution(productId)                   
+deleteReview(productId, reviewId)                  
+renderStars(rating)                                
 ```
 
 **Ejemplo de uso**:
 ```javascript
-// Agregar reseña
 reviews.addReview(
-    1,                          // productId
-    5,                          // rating (1-5)
-    "Excelente producto!",      // comment
-    "Juan Pérez"                // nombre
+    1,                          
+    5,                          
+    "Excelente producto!",      
+    "Juan Pérez"                
 );
 
-// Obtener promedio
 const avg = reviews.getAverageRating(1);
 console.log(`${avg}/5 ⭐`);
 
-// Distribución
 const dist = reviews.getRatingDistribution(1);
 console.log(`5 estrellas: ${dist[5]}`);
 ```
@@ -368,10 +340,10 @@ console.log(`5 estrellas: ${dist[5]}`);
 
 **Métodos**:
 ```javascript
-open()           // Abrir panel
-close()          // Cerrar panel
-switchTab(name)  // Cambiar tab
-updateContent()  // Actualizar contenido
+open()           
+close()          
+switchTab(name)  
+updateContent()  
 ```
 
 **Tabs disponibles**:
@@ -382,13 +354,10 @@ updateContent()  // Actualizar contenido
 
 **Ejemplo de uso**:
 ```javascript
-// Abrir panel
 userDashboard.open();
 
-// Cambiar tab
 userDashboard.switchTab('favoritos');
 
-// Actualizar contenido (automático)
 userDashboard.updateContent();
 ```
 
@@ -410,7 +379,6 @@ Aplica filtros activos (categoría, precio, búsqueda).
 function applyFilters() {
     const category = document.querySelector('input[name="category"]:checked').value;
     const minPrice = parseInt(document.getElementById('min-price').value) || 0;
-    // ... filtrado
 }
 ```
 
@@ -420,7 +388,6 @@ Ordena los productos según la selección.
 ```javascript
 function applySort() {
     const sortValue = document.getElementById('sort-select').value;
-    // ... ordenamiento
 }
 ```
 
@@ -429,19 +396,17 @@ function applySort() {
 ## 🔗 VARIABLES GLOBALES
 
 ```javascript
-// Instancias globales disponibles en toda la app
-wishlist              // WishlistManager
-loyalty              // LoyaltySystem
-cart                 // ShoppingCart
-viewHistory          // ViewHistory
-notifier             // NotificationManager
-quickViewModal       // QuickViewModal
-comparator           // ProductComparator
-reviews              // ReviewSystem
-userDashboard        // UserDashboardPanel
+wishlist              
+loyalty              
+cart                 
+viewHistory          
+notifier             
+quickViewModal       
+comparator           
+reviews              
+userDashboard        
 
-// Arrays
-listaProductos       // Lista de todos los productos cargados
+listaProductos       
 ```
 
 ---
@@ -471,19 +436,16 @@ user-state.js (Configurar autenticación)
 Para conectar con un servidor:
 
 ```javascript
-// Endpoint para guardar compra y puntos
 POST /api/orders
 {
     customerEmail: "...",
     items: [...],
     total: 50000,
-    points: 5000  // Puntos ganados
+    points: 5000  
 }
 
-// Sincronizar puntos
 GET /api/loyalty/points?email=...
 
-// Sincronizar favoritos
 GET/POST /api/wislist
 ```
 
@@ -530,10 +492,8 @@ class CouponSystem {
     }
 }
 
-// Global
 const coupon = new CouponSystem();
 
-// Usar en carrito
 const total = cart.getTotal();
 const conDescuento = total * (1 - coupon.getDiscount());
 ```
@@ -545,22 +505,16 @@ const conDescuento = total * (1 - coupon.getDiscount());
 Para depurar en la consola:
 
 ```javascript
-// Ver carrito
 console.log(cart.getCart());
 
-// Ver favoritos
 console.log(wishlist.getWishlist());
 
-// Ver puntos
 console.log(loyalty.getPoints(), loyalty.getLevel());
 
-// Ver historial
 console.log(viewHistory.getHistory());
 
-// Ver todas las reseñas
 console.log(reviews.reviews);
 
-// Ver comparación
 console.log(comparator.getComparableItems());
 ```
 
@@ -571,15 +525,12 @@ console.log(comparator.getComparableItems());
 Para probar nuevas características:
 
 ```javascript
-// Test: Agregar al carrito
 cart.addItem({ id: 1, nombre: "Test", precio: 100, imagen: "..." }, 2);
 console.assert(cart.getItemCount() === 2, "Debe tener 2 items");
 
-// Test: Sistema de puntos
 loyalty.addPoints(100);
 console.assert(loyalty.getPoints() >= 100, "Debe tener al menos 100 puntos");
 
-// Test: Favoritos
 wishlist.addToWishlist({ id: 1, nombre: "Test", precio: 100 });
 console.assert(wishlist.isInWishlist(1), "Debe estar en favoritos");
 ```

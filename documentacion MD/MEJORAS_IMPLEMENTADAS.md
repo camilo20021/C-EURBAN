@@ -151,37 +151,22 @@ Se han implementado múltiples mejoras de experiencia de usuario, funcionalidade
 
 ### Sistema de Carrito
 ```javascript
-// El carrito se actualiza automáticamente
-// Usa los botones + y - en el panel del carrito
-// Los cambios se guardan automáticamente
 ```
 
 ### Agregar a Favoritos
 ```javascript
-// Click en el botón de corazón (❤️) en las tarjetas
-// O en el modal de vista rápida
-// Los favoritos se guardan automáticamente
 ```
 
 ### Vista Rápida
 ```javascript
-// Click en el botón 👁️ en las tarjetas de productos
-// Se abre un modal con información completa
-// Puedes agregar al carrito o favoritos desde ahí
 ```
 
 ### Panel de Usuario
 ```javascript
-// Click en el icono 👤 en el header
-// Se abre el panel lateral con tus datos
-// Navega con los tabs para ver lealtad, favoritos, etc.
 ```
 
 ### Filtros Avanzados
 ```javascript
-// Usa la sección "Filtros" encima de los productos
-// Combina categoría, precio y ordenamiento
-// Los resultados se actualizan en tiempo real
 ```
 
 ---

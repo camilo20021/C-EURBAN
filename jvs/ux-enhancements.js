@@ -1,15 +1,4 @@
-/**
- * UX MEJORADA - Animaciones, Modales, Interactividad
- * - Modal de vista rápida
- * - Animaciones de entrada/salida
- * - Comparador de productos
- * - Galería de imágenes
- * - Rating de productos
- */
 
-// ========================================
-// 1. MODAL DE VISTA RÁPIDA
-// ========================================
 class QuickViewModal {
     constructor() {
         this.modalHTML = `
@@ -58,7 +47,6 @@ class QuickViewModal {
     }
 
     init() {
-        // Crear modal en el DOM
         if (!document.getElementById('quick-view-modal')) {
             document.body.insertAdjacentHTML('beforeend', this.modalHTML);
         }
@@ -92,13 +80,11 @@ class QuickViewModal {
     open(product) {
         this.currentProduct = product;
         
-        // Llenar datos del modal
         this.modal.querySelector('#modal-main-image').src = product.imagen;
         this.modal.querySelector('#modal-product-name').textContent = product.nombre;
         this.modal.querySelector('#modal-product-price').textContent = `$${product.precio.toLocaleString()}`;
         this.modal.querySelector('#modal-quantity').value = '1';
 
-        // Actualizar estado de favorito
         const wishlistBtn = this.modal.querySelector('.modal-wishlist-btn');
         if (wishlist.isInWishlist(product.id)) {
             wishlistBtn.style.background = '#ff6600';
@@ -144,9 +130,6 @@ class QuickViewModal {
     }
 }
 
-// ========================================
-// 2. ANIMACIONES MEJORADAS
-// ========================================
 class AnimationManager {
     static addAnimation(element, animationName, duration = 600) {
         element.style.animation = `${animationName} ${duration}ms ease forwards`;
@@ -184,9 +167,6 @@ class AnimationManager {
     }
 }
 
-// ========================================
-// 3. COMPARADOR DE PRODUCTOS
-// ========================================
 class ProductComparator {
     constructor() {
         this.comparableItems = JSON.parse(localStorage.getItem('ceurban-compare')) || [];
@@ -266,9 +246,6 @@ class ProductComparator {
     }
 }
 
-// ========================================
-// 4. RATING Y RESEÑAS
-// ========================================
 class ReviewSystem {
     constructor() {
         this.reviewsKey = 'ceurban-reviews';
@@ -328,9 +305,6 @@ class ReviewSystem {
     }
 }
 
-// ========================================
-// 5. CARRITO MEJORADO EN UI
-// ========================================
 function updateCartUI() {
     const cartCount = document.getElementById('cart-count');
     const cartTotal = document.getElementById('cart-total');
@@ -369,7 +343,6 @@ function updateCartUI() {
             cartItems.appendChild(itemElement);
         });
 
-        // Agregar listeners a los botones de cantidad
         cartItems.querySelectorAll('.qty-increase').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const productId = parseInt(e.target.dataset.productId);
@@ -403,9 +376,6 @@ function updateCartUI() {
     }
 }
 
-// ========================================
-// Inicializar componentes
-// ========================================
 const quickViewModal = new QuickViewModal();
 const comparator = new ProductComparator();
 const reviews = new ReviewSystem();

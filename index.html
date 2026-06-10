@@ -246,7 +246,6 @@
     <script src="jvs/user-state.js"></script>
 
     <script>
-        // Variable global para almacenar lo que llega de Python
         let listaProductosBD = [];
 
         async function cargarCatalogoBD() {
@@ -300,7 +299,6 @@
 
                 const precioFormateado = parseFloat(prod.precio).toLocaleString('es-CO');
 
-                // Convertir la lista de tallas en opciones para un menú desplegable
                 let opcionesTallas = prod.tallas.map(talla => `<option value="${talla}">${talla}</option>`).join('');
 
                 const tarjetaHTML = `
@@ -331,7 +329,6 @@
             });
         }
 
-        // --- SISTEMA DE FILTROS ADAPTADO A LA BASE DE DATOS ---
 
         function applyFilters() {
             const category = document.querySelector('input[name="category"]:checked').value;
@@ -371,19 +368,16 @@
             mostrarProductosGrid(sorted);
         }
 
-        // Cargar todo al iniciar
         document.addEventListener('DOMContentLoaded', () => {
             cargarCatalogoBD();
             if (typeof updateCartUI === 'function') updateCartUI();
         });
 
-        // Eventos de los filtros
         document.getElementById('search-input').addEventListener('input', applyFilters);
         document.querySelectorAll('input[name="category"]').forEach(radio => {
             radio.addEventListener('change', applyFilters);
         });
         
-        // Modal de vista rápida 
         document.addEventListener('click', function(e) {
             if (e.target.classList.contains('quick-view-btn')) {
                 const productId = parseInt(e.target.dataset.productId);
@@ -392,11 +386,7 @@
             }
         });
 
-        // =========================================================
-        // NUEVAS FUNCIONES PARA DESCONTAR STOCK EN LA BASE DE DATOS
-        // =========================================================
 
-        // Función para enviar la petición a Python para descontar stock
         async function confirmarCompra(producto_id, talla_seleccionada, cantidad_comprada) {
             try {
                 const respuesta = await fetch('http://127.0.0.1:5000/api/descontar-stock', {
@@ -415,7 +405,7 @@
                 
                 if (respuesta.ok) {
                     alert("¡Compra realizada con éxito! El stock ha sido descontado.");
-                    cargarCatalogoBD(); // Recarga los productos para mostrar el nuevo stock
+                    cargarCatalogoBD(); 
                 } else {
                     alert("Error en la compra: " + resultado.error);
                 }
@@ -424,14 +414,12 @@
             }
         }
 
-        // Función que captura el ID y la talla elegida en el menú desplegable
         function agregarAlCarritoConTalla(idProducto, nombre, precio) {
             const selectorTalla = document.getElementById(`talla-${idProducto}`);
             const tallaElegida = selectorTalla.value;
 
             console.log(`Se va a comprar el producto ${idProducto}, talla ${tallaElegida}`);
             
-            // Enviamos la orden a Python descontando 1 unidad
             confirmarCompra(idProducto, tallaElegida, 1);
         }
 
