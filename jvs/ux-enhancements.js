@@ -6,8 +6,7 @@ class QuickViewModal {
                 <div class="modal-content">
                     <button class="close-modal">&times;</button>
                     <div class="modal-body">
-                        <div class="modal-images">
-                            <img id="modal-main-image" src="" alt="Producto">
+                        <div class="modal-images" id="modal-main-image-wrap">
                         </div>
                         <div class="modal-info">
                             <h2 id="modal-product-name"></h2>
@@ -79,15 +78,23 @@ class QuickViewModal {
 
     open(product) {
         this.currentProduct = product;
-        
-        this.modal.querySelector('#modal-main-image').src = product.imagen;
+
+        if (typeof viewHistory !== 'undefined') {
+            viewHistory.addView(product);
+        }
+
+        const imgWrap = this.modal.querySelector('#modal-main-image-wrap');
+        if (imgWrap && typeof generarPlaceholderProducto === 'function') {
+            imgWrap.innerHTML = generarPlaceholderProducto(product);
+        }
         this.modal.querySelector('#modal-product-name').textContent = product.nombre;
-        this.modal.querySelector('#modal-product-price').textContent = `$${product.precio.toLocaleString()}`;
+        this.modal.querySelector('#modal-product-price').textContent = `$${product.precio.toLocaleString('es-CO')}`;
+        this.modal.querySelector('#modal-product-description').textContent = product.descripcion || '';
         this.modal.querySelector('#modal-quantity').value = '1';
 
         const wishlistBtn = this.modal.querySelector('.modal-wishlist-btn');
         if (wishlist.isInWishlist(product.id)) {
-            wishlistBtn.style.background = '#ff6600';
+            wishlistBtn.style.background = '#ff6b35';
         } else {
             wishlistBtn.style.background = '';
         }
@@ -124,7 +131,7 @@ class QuickViewModal {
             notifier.info('Removido de favoritos');
         } else {
             wishlist.addToWishlist(this.currentProduct);
-            wishlistBtn.style.background = '#ff6600';
+            wishlistBtn.style.background = '#ff6b35';
             notifier.success('Agregado a favoritos');
         }
     }
@@ -179,7 +186,7 @@ class ProductComparator {
                 id: product.id,
                 nombre: product.nombre,
                 precio: product.precio,
-                imagen: product.imagen,
+                color: product.color,
                 categoria: product.categoria
             });
             this.save();
@@ -217,9 +224,9 @@ class ProductComparator {
         this.comparableItems.forEach(() => html += '<th>Producto</th>');
         html += '</tr>';
 
-        html += '<tr><td>Imagen</td>';
+        html += '<tr><td>Vista previa</td>';
         this.comparableItems.forEach(item => {
-            html += `<td><img src="${item.imagen}" alt="${item.nombre}" style="max-width:100px;"></td>`;
+            html += `<td><div style="width:60px;height:60px;border-radius:8px;background:${item.color || '#1c2f6e'};margin:0 auto;"></div></td>`;
         });
         html += '</tr>';
 
@@ -231,13 +238,13 @@ class ProductComparator {
 
         html += '<tr><td>Precio</td>';
         this.comparableItems.forEach(item => {
-            html += `<td>$${item.precio.toLocaleString()}</td>`;
+            html += `<td>$${item.precio.toLocaleString('es-CO')}</td>`;
         });
         html += '</tr>';
 
-        html += '<tr><td>Acción</td>';
+        html += '<tr><td>Accion</td>';
         this.comparableItems.forEach(item => {
-            html += `<td><button onclick="cart.addItem({id:${item.id}, nombre:'${item.nombre}', precio:${item.precio}, imagen:'${item.imagen}'}, 1)">Agregar</button></td>`;
+            html += `<td><button data-compare-add-id="${item.id}">Agregar</button></td>`;
         });
         html += '</tr>';
 
@@ -305,77 +312,21 @@ class ReviewSystem {
     }
 }
 
-function updateCartUI() {
-    const cartCount = document.getElementById('cart-count');
-    const cartTotal = document.getElementById('cart-total');
-    const cartItems = document.querySelector('.cart-items');
-
-    if (!cartCount) return;
-
-    cartCount.textContent = cart.getItemCount();
-    if (cartTotal) cartTotal.textContent = `$${cart.getTotal().toLocaleString()}`;
-
-    if (cartItems && cart.cart.length > 0) {
-        cartItems.innerHTML = '';
-        cart.cart.forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.className = 'cart-item';
-            itemElement.style.cssText = `
-                display: flex;
-                gap: 12px;
-                padding: 12px;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-                align-items: center;
-            `;
-            itemElement.innerHTML = `
-                <img src="${item.imagen}" alt="${item.nombre}" style="width:60px; height:60px; border-radius:6px; object-fit:cover;">
-                <div style="flex:1;">
-                    <p style="margin:0; font-weight:bold;">${item.nombre}</p>
-                    <p style="margin:4px 0 0 0; color:#ccc;">$${item.precio.toLocaleString()}</p>
-                </div>
-                <div class="item-qty" style="display:flex; gap:6px; align-items:center;">
-                    <button data-product-id="${item.id}" class="qty-decrease" style="width:28px; height:28px; background:#ff6600; border:none; border-radius:4px; color:white; cursor:pointer;">-</button>
-                    <span style="min-width:25px; text-align:center;">${item.quantity}</span>
-                    <button data-product-id="${item.id}" class="qty-increase" style="width:28px; height:28px; background:#ff6600; border:none; border-radius:4px; color:white; cursor:pointer;">+</button>
-                </div>
-                <button data-product-id="${item.id}" class="remove-item" style="background:#f44336; color:white; border:none; padding:6px 10px; border-radius:4px; cursor:pointer;">🗑️</button>
-            `;
-            cartItems.appendChild(itemElement);
-        });
-
-        cartItems.querySelectorAll('.qty-increase').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const productId = parseInt(e.target.dataset.productId);
-                const item = cart.cart.find(p => p.id === productId);
-                if (item) {
-                    cart.updateQuantity(productId, item.quantity + 1);
-                    updateCartUI();
-                }
-            });
-        });
-
-        cartItems.querySelectorAll('.qty-decrease').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const productId = parseInt(e.target.dataset.productId);
-                const item = cart.cart.find(p => p.id === productId);
-                if (item && item.quantity > 1) {
-                    cart.updateQuantity(productId, item.quantity - 1);
-                    updateCartUI();
-                }
-            });
-        });
-
-        cartItems.querySelectorAll('.remove-item').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const productId = parseInt(e.target.dataset.productId);
-                cart.removeItem(productId);
-                notifier.info('Producto removido del carrito');
-                updateCartUI();
-            });
-        });
-    }
-}
+/* La actualizacion del carrito vive en carrito.js (updateCartUI) para evitar
+   logica duplicada con estilos inline obsoletos. */
 
 const quickViewModal = new QuickViewModal();
 const comparator = new ProductComparator();
 const reviews = new ReviewSystem();
+
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-compare-add-id]');
+    if (!btn) return;
+    const id = parseInt(btn.dataset.compareAddId);
+    const item = comparator.getComparableItems().find(p => p.id === id);
+    if (item && typeof cart !== 'undefined') {
+        cart.addItem(item, 1);
+        if (typeof updateCartUI === 'function') updateCartUI();
+        if (typeof notifier !== 'undefined') notifier.success(`${item.nombre} agregado al carrito`);
+    }
+});

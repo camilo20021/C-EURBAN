@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finalizar Compra | C&E Urban</title>
+    <title>Finalizar compra | C&E Urban Wear</title>
     <link rel="icon" href="IMAGENES/favicon.png">
-    <link rel="stylesheet" href="CSS/index.css">
-    <link rel="stylesheet" href="CSS/ux-improvements.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="CSS/componentes.css">
     <link rel="stylesheet" href="CSS/pago.css">
-    
 </head>
 <body>
+    <div class="fondo-estrellas"></div>
+
     <header class="header">
-        <div class="logo">
-            <img src="IMAGENES/favicon.png" alt="Logo" class="logo-img">
-            <h1>C&E URBAN</h1>
-        </div>
+        <a href="index.html" class="logo">
+            <img src="IMAGENES/favicon.png" alt="Logo C&E Urban Wear">
+            <span class="logo-text">C&amp;E URBAN<span>WEAR</span></span>
+        </a>
 
         <nav class="navbar">
             <a href="index.html">Inicio</a>
@@ -23,26 +26,17 @@
                 <button class="dropbtn">Productos</button>
                 <div class="dropdown-content">
                     <a href="productos.html">Todos</a>
-                    <a href="ropa.html">Jeans</a>
-                    <a href="accesorios.html">Sudaderas</a>
-                    <a href="vehiculos.html">Buzos</a>
-                    <a href="tecnologia.html">Gorras</a>
+                    <a href="buzos.html">Buzos</a>
+                    <a href="jeans.html">Jeans</a>
+                    <a href="sudaderas.html">Sudaderas</a>
+                    <a href="gorras.html">Gorras</a>
                 </div>
             </div>
-            <a href="index.html#collections">Colecciones</a>
             <a href="contacto.html">Contacto</a>
-            
-            <a href="admin.html" class="admin-link hidden">Dashboard</a>
         </nav>
 
-        <div class="menu-toggle">☰</div>
-
-        <div class="icons">
-            <div class="search-container">
-                <input type="text" id="search-input" placeholder="Buscar...">
-                <span class="search-icon">🔍</span>
-            </div>
-        </div>
+        <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+        <div class="icons"></div>
     </header>
 
     <div class="progress-section">
@@ -54,12 +48,12 @@
             <div class="progress-line active"></div>
             <div class="progress-step active">
                 <div class="progress-dot">2</div>
-                <p>Información</p>
+                <p>Datos</p>
             </div>
             <div class="progress-line"></div>
             <div class="progress-step">
                 <div class="progress-dot">3</div>
-                <p>Confirmación</p>
+                <p>Confirmacion</p>
             </div>
         </div>
     </div>
@@ -67,110 +61,106 @@
     <section class="checkout-page">
         <div class="checkout-container">
             <div class="checkout-header">
-                <h1>🛒 Finalizar Compra</h1>
-                <p class="subtitle">Completa tus datos para procesar el pago</p>
+                <h1>Finalizar compra</h1>
+                <p class="subtitle">Completa tus datos y te contactamos por WhatsApp para coordinar el pago</p>
             </div>
 
             <div class="checkout-grid">
                 <div class="form-section">
+                    <div class="aviso-pago">
+                        Por ahora coordinamos el pago directamente por WhatsApp (Nequi, Daviplata, transferencia o efectivo contraentrega segun la ciudad). Al confirmar, te llevamos a WhatsApp con tu pedido ya armado.
+                    </div>
                     <form class="checkout-form" id="payment-form">
                         <div class="form-group">
-                            <label for="customer-name">Nombre Completo *</label>
-                            <input id="customer-name" name="customerName" type="text" placeholder="Juan Pérez" required>
+                            <label for="customer-name">Nombre completo *</label>
+                            <input id="customer-name" name="customerName" type="text" placeholder="Juan Perez" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="customer-email">Correo Electrónico *</label>
+                            <label for="customer-email">Correo electronico *</label>
                             <input id="customer-email" name="customerEmail" type="email" placeholder="tu@email.com" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="customer-phone">Teléfono de Contacto *</label>
+                            <label for="customer-phone">Telefono de contacto *</label>
                             <input id="customer-phone" name="customerPhone" type="tel" placeholder="+57 300 000 0000" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="customer-address">Dirección de Envío *</label>
+                            <label for="customer-address">Direccion de envio *</label>
                             <input id="customer-address" name="customerAddress" type="text" placeholder="Calle 123 #45-67" required>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="customer-city">Ciudad *</label>
-                                <input id="customer-city" name="customerCity" type="text" placeholder="Bogotá" required>
+                                <input id="customer-city" name="customerCity" type="text" placeholder="Bogota" required>
                             </div>
                             <div class="form-group">
-                                <label for="customer-zip">Código Postal</label>
+                                <label for="customer-zip">Codigo postal</label>
                                 <input id="customer-zip" name="customerZip" type="text" placeholder="110111">
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="payment-method">Método de Pago *</label>
+                            <label for="payment-method">Metodo de pago preferido *</label>
                             <select id="payment-method" name="paymentMethod" required>
-                                <option value="">Selecciona un método de pago</option>
-                                <option value="tarjeta">💳 Tarjeta de Crédito / Débito</option>
-                                <option value="nequi">📱 Nequi</option>
-                                <option value="daviplata">📱 Daviplata</option>
-                                <option value="pse">🏦 PSE</option>
+                                <option value="">Selecciona un metodo</option>
+                                <option value="nequi">Nequi</option>
+                                <option value="daviplata">Daviplata</option>
+                                <option value="transferencia">Transferencia bancaria</option>
+                                <option value="contraentrega">Efectivo contraentrega</option>
                             </select>
                         </div>
 
                         <div class="terms-check">
                             <input type="checkbox" id="terms" required>
-                            <label for="terms">Acepto los términos y condiciones</label>
+                            <label for="terms">Acepto que mis datos se usen para procesar este pedido</label>
                         </div>
 
-                        <button type="submit" class="btn-submit">💳 Pagar Ahora</button>
+                        <button type="submit" class="btn-submit">Confirmar pedido por WhatsApp</button>
                     </form>
                 </div>
 
                 <div class="checkout-summary">
-                    <h2>📋 Resumen de Compra</h2>
-                    <div class="summary-items" id="summary-items-container">
-                    </div>
+                    <h2>Resumen de compra</h2>
+                    <div class="summary-items" id="summary-items-container"></div>
                     <div class="summary-total">
                         <div class="summary-row">
-                            <p>Subtotal:</p>
+                            <p>Subtotal</p>
                             <span id="checkout-subtotal">$0</span>
                         </div>
                         <div class="summary-row">
-                            <p>Impuestos:</p>
-                            <span id="checkout-tax">$0</span>
-                        </div>
-                        <div class="summary-row">
-                            <p>Envío:</p>
-                            <span class="free-shipping">GRATIS</span>
+                            <p>Envio</p>
+                            <span class="free-shipping">A coordinar</span>
                         </div>
                         <div class="summary-divider"></div>
                         <div class="summary-row total-row">
-                            <h3>Total a Pagar:</h3>
+                            <h3>Total</h3>
                             <h3 class="total-amount"><span id="checkout-total">$0</span></h3>
                         </div>
                     </div>
 
                     <div class="benefits-box">
-                        <h4>✓ Ventajas</h4>
+                        <h4>Ventajas</h4>
                         <ul>
-                            <li>✅ Pago seguro y encriptado</li>
-                            <li>✅ Envío rápido a todo el país</li>
-                            <li>✅ Garantía de satisfacción</li>
-                            <li>✅ Devolución en 30 días</li>
+                            <li>Atencion directa por WhatsApp</li>
+                            <li>Envios a todo el pais</li>
+                            <li>Coordinamos el metodo de pago que mejor te sirva</li>
                         </ul>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <footer class="footer">
-        <p>© 2026 C&E Urban Wear | Todos los derechos reservados | Pago seguro 🔒</p>
-    </footer>
+    <div class="copyright">
+        <p>© 2026 C&E Urban Wear | Todos los derechos reservados</p>
+    </div>
 
+    <script src="jvs/placeholders.js"></script>
     <script src="jvs/advanced-features.js"></script>
     <script src="jvs/ux-enhancements.js"></script>
-    <script src="jvs/index.js"></script>
     <script src="jvs/pago.js"></script>
     <script src="jvs/user-state.js"></script>
 </body>

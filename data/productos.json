@@ -1,66 +1,82 @@
 [
     {
         "id": 1,
-        "nombre": "Hoodie Chaos",
-        "precio": 85000,
-        "categoria": "ropa",
-        "imagen": "IMAGENES/personaliza.jpg",
-        "imagen_carrito": "IMAGENES/personaliza.jpg"
+        "nombre": "Buzo Oversize Negro",
+        "precio": 95000,
+        "categoria": "buzos",
+        "descripcion": "Buzo oversize de algodon premium, capucha doble forrada y bolsillo canguro. Estilo urbano clasico C&E.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "placeholder",
+        "color": "#0a0a0f"
     },
     {
         "id": 2,
-        "nombre": "Hoodie C&E",
-        "precio": 92000,
-        "categoria": "ropa",
-        "imagen": "IMAGENES/Nueva colleccion.jpeg",
-        "imagen_carrito": "IMAGENES/Nueva colleccion.jpeg"
+        "nombre": "Buzo Street Azul",
+        "precio": 98000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con detalles bordados, corte relajado y tela afelpada de alto gramaje. Edicion C&E Urban Wear.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "placeholder",
+        "color": "#1c2f6e"
     },
     {
         "id": 3,
-        "nombre": "Snapback Street",
-        "precio": 45000,
-        "categoria": "accesorios",
-        "imagen": "IMAGENES/Nueva coleccion (1).jpeg",
-        "imagen_carrito": "IMAGENES/Nueva coleccion (1).jpeg"
+        "nombre": "Jean Slim Fit Negro",
+        "precio": 110000,
+        "categoria": "jeans",
+        "descripcion": "Jean slim fit de mezclilla resistente, corte moderno y acabado desgastado sutil.",
+        "tallas": ["28", "30", "32", "34", "36", "38"],
+        "imagen": "placeholder",
+        "color": "#151515"
     },
     {
         "id": 4,
-        "nombre": "Sudadera Marfil",
-        "precio": 92000,
-        "categoria": "ropa",
-        "imagen": "IMAGENES/1764421015MARSHMELLO RAMON MARFIL.jpg",
-        "imagen_carrito": "IMAGENES/1764421015MARSHMELLO RAMON MARFIL.jpg"
+        "nombre": "Jean Cargo Urbano",
+        "precio": 125000,
+        "categoria": "jeans",
+        "descripcion": "Jean tipo cargo con bolsillos laterales, ideal para un look urbano funcional.",
+        "tallas": ["28", "30", "32", "34", "36", "38"],
+        "imagen": "placeholder",
+        "color": "#2b2b2b"
     },
     {
         "id": 5,
-        "nombre": "Gorra Classic",
-        "precio": 35000,
-        "categoria": "accesorios",
-        "imagen": "IMAGENES/Nueva coleccion (1).jpeg",
-        "imagen_carrito": "IMAGENES/Nueva coleccion (1).jpeg"
+        "nombre": "Sudadera Crewneck C&E",
+        "precio": 78000,
+        "categoria": "sudaderas",
+        "descripcion": "Sudadera cuello redondo, tela suave de algodon perchado y logo bordado en pecho.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "placeholder",
+        "color": "#8a1230"
     },
     {
         "id": 6,
-        "nombre": "Patinete URB",
-        "precio": 260000,
-        "categoria": "vehiculos",
-        "imagen": "IMAGENES/favicon.png",
-        "imagen_carrito": "IMAGENES/favicon.png"
+        "nombre": "Sudadera Urban Wear Blanca",
+        "precio": 78000,
+        "categoria": "sudaderas",
+        "descripcion": "Sudadera blanca con estampado frontal C&E, corte recto unisex.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "placeholder",
+        "color": "#e8e8e8"
     },
     {
         "id": 7,
-        "nombre": "Smartwatch Street",
-        "precio": 179000,
-        "categoria": "tecnologia",
-        "imagen": "IMAGENES/1716945775WhatsApp Image 2024-05-27 at 9.38.36 PM.jpeg",
-        "imagen_carrito": "IMAGENES/1716945775WhatsApp Image 2024-05-27 at 9.38.36 PM.jpeg"
+        "nombre": "Gorra Snapback C&E",
+        "precio": 45000,
+        "categoria": "gorras",
+        "descripcion": "Gorra snapback ajustable con logo bordado en 3D, visera plana.",
+        "tallas": ["Unica"],
+        "imagen": "placeholder",
+        "color": "#0a0a0f"
     },
     {
         "id": 8,
-        "nombre": "Auriculares Urban",
-        "precio": 98000,
-        "categoria": "tecnologia",
-        "imagen": "IMAGENES/Nueva coleccion.jpeg",
-        "imagen_carrito": "IMAGENES/Nueva coleccion.jpeg"
+        "nombre": "Gorra Dad Hat Azul",
+        "precio": 42000,
+        "categoria": "gorras",
+        "descripcion": "Gorra estilo dad hat, perfil bajo y correa ajustable trasera.",
+        "tallas": ["Unica"],
+        "imagen": "placeholder",
+        "color": "#1c2f6e"
     }
 ]

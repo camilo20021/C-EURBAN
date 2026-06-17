@@ -199,21 +199,6 @@ app.post('/api/auth/google', (req, res) => {
     });
 });
 
-app.get('/api/admin/orders', (req, res) => {
-    const query = `SELECT p.id, p.total, p.estado, p.creado_en, c.nombre, c.email
-        FROM pedidos p
-        LEFT JOIN clientes c ON p.cliente_id = c.id
-        ORDER BY p.creado_en DESC`;
-
-    db.all(query, [], (err, rows) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).json({ error: 'Error al recuperar pedidos.' });
-        }
-        res.json({ pedidos: rows });
-    });
-});
-
 app.listen(PORT, () => {
     console.log(`Servidor iniciado en http://localhost:${PORT}`);
 });

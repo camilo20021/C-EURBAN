@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto | C&E Urban</title>
+    <title>Contacto | C&E Urban Wear</title>
     <link rel="icon" href="IMAGENES/favicon.png">
-    <link rel="stylesheet" href="CSS/index.css">
-    <link rel="stylesheet" href="CSS/contacto.css">
-    <link rel="stylesheet" href="CSS/ux-improvements.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="CSS/componentes.css">
 </head>
 <body>
+    <div class="fondo-estrellas"></div>
+
     <header class="header">
         <a href="index.html" class="logo">
-            <img src="IMAGENES/favicon.png" alt="Logo">
-            <h1>C&E URBAN</h1>
+            <img src="IMAGENES/favicon.png" alt="Logo C&E Urban Wear">
+            <span class="logo-text">C&amp;E URBAN<span>WEAR</span></span>
         </a>
 
         <nav class="navbar">
@@ -22,118 +25,128 @@
                 <button class="dropbtn">Productos</button>
                 <div class="dropdown-content">
                     <a href="productos.html">Todos</a>
-                    <a href="ropa.html">Jeans</a>
-                    <a href="accesorios.html">Sudaderas</a>
-                    <a href="vehiculos.html">Buzos</a>
-                    <a href="tecnologia.html">Gorras</a>
+                    <a href="buzos.html">Buzos</a>
+                    <a href="jeans.html">Jeans</a>
+                    <a href="sudaderas.html">Sudaderas</a>
+                    <a href="gorras.html">Gorras</a>
                 </div>
             </div>
-            <a href="index.html#collections">Colecciones</a>
+            <a href="index.html#personalizados">Personalizados</a>
             <a href="index.html#nosotros">Nosotros</a>
             <a href="contacto.html">Contacto</a>
-            
-            <a href="admin.html" class="admin-link hidden">Dashboard</a>
         </nav>
 
-        <div class="menu-toggle">☰</div>
+        <button class="menu-toggle" aria-label="Abrir menu">☰</button>
 
         <div class="icons">
-            <div class="search-container">
-                <input type="text" id="search-input" placeholder="Buscar productos...">
-                <span class="search-icon">🔍</span>
+            <a href="login.html" class="user-icon" title="Iniciar sesion">👤</a>
+            <div class="cart-icon">
+                🛒
+                <span id="cart-count">0</span>
             </div>
-            <a href="login.html" class="user-icon" title="Iniciar sesión">👤</a>
-            <div class="cart-icon">🛒<span id="cart-count">0</span></div>
         </div>
     </header>
 
-    <section class="hero product-hero">
-        <div class="hero-text">
-            <p class="subtitulo">CONTACTO</p>
-            <h2>Habla con nosotros</h2>
-            <p class="descripcion">Envía tus dudas, pedidos especiales o comentarios sobre la tienda.</p>
+    <div class="cart-overlay"></div>
+    <div class="cart-panel">
+        <div class="cart-header">
+            <h2>Tu carrito</h2>
+            <div class="cart-header-actions">
+                <button class="clear-cart" title="Vaciar carrito">🗑</button>
+                <button class="close-cart" title="Cerrar">✕</button>
+            </div>
         </div>
-        <div class="hero-img">
-            <img src="IMAGENES/favicon.png" alt="Contacto">
+        <div class="cart-items">
+            <p class="empty-cart">Tu carrito esta vacio</p>
         </div>
+        <div class="cart-footer">
+            <h3><span>Total</span><span id="cart-total">$0</span></h3>
+            <a href="pago.html">
+                <button class="checkout-btn">Finalizar compra</button>
+            </a>
+        </div>
+    </div>
+
+    <section class="contacto-page">
+        <div class="contacto-info">
+            <h1>Hablemos</h1>
+            <p>Escribenos por el formulario o directo por WhatsApp. Te respondemos rapido para resolver pedidos, tallas o personalizaciones.</p>
+
+            <div class="contacto-dato">
+                <span class="icono">📞</span>
+                <div>
+                    <h4>WhatsApp</h4>
+                    <p>+57 314 292 1523</p>
+                </div>
+            </div>
+            <div class="contacto-dato">
+                <span class="icono">✉</span>
+                <div>
+                    <h4>Email</h4>
+                    <p>contacto@ceurban.com</p>
+                </div>
+            </div>
+            <div class="contacto-dato">
+                <span class="icono">📍</span>
+                <div>
+                    <h4>Ubicacion</h4>
+                    <p>Bogota, Colombia</p>
+                </div>
+            </div>
+            <div class="contacto-dato">
+                <span class="icono">🕒</span>
+                <div>
+                    <h4>Horario</h4>
+                    <p>Lunes a sabado, 9am - 7pm</p>
+                </div>
+            </div>
+        </div>
+
+        <form class="contacto-form" id="contact-form">
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electronico</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Asunto</label>
+                <input type="text" id="subject" name="subject" placeholder="Motivo del mensaje" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="message" placeholder="Escribe tu mensaje aqui" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn-primario" style="width:100%; justify-content:center;">Enviar por WhatsApp</button>
+        </form>
     </section>
 
-    <main class="contact-section">
-        <div class="contact-wrapper">
-            <div class="contact-card">
-                <h2>Escríbenos</h2>
-                <p>Completa el formulario y te responderemos lo antes posible.</p>
-                <form class="contact-form" action="#" method="post">
-                    <div class="form-group">
-                        <label for="name">Nombre</label>
-                        <input type="text" id="name" name="name" placeholder="Tu nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Asunto</label>
-                        <input type="text" id="subject" name="subject" placeholder="Motivo del mensaje" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mensaje</label>
-                        <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí" rows="6" required></textarea>
-                    </div>
-                    <button type="submit">Enviar mensaje</button>
-                </form>
-            </div>
-
-            <aside class="contact-info">
-                <h3>Información</h3>
-                <p>Estamos listos para ayudarte con tus pedidos y dudas.</p>
-                <ul>
-                    <li><strong>Teléfono:</strong> +57 300 000 0000</li>
-                    <li><strong>Email:</strong> contacto@ceurban.com</li>
-                    <li><strong>Dirección:</strong> Calle Falsa 123, Bogotá</li>
-                </ul>
-                <div class="info-box">
-                    <h4>Horarios</h4>
-                    <p>Lunes a Viernes: 9:00 - 18:00</p>
-                    <p>Sábado: 10:00 - 14:00</p>
-                </div>
-            </aside>
-        </div>
-    </main>
-
-    <script src="jvs/advanced-features.js"></script>
-    <script src="jvs/ux-enhancements.js"></script>
-    <script src="jvs/index.js"></script>
-    <script src="jvs/carrito.js"></script>
-    <script src="jvs/user-state.js"></script>
     <footer class="footer">
         <div class="footer-box">
-            <img src="IMAGENES/favicon.png" alt="Logo" width="80">
-            <h2>C&E URBAN</h2>
-            <p>Moda urbana, accesorios y productos modernos para todos los estilos.</p>
+            <img src="IMAGENES/favicon.png" alt="Logo" width="56">
+            <h2>C&amp;E URBAN</h2>
+            <p>Ropa urbana con actitud. Buzos, jeans, sudaderas y gorras para tu estilo.</p>
         </div>
-
         <div class="footer-box">
             <h3>Enlaces</h3>
-            <a href="#">Inicio</a>
+            <a href="index.html">Inicio</a>
             <a href="productos.html">Productos</a>
-            <a href="index.html#collections">Colecciones</a>
-            <a href="index.html#nosotros">Nosotros</a>
+            <a href="index.html#personalizados">Personalizados</a>
             <a href="contacto.html">Contacto</a>
         </div>
-
         <div class="footer-box">
-            <h3>Categorías</h3>
-            <a href="ropa.html">Ropa</a>
-            <a href="accesorios.html">Accesorios</a>
-            <a href="vehiculos.html">Vehículos</a>
-            <a href="tecnologia.html">Tecnología</a>
+            <h3>Categorias</h3>
+            <a href="buzos.html">Buzos</a>
+            <a href="jeans.html">Jeans</a>
+            <a href="sudaderas.html">Sudaderas</a>
+            <a href="gorras.html">Gorras</a>
         </div>
-
         <div class="footer-box">
             <h3>Contacto</h3>
-            <p>📍 Bogotá, Colombia</p>
-            <p>📞 +57 300 000 0000</p>
+            <p>📍 Bogota, Colombia</p>
+            <p>📞 +57 314 292 1523</p>
             <p>✉ contacto@ceurban.com</p>
         </div>
     </footer>
@@ -142,5 +155,26 @@
         <p>© 2026 C&E Urban Wear | Todos los derechos reservados</p>
     </div>
 
+    <script src="jvs/placeholders.js"></script>
+    <script src="jvs/advanced-features.js"></script>
+    <script src="jvs/ux-enhancements.js"></script>
+    <script src="jvs/carrito.js"></script>
+    <script src="jvs/user-state.js"></script>
+    <script>
+        document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+            document.querySelector('.navbar').classList.toggle('abierto');
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const asunto = document.getElementById('subject').value;
+            const mensaje = document.getElementById('message').value;
+
+            const texto = `Hola C&E Urban,%0A%0ANombre: ${encodeURIComponent(nombre)}%0AEmail: ${encodeURIComponent(email)}%0AAsunto: ${encodeURIComponent(asunto)}%0A%0AMensaje:%0A${encodeURIComponent(mensaje)}`;
+            window.open(`https://wa.me/573142921523?text=${texto}`, '_blank');
+        });
+    </script>
 </body>
 </html>

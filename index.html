@@ -1,40 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C&E Urban Wear</title>
+    <title>C&E Urban Wear | Ropa urbana streetwear</title>
+    <meta name="description" content="Buzos, jeans, sudaderas y gorras con actitud urbana. Envios a toda Colombia.">
     <link rel="icon" href="IMAGENES/favicon.png">
-    <link rel="stylesheet" href="CSS/index.css">
-    <link rel="stylesheet" href="CSS/ux-improvements.css">
-    
-    <style>
-        .card {
-            position: relative; 
-        }
-        .badge-stock {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #ff3333; 
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            font-weight: bold;
-            z-index: 2;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="CSS/componentes.css">
 </head>
-
 <body>
+    <div class="fondo-estrellas"></div>
 
     <header class="header">
         <a href="index.html" class="logo">
-            <img src="IMAGENES/favicon.png" alt="Logo">
-            <h1>C&E URBAN</h1>
+            <img src="IMAGENES/favicon.png" alt="Logo C&E Urban Wear">
+            <span class="logo-text">C&amp;E URBAN<span>WEAR</span></span>
         </a>
 
         <nav class="navbar">
@@ -43,26 +26,25 @@
                 <button class="dropbtn">Productos</button>
                 <div class="dropdown-content">
                     <a href="productos.html">Todos</a>
-                    <a href="ropa.html">Jeans</a>
-                    <a href="accesorios.html">Sudaderas</a>
-                    <a href="vehiculos.html">Buzos</a>
-                    <a href="tecnologia.html">Gorras</a>
+                    <a href="buzos.html">Buzos</a>
+                    <a href="jeans.html">Jeans</a>
+                    <a href="sudaderas.html">Sudaderas</a>
+                    <a href="gorras.html">Gorras</a>
                 </div>
             </div>
-            <a href="index.html#collections">Colecciones</a>
+            <a href="index.html#personalizados">Personalizados</a>
             <a href="index.html#nosotros">Nosotros</a>
             <a href="contacto.html">Contacto</a>
-            <a href="admin.html" class="admin-link hidden">Dashboard</a>
         </nav>
 
-        <div class="menu-toggle">☰</div>
+        <button class="menu-toggle" aria-label="Abrir menu">☰</button>
 
         <div class="icons">
             <div class="search-container">
-                <input type="text" id="search-input" placeholder="Buscar hoodies, gorras...">
+                <input type="text" id="search-input" placeholder="Buscar buzos, gorras...">
                 <span class="search-icon">🔍</span>
             </div>
-            <a href="login.html" class="user-icon" title="Iniciar sesión">👤</a>
+            <a href="login.html" class="user-icon" title="Iniciar sesion">👤</a>
             <div class="cart-icon">
                 🛒
                 <span id="cart-count">0</span>
@@ -70,162 +52,174 @@
         </div>
     </header>
 
+    <div class="cart-overlay"></div>
     <div class="cart-panel">
         <div class="cart-header">
-            <h2>Tu Carrito</h2>
+            <h2>Tu carrito</h2>
             <div class="cart-header-actions">
-                <button class="clear-cart" title="Vaciar carrito">🗑️</button>
-                <span class="close-cart">✖</span>
+                <button class="clear-cart" title="Vaciar carrito">🗑</button>
+                <button class="close-cart" title="Cerrar">✕</button>
             </div>
         </div>
         <div class="cart-items">
-            <p class="empty-cart">Tu carrito está vacío</p>
+            <p class="empty-cart">Tu carrito esta vacio</p>
         </div>
         <div class="cart-footer">
-            <h3>Total: <span id="cart-total">$0</span></h3>
+            <h3><span>Total</span><span id="cart-total">$0</span></h3>
             <a href="pago.html">
-                <button class="checkout-btn">Finalizar Compra</button>
+                <button class="checkout-btn">Finalizar compra</button>
             </a>
         </div>
     </div>
 
     <section class="hero">
         <div class="hero-text">
-            <p class="subtitulo">NUEVA COLECCIÓN 2026</p>
-            <h2>TU ESTILO <br> TUS REGLAS.</h2>
+            <p class="eyebrow">Nueva coleccion 2026</p>
+            <h2>TU ESTILO<br><span class="linea-roja">TUS REGLAS.</span></h2>
             <p class="descripcion">
-                Hoodies y productos urbanos para personas con estilo.
+                Buzos, jeans, sudaderas y gorras pensados para la calle. Calidad real, actitud urbana, hecho para durar.
             </p>
-            <button>DESCUBRIR COLECCIÓN</button>
+            <div style="display:flex; gap:14px; flex-wrap:wrap;">
+                <a href="productos.html"><button class="btn-primario">Ver coleccion</button></a>
+                <a href="#personalizados"><button class="btn-secundario">Personalizar</button></a>
+            </div>
         </div>
-        <div class="hero-img">
-            <img src="IMAGENES/1716945775WhatsApp Image 2024-05-27 at 9.38.36 PM.jpeg" alt="Hero Banner">
+        <div class="hero-visual">
+            <div class="prenda-placeholder">
+                <svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M70 30 C70 18 80 10 100 10 C120 10 130 18 130 30 L130 38 L160 50 L172 90 L150 100 L142 78 L142 200 C142 208 136 212 128 212 L72 212 C64 212 58 208 58 200 L58 78 L50 100 L28 90 L40 50 L70 38 Z"
+                        fill="#1c2f6e" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+                    <path d="M82 30 C82 42 90 50 100 50 C110 50 118 42 118 30" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/>
+                    <circle cx="100" cy="100" r="26" stroke="#c41e3a" stroke-width="2" fill="none"/>
+                    <text x="100" y="107" font-family="Anton" font-size="20" fill="white" text-anchor="middle">C&amp;E</text>
+                </svg>
+                <span class="marca-sello">Urban Wear</span>
+            </div>
         </div>
     </section>
 
     <section class="slider">
-      <div class="carrusel-contenedor">
-        <div class="carrusel-imagenes">
-        <img src="IMAGENES/Nueva coleccion (1).jpeg" alt="Producto 1" class="carrusel-item active">
-        <img src="IMAGENES/Nueva colleccion.jpeg" alt="Producto 2" class="carrusel-item">
-        <img src="IMAGENES/1764421015MARSHMELLO RAMON MARFIL.jpg" alt="Producto 3" class="carrusel-item">
+        <div class="carrusel-contenedor">
+            <div class="carrusel-imagenes">
+                <div class="carrusel-item active" style="background:#1c2f6e; aspect-ratio:1; border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:'Anton'; font-size:14px; color:rgba(255,255,255,0.6);">BUZOS</div>
+                <div class="carrusel-item" style="background:#151515; aspect-ratio:1; border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:'Anton'; font-size:14px; color:rgba(255,255,255,0.6);">JEANS</div>
+                <div class="carrusel-item" style="background:#8a1230; aspect-ratio:1; border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:'Anton'; font-size:14px; color:rgba(255,255,255,0.6);">SUDADERAS</div>
+            </div>
         </div>
-    </div>
     </section>
 
     <section class="productos">
         <div class="productos-header">
-            <h2>LO MÁS NUEVO</h2>
-            <a href="#">VER TODO</a>
+            <h2>Lo mas nuevo</h2>
+            <a href="productos.html">Ver todo →</a>
         </div>
 
         <div class="filter-section">
-            <h3>🔍 Filtros</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-                <div class="category-filter">
-                    <strong style="color: #ff6600; margin-bottom: 8px;">Categoría</strong>
-                    <label><input type="radio" name="category" value="todos" checked> Todos</label>
-                    <label><input type="radio" name="category" value="ropa"> Ropa</label>
-                    <label><input type="radio" name="category" value="accesorios"> Accesorios</label>
-                    <label><input type="radio" name="category" value="vehiculos"> Vehículos</label>
-                    <label><input type="radio" name="category" value="tecnologia"> Tecnología</label>
-                </div>
-
+            <h3>Filtros</h3>
+            <div class="filter-grid">
                 <div>
-                    <strong style="color: #ff6600; margin-bottom: 8px; display: block;">Rango de Precio</strong>
+                    <strong>Rango de precio</strong>
                     <div class="price-range-slider">
-                        <input type="number" id="min-price" placeholder="Mín" min="0">
-                        <input type="number" id="max-price" placeholder="Máx" min="0">
+                        <input type="number" id="min-price" placeholder="Min" min="0">
+                        <input type="number" id="max-price" placeholder="Max" min="0">
                     </div>
-                    <button onclick="applyFilters()" style="width: 100%; margin-top: 8px; padding: 8px; background: #ff6600; color: white; border: none; border-radius: 6px; cursor: pointer;">Aplicar</button>
+                    <button class="btn-aplicar-filtro" onclick="applyFilters()">Aplicar</button>
                 </div>
-
                 <div class="sort-filter">
-                    <strong style="color: #ff6600; margin-bottom: 8px;">Ordenar por:</strong>
+                    <strong>Ordenar por</strong>
                     <select id="sort-select" onchange="applySort()">
                         <option value="default">Recomendado</option>
-                        <option value="price-asc">Precio: Menor a Mayor</option>
-                        <option value="price-desc">Precio: Mayor a Menor</option>
+                        <option value="price-asc">Precio: menor a mayor</option>
+                        <option value="price-desc">Precio: mayor a menor</option>
                         <option value="name-asc">Nombre: A - Z</option>
-                        <option value="newest">Más Recientes</option>
+                        <option value="newest">Mas recientes</option>
                     </select>
                 </div>
             </div>
         </div>
 
         <div class="categorias">
-            <button class="btn-categoria" data-category="todos" style="background: #ff6600;">Todos</button>
-            <button class="btn-categoria" data-category="ropa">Ropa</button>
-            <button class="btn-categoria" data-category="accesorios">Accesorios</button>
-            <button class="btn-categoria" data-category="vehiculos">Vehículos</button>
-            <button class="btn-categoria" data-category="tecnologia">Tecnología</button>
+            <button class="btn-categoria activa" data-category="todos">Todos</button>
+            <button class="btn-categoria" data-category="buzos">Buzos</button>
+            <button class="btn-categoria" data-category="jeans">Jeans</button>
+            <button class="btn-categoria" data-category="sudaderas">Sudaderas</button>
+            <button class="btn-categoria" data-category="gorras">Gorras</button>
         </div>
 
         <div class="productos-grid" id="productos-container">
-            <p style="text-align: center; grid-column: 1 / -1; padding: 20px;">Cargando inventario...</p>
+            <p style="text-align: center; grid-column: 1 / -1; padding: 20px; color: var(--gris);">Cargando catalogo...</p>
         </div>
     </section>
 
-    <section class="personalizados">
+    <section class="personalizados" id="personalizados">
         <div class="personalizados-texto">
-            <p class="subtitulo-personalizados">HAZLO ÚNICO</p>
-            <h2>PERSONALIZA <br> A TU MANERA</h2>
-            <p>Crea hoodies, camisetas y accesorios con tu propio diseño.</p>
-            <button>PERSONALIZAR AHORA</button>
+            <p class="subtitulo-personalizados">Hazlo unico</p>
+            <h2>PERSONALIZA<br>A TU MANERA</h2>
+            <p>Creamos buzos, sudaderas y gorras con tu propio diseno, en la talla y color que necesites. Envianos tu idea por WhatsApp.</p>
+            <a href="https://wa.me/573142921523?text=Hola%20C%26E%20Urban%2C%20quiero%20personalizar%20una%20prenda" target="_blank" rel="noopener">
+                <button class="btn-primario">Personalizar ahora</button>
+            </a>
         </div>
         <div class="personalizados-img">
-            <img src="IMAGENES/personaliza.jpg" alt="Personalizados">
+            <div class="prenda-placeholder">
+                <svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M65 28 L100 18 L135 28 L135 36 L165 48 L176 86 L154 96 L146 76 L146 195 C146 204 139 208 130 208 L70 208 C61 208 54 204 54 195 L54 76 L46 96 L24 86 L35 48 L65 36 Z"
+                        fill="#c41e3a" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+                    <text x="100" y="100" font-family="Inter" font-size="11" font-weight="700" fill="rgba(255,255,255,0.85)" text-anchor="middle">TU DISEÑO</text>
+                    <text x="100" y="115" font-family="Inter" font-size="11" font-weight="700" fill="rgba(255,255,255,0.85)" text-anchor="middle">AQUI</text>
+                </svg>
+                <span class="marca-sello">Personalizado</span>
+            </div>
         </div>
     </section>
 
-    <section class="beneficios">
+    <section class="beneficios" id="nosotros">
         <article class="beneficio-card">
             <div class="icono">🚚</div>
-            <h3>Envíos Rápidos</h3>
-            <p>Realizamos envíos a todo el país de forma rápida y segura.</p>
+            <h3>Envios rapidos</h3>
+            <p>Realizamos envios a todo el pais de forma rapida y segura.</p>
         </article>
         <article class="beneficio-card">
             <div class="icono">🔒</div>
-            <h3>Pagos Seguros</h3>
-            <p>Protegemos todas tus compras con métodos de pago seguros.</p>
+            <h3>Compra segura</h3>
+            <p>Coordinamos tu pago de forma directa y confiable.</p>
         </article>
         <article class="beneficio-card">
             <div class="icono">⭐</div>
-            <h3>Calidad Premium</h3>
-            <p>Productos modernos con materiales de excelente calidad.</p>
+            <h3>Calidad real</h3>
+            <p>Telas resistentes y estampados de alta duracion.</p>
         </article>
         <article class="beneficio-card">
-            <div class="icono">🎧</div>
-            <h3>Soporte 24/7</h3>
-            <p>Atención personalizada para ayudarte en cualquier momento.</p>
+            <div class="icono">💬</div>
+            <h3>Atencion directa</h3>
+            <p>Te respondemos por WhatsApp para resolver cualquier duda.</p>
         </article>
     </section>
 
     <footer class="footer">
         <div class="footer-box">
-            <img src="IMAGENES/favicon.png" alt="Logo" width="80">
-            <h2>C&E URBAN</h2>
-            <p>Moda urbana, accesorios y productos modernos para todos los estilos.</p>
+            <img src="IMAGENES/favicon.png" alt="Logo" width="56">
+            <h2>C&amp;E URBAN</h2>
+            <p>Ropa urbana con actitud. Buzos, jeans, sudaderas y gorras para tu estilo.</p>
         </div>
         <div class="footer-box">
             <h3>Enlaces</h3>
-            <a href="#">Inicio</a>
-            <a href="#">Productos</a>
-            <a href="#">Colecciones</a>
-            <a href="#">Nosotros</a>
-            <a href="#">Contacto</a>
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="index.html#personalizados">Personalizados</a>
+            <a href="contacto.html">Contacto</a>
         </div>
         <div class="footer-box">
-            <h3>Categorías</h3>
-            <a href="ropa.html">Ropa</a>
-            <a href="accesorios.html">Accesorios</a>
-            <a href="vehiculos.html">Vehículos</a>
-            <a href="tecnologia.html">Tecnología</a>
+            <h3>Categorias</h3>
+            <a href="buzos.html">Buzos</a>
+            <a href="jeans.html">Jeans</a>
+            <a href="sudaderas.html">Sudaderas</a>
+            <a href="gorras.html">Gorras</a>
         </div>
         <div class="footer-box">
             <h3>Contacto</h3>
-            <p>📍 Bogotá, Colombia</p>
-            <p>📞 +57 300 000 0000</p>
+            <p>📍 Bogota, Colombia</p>
+            <p>📞 +57 314 292 1523</p>
             <p>✉ contacto@ceurban.com</p>
         </div>
     </footer>
@@ -234,195 +228,14 @@
         <p>© 2026 C&E Urban Wear | Todos los derechos reservados</p>
     </div>
 
-    <div class="toast">
-        Producto agregado al carrito ✅
-    </div>
+    <div class="toast">Producto agregado al carrito</div>
 
+    <script src="jvs/placeholders.js"></script>
     <script src="jvs/advanced-features.js"></script>
-    <script src="jvs/ux-enhancements.js"></script>    
-    <script src="jvs/user-dashboard.js"></script>    
+    <script src="jvs/ux-enhancements.js"></script>
+    <script src="jvs/user-dashboard.js"></script>
     <script src="jvs/index.js"></script>
     <script src="jvs/carrito.js"></script>
     <script src="jvs/user-state.js"></script>
-
-    <script>
-        let listaProductosBD = [];
-
-        async function cargarCatalogoBD() {
-            try {
-                const respuesta = await fetch('http://127.0.0.1:5000/api/productos-stock');
-                const datos = await respuesta.json();
-
-                const productosAgrupados = {};
-                datos.forEach(item => {
-                    if (!productosAgrupados[item.nombre]) {
-                        productosAgrupados[item.nombre] = {
-                            id: item.producto_id,
-                            nombre: item.nombre,
-                            precio: item.precio,
-                            categoria: item.categoria.toLowerCase(),
-                            totalStock: 0,
-                            tallas: []
-                        };
-                    }
-                    productosAgrupados[item.nombre].totalStock += item.cantidad;
-                    productosAgrupados[item.nombre].tallas.push(item.talla);
-                });
-
-                listaProductosBD = Object.values(productosAgrupados);
-                mostrarProductosGrid(listaProductosBD);
-
-            } catch (error) {
-                console.error("Error al conectar con la base de datos:", error);
-                document.getElementById('productos-container').innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: red;">No se pudo cargar el inventario. Verifica que el servidor Python esté encendido.</p>';
-            }
-        }
-
-        function mostrarProductosGrid(productosA_Mostrar) {
-            const contenedor = document.getElementById('productos-container');
-            contenedor.innerHTML = ''; 
-
-            if(productosA_Mostrar.length === 0) {
-                contenedor.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No se encontraron productos con estos filtros.</p>';
-                return;
-            }
-
-            productosA_Mostrar.forEach(prod => {
-                let etiquetaPocasUnidades = '';
-                if (prod.totalStock <= 15) {
-                    etiquetaPocasUnidades = `<div class="badge-stock">🔥 Pocas unidades</div>`;
-                }
-
-                let imgProd = "IMAGENES/Nueva coleccion (1).jpeg"; 
-                if(prod.nombre.includes("Negro")) imgProd = "IMAGENES/Nueva colleccion.jpeg";
-                if(prod.nombre.includes("Marshmello")) imgProd = "IMAGENES/1764421015MARSHMELLO RAMON MARFIL.jpg";
-
-                const precioFormateado = parseFloat(prod.precio).toLocaleString('es-CO');
-
-                let opcionesTallas = prod.tallas.map(talla => `<option value="${talla}">${talla}</option>`).join('');
-
-                const tarjetaHTML = `
-                    <article class="card">
-                        ${etiquetaPocasUnidades}
-                        <img src="${imgProd}" alt="${prod.nombre}">
-                        <h3>${prod.nombre}</h3>
-                        <p>$${precioFormateado}</p>
-                        
-                        <div style="margin: 10px 0;">
-                            <label for="talla-${prod.id}" style="font-size: 13px; color: #555;">Elige tu talla:</label>
-                            <select id="talla-${prod.id}" style="padding: 5px; border-radius: 4px; border: 1px solid #ccc; width: 100%;">
-                                ${opcionesTallas}
-                            </select>
-                        </div>
-
-                        <button class="add-cart" 
-                            data-id="${prod.id}"
-                            data-name="${prod.nombre}" 
-                            data-price="${prod.precio}" 
-                            data-img="${imgProd}"
-                            onclick="agregarAlCarritoConTalla(${prod.id}, '${prod.nombre}', ${prod.precio})">
-                            Agregar al carrito
-                        </button>
-                    </article>
-                `;
-                contenedor.innerHTML += tarjetaHTML;
-            });
-        }
-
-
-        function applyFilters() {
-            const category = document.querySelector('input[name="category"]:checked').value;
-            const minPrice = parseInt(document.getElementById('min-price').value) || 0;
-            const maxPrice = parseInt(document.getElementById('max-price').value) || Infinity;
-            const searchText = document.getElementById('search-input').value.toLowerCase();
-
-            let filtered = listaProductosBD.filter(p => {
-                const categoryMatch = category === 'todos' || p.categoria === category;
-                const priceMatch = p.precio >= minPrice && p.precio <= maxPrice;
-                const searchMatch = p.nombre.toLowerCase().includes(searchText);
-                return categoryMatch && priceMatch && searchMatch;
-            });
-
-            mostrarProductosGrid(filtered);
-        }
-
-        function applySort() {
-            const sortValue = document.getElementById('sort-select').value;
-            let sorted = [...listaProductosBD];
-
-            switch(sortValue) {
-                case 'price-asc':
-                    sorted.sort((a, b) => a.precio - b.precio);
-                    break;
-                case 'price-desc':
-                    sorted.sort((a, b) => b.precio - a.precio);
-                    break;
-                case 'name-asc':
-                    sorted.sort((a, b) => a.nombre.localeCompare(b.nombre));
-                    break;
-                case 'newest':
-                    sorted.sort((a, b) => b.id - a.id);
-                    break;
-            }
-
-            mostrarProductosGrid(sorted);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            cargarCatalogoBD();
-            if (typeof updateCartUI === 'function') updateCartUI();
-        });
-
-        document.getElementById('search-input').addEventListener('input', applyFilters);
-        document.querySelectorAll('input[name="category"]').forEach(radio => {
-            radio.addEventListener('change', applyFilters);
-        });
-        
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('quick-view-btn')) {
-                const productId = parseInt(e.target.dataset.productId);
-                const product = listaProductosBD.find(p => p.id === productId);
-                if (product && typeof quickViewModal !== 'undefined') quickViewModal.open(product);
-            }
-        });
-
-
-        async function confirmarCompra(producto_id, talla_seleccionada, cantidad_comprada) {
-            try {
-                const respuesta = await fetch('http://127.0.0.1:5000/api/descontar-stock', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        producto_id: producto_id,
-                        talla: talla_seleccionada,
-                        cantidad: cantidad_comprada
-                    })
-                });
-
-                const resultado = await respuesta.json();
-                
-                if (respuesta.ok) {
-                    alert("¡Compra realizada con éxito! El stock ha sido descontado.");
-                    cargarCatalogoBD(); 
-                } else {
-                    alert("Error en la compra: " + resultado.error);
-                }
-            } catch (error) {
-                console.error("Error al procesar la compra:", error);
-            }
-        }
-
-        function agregarAlCarritoConTalla(idProducto, nombre, precio) {
-            const selectorTalla = document.getElementById(`talla-${idProducto}`);
-            const tallaElegida = selectorTalla.value;
-
-            console.log(`Se va a comprar el producto ${idProducto}, talla ${tallaElegida}`);
-            
-            confirmarCompra(idProducto, tallaElegida, 1);
-        }
-
-    </script>
 </body>
 </html>

@@ -96,7 +96,7 @@ class UserDashboardPanel {
                 }
 
                 .dashboard-header h2 {
-                    color: #ff6600;
+                    color: #ff6b35;
                     margin: 0;
                 }
 
@@ -110,7 +110,7 @@ class UserDashboardPanel {
                 }
 
                 .close-dashboard:hover {
-                    color: #ff6600;
+                    color: #ff6b35;
                     transform: rotate(90deg);
                 }
 
@@ -134,13 +134,13 @@ class UserDashboardPanel {
                 }
 
                 .tab-btn:hover {
-                    color: #ff6600;
+                    color: #ff6b35;
                     background: rgba(255, 102, 0, 0.05);
                 }
 
                 .tab-btn.active {
-                    color: #ff6600;
-                    border-bottom-color: #ff6600;
+                    color: #ff6b35;
+                    border-bottom-color: #ff6b35;
                 }
 
                 .tab-content {
@@ -181,7 +181,7 @@ class UserDashboardPanel {
                 .level-name {
                     font-size: 18px;
                     font-weight: bold;
-                    color: #ff6600;
+                    color: #ff6b35;
                 }
 
                 .level-benefit {
@@ -201,7 +201,7 @@ class UserDashboardPanel {
 
                 .progress-fill {
                     height: 100%;
-                    background: linear-gradient(90deg, #ff6600, #ff7722);
+                    background: linear-gradient(90deg, #ff6b35, #ff8c5a);
                     transition: width 0.3s ease;
                 }
 
@@ -233,7 +233,7 @@ class UserDashboardPanel {
 
                 .favorite-info h4, .history-info h4 {
                     margin: 0 0 4px 0;
-                    color: #ff6600;
+                    color: #ff6b35;
                     font-size: 13px;
                 }
 
@@ -358,12 +358,12 @@ class UserDashboardPanel {
         } else {
             favoritesListEl.innerHTML = favorites.map(fav => `
                 <div class="favorite-item">
-                    <img src="${fav.imagen}" alt="${fav.nombre}">
+                    <div style="width:50px;height:50px;border-radius:8px;background:${fav.color || '#1c2f6e'};flex-shrink:0;"></div>
                     <div class="favorite-info">
                         <h4>${fav.nombre}</h4>
-                        <div class="favorite-price">$${fav.precio.toLocaleString()}</div>
+                        <div class="favorite-price">$${fav.precio.toLocaleString('es-CO')}</div>
                     </div>
-                    <button class="remove-favorite" onclick="wishlist.removeFromWishlist(${fav.id}); userDashboard.updateContent();">🗑️</button>
+                    <button class="remove-favorite" data-remove-fav-id="${fav.id}">🗑️</button>
                 </div>
             `).join('');
         }
@@ -376,10 +376,10 @@ class UserDashboardPanel {
         } else {
             historyListEl.innerHTML = history.map(item => `
                 <div class="history-item">
-                    <img src="${item.imagen}" alt="${item.nombre}">
+                    <div style="width:50px;height:50px;border-radius:8px;background:${item.color || '#1c2f6e'};flex-shrink:0;"></div>
                     <div class="history-info">
                         <h4>${item.nombre}</h4>
-                        <div class="favorite-price">$${item.precio.toLocaleString()}</div>
+                        <div class="favorite-price">$${item.precio.toLocaleString('es-CO')}</div>
                     </div>
                 </div>
             `).join('');
@@ -389,10 +389,10 @@ class UserDashboardPanel {
         const totalSpent = loyalty.getTotalSpent();
         pointsInfo.innerHTML = `
             <div class="loyalty-card">
-                <div style="font-size: 28px; font-weight: bold; color: #ff6600;">${points}</div>
+                <div style="font-size: 28px; font-weight: bold; color: #ff6b35;">${points}</div>
                 <p style="color: #ccc; margin: 8px 0 0 0;">Puntos disponibles</p>
                 <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 12px 0;">
-                <p style="color: #ccc; font-size: 13px; margin: 0;"><strong>Total Gastado:</strong> $${totalSpent.toLocaleString()}</p>
+                <p style="color: #ccc; font-size: 13px; margin: 0;"><strong>Total Gastado:</strong> $${totalSpent.toLocaleString('es-CO')}</p>
                 <p style="color: #ccc; font-size: 13px; margin: 8px 0 0 0;"><strong>Compras Realizadas:</strong> ${loyalty.history.length}</p>
             </div>
         `;
@@ -407,8 +407,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const userIcon = document.querySelector('.user-icon');
     if (userIcon) {
         userIcon.addEventListener('click', (e) => {
-            e.preventDefault();
-            userDashboard.open();
+            const hayUsuario = localStorage.getItem('ceurbanUser');
+            if (hayUsuario) {
+                e.preventDefault();
+                userDashboard.open();
+            }
+            // Si no hay sesion, deja que el link navegue normalmente a login.html
         });
     }
+});
+
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-remove-fav-id]');
+    if (!btn) return;
+    const id = parseInt(btn.dataset.removeFavId);
+    wishlist.removeFromWishlist(id);
+    userDashboard.updateContent();
 });

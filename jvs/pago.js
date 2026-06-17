@@ -7,9 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
     if (carrito.length === 0) {
-        if(container) {
-            container.innerHTML = `<p style="color: #666; text-align: center; padding: 20px;">No tienes productos seleccionados.</p>`;
+        if (container) {
+            container.innerHTML = `<p style="color: var(--gris); text-align: center; padding: 20px;">No tienes productos seleccionados. <a href="productos.html" style="color: var(--acento);">Ver catalogo</a></p>`;
         }
+        if (formulario) formulario.style.display = 'none';
         return;
     }
 
@@ -17,37 +18,33 @@ document.addEventListener("DOMContentLoaded", () => {
     container.innerHTML = "";
 
     carrito.forEach(producto => {
+        const cantidad = producto.quantity || 1;
         const itemRow = document.createElement("div");
-        itemRow.style.display = "flex";
-        itemRow.style.alignItems = "center";
-        itemRow.style.gap = "15px";
-        itemRow.style.marginBottom = "15px";
-        itemRow.style.background = "rgba(255,255,255,0.02)";
-        itemRow.style.padding = "10px";
-        itemRow.style.borderRadius = "6px";
-        itemRow.style.border = "1px solid rgba(255,255,255,0.05)";
+        itemRow.style.cssText = "display:flex; align-items:center; gap:15px; margin-bottom:15px; background:rgba(255,255,255,0.02); padding:10px; border-radius:6px; border:1px solid var(--gris-linea);";
 
         itemRow.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
+            <div style="width:50px; height:50px; border-radius:6px; flex-shrink:0; background:${producto.color || '#1c2f6e'};"></div>
             <div style="flex: 1;">
-                <h4 style="font-size: 14px; margin-bottom: 2px; color: white;">${producto.nombre}</h4>
-                <p style="color: #ff6600; font-size: 13px; font-weight: bold;">$${producto.precio.toLocaleString()}</p>
+                <h4 style="font-size: 14px; margin-bottom: 2px; color: white;">${producto.nombre} ${cantidad > 1 ? `x${cantidad}` : ''}</h4>
+                <p style="color: var(--acento); font-size: 13px; font-weight: bold;">$${(producto.precio * cantidad).toLocaleString('es-CO')}</p>
             </div>
         `;
         container.appendChild(itemRow);
-        acumulado += producto.precio;
+        acumulado += producto.precio * cantidad;
     });
 
-    subtotalEl.textContent = `$${acumulado.toLocaleString()}`;
-    totalEl.textContent = `$${acumulado.toLocaleString()}`;
+    subtotalEl.textContent = `$${acumulado.toLocaleString('es-CO')}`;
+    totalEl.textContent = `$${acumulado.toLocaleString('es-CO')}`;
 
     const usuarioGuardado = JSON.parse(localStorage.getItem('ceurbanUser') || 'null');
     if (usuarioGuardado) {
-        document.getElementById('customer-name').value = usuarioGuardado.nombre || '';
-        document.getElementById('customer-email').value = usuarioGuardado.email || '';
+        const nameInput = document.getElementById('customer-name');
+        const emailInput = document.getElementById('customer-email');
+        if (nameInput) nameInput.value = usuarioGuardado.nombre || '';
+        if (emailInput) emailInput.value = usuarioGuardado.email || '';
     }
 
-    if(formulario) {
+    if (formulario) {
         formulario.addEventListener("submit", async (e) => {
             e.preventDefault();
 
@@ -59,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const metodo_pago = document.getElementById('payment-method')?.value || '';
 
             if (carrito.length === 0) {
-                alert('Tu carrito está vacío. Agrega productos antes de realizar el pago.');
+                alert('Tu carrito esta vacio. Agrega productos antes de continuar.');
                 return;
             }
 
@@ -76,8 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 carrito: carrito.map(producto => ({
                     nombre: producto.nombre,
                     precio: producto.precio,
-                    cantidad: producto.cantidad || 1,
-                    imagen: producto.imagen
+                    cantidad: producto.quantity || 1
                 })),
                 subtotal: acumulado,
                 envio: 0,
@@ -87,9 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
                 const respuesta = await fetch('/api/orders', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(orderPayload)
                 });
                 const data = await respuesta.json();
@@ -100,8 +94,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.warn('No se pudo conectar con el servidor:', error);
             }
 
-            const productosTexto = carrito.map(p => `- ${p.nombre} x${p.cantidad || 1}: $${p.precio.toLocaleString()}`).join('\n');
-            const mensaje = `Hola C&E Urban,%0A%0AHe terminado de seleccionar mi pedido y necesito el link de pago.%0A%0ANombre: ${encodeURIComponent(nombre)}%0AEmail: ${encodeURIComponent(email)}%0ADirección: ${encodeURIComponent(direccion)}%0ACiudad: ${encodeURIComponent(ciudad)}%0ATeléfono: ${encodeURIComponent(telefono)}%0AMétodo de pago: ${encodeURIComponent(metodo_pago)}%0A%0AProductos:%0A${encodeURIComponent(productosTexto)}%0A%0ATotal: ${encodeURIComponent(subtotalEl.textContent)}%0A%0AMuchas gracias.`;
+            if (typeof loyalty !== 'undefined') {
+                loyalty.addPurchase(acumulado, orderPayload.carrito);
+            }
+            if (typeof cart !== 'undefined' && cart.clear) {
+                cart.clear();
+            } else {
+                localStorage.removeItem('carrito');
+            }
+
+            const productosTexto = carrito.map(p => `- ${p.nombre} x${p.quantity || 1}: $${(p.precio * (p.quantity || 1)).toLocaleString('es-CO')}`).join('\n');
+            const mensaje = `Hola C&E Urban Wear,%0A%0AHe terminado de seleccionar mi pedido y quiero confirmar la compra.%0A%0ANombre: ${encodeURIComponent(nombre)}%0AEmail: ${encodeURIComponent(email)}%0ADireccion: ${encodeURIComponent(direccion)}%0ACiudad: ${encodeURIComponent(ciudad)}%0ATelefono: ${encodeURIComponent(telefono)}%0AMetodo de pago: ${encodeURIComponent(metodo_pago)}%0A%0AProductos:%0A${encodeURIComponent(productosTexto)}%0A%0ATotal: ${encodeURIComponent(totalEl.textContent)}%0A%0AMuchas gracias.`;
 
             const whatsappUrl = `https://wa.me/573142921523?text=${mensaje}`;
             window.location.href = whatsappUrl;

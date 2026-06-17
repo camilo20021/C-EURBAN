@@ -11,7 +11,7 @@ class WishlistManager {
                 id: product.id,
                 nombre: product.nombre,
                 precio: product.precio,
-                imagen: product.imagen,
+                color: product.color,
                 fechaAgregada: new Date().toISOString()
             });
             this.save();
@@ -120,7 +120,7 @@ class ShoppingCart {
                 id: product.id,
                 nombre: product.nombre,
                 precio: product.precio,
-                imagen: product.imagen,
+                color: product.color,
                 quantity
             });
         }
@@ -181,7 +181,7 @@ class ViewHistory {
             id: product.id,
             nombre: product.nombre,
             precio: product.precio,
-            imagen: product.imagen,
+            color: product.color,
             categoria: product.categoria,
             viewedAt: new Date().toISOString()
         });
@@ -284,48 +284,20 @@ class NotificationManager {
     }
 
     createToastContainer() {
-        const container = document.createElement('div');
-        container.className = 'toast-container';
-        container.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 10000;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        `;
-        document.body.appendChild(container);
-        return container;
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+        return toast;
     }
 
-    show(message, type = 'info', duration = 3000) {
-        const toast = document.createElement('div');
-        const colors = {
-            'success': '#4caf50',
-            'error': '#f44336',
-            'warning': '#ff9800',
-            'info': '#2196f3'
-        };
+    show(message, type = 'info', duration = 2800) {
+        const tipoClase = { success: 'exito', error: 'error', warning: 'aviso', info: '' };
+        this.toastContainer.className = `toast mostrar ${tipoClase[type] || ''}`.trim();
+        this.toastContainer.textContent = message;
 
-        toast.style.cssText = `
-            background: ${colors[type] || colors.info};
-            color: white;
-            padding: 14px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            animation: slideIn 0.3s ease;
-            min-width: 250px;
-            max-width: 400px;
-            word-wrap: break-word;
-        `;
-        toast.textContent = message;
-
-        this.toastContainer.appendChild(toast);
-
-        setTimeout(() => {
-            toast.style.animation = 'slideOut 0.3s ease';
-            setTimeout(() => toast.remove(), 300);
+        clearTimeout(this._timer);
+        this._timer = setTimeout(() => {
+            this.toastContainer.classList.remove('mostrar');
         }, duration);
     }
 

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todos los productos | C&E Urban Wear</title>
-    <meta name="description" content="Catalogo completo: buzos, jeans, sudaderas y gorras C&E Urban Wear.">
+    <title>Gorras | C&E Urban Wear</title>
+    <meta name="description" content="Gorras snapback y dad hat para cerrar el look con actitud.">
     <link rel="icon" href="IMAGENES/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -72,44 +72,14 @@
         </div>
     </div>
 
-    <section class="productos" style="padding-top: 50px;">
+    <section class="productos" style="padding-top: 40px;">
         <div class="productos-header">
-            <h2>Todos los productos</h2>
+            <h2>Gorras</h2>
+            <a href="productos.html">Ver todo →</a>
         </div>
+        <p style="color: var(--gris); margin-bottom: 28px; max-width: 560px;">Gorras snapback y dad hat para cerrar el look con actitud.</p>
 
-        <div class="filter-section">
-            <h3>Filtros</h3>
-            <div class="filter-grid">
-                <div>
-                    <strong>Rango de precio</strong>
-                    <div class="price-range-slider">
-                        <input type="number" id="min-price" placeholder="Min" min="0">
-                        <input type="number" id="max-price" placeholder="Max" min="0">
-                    </div>
-                    <button class="btn-aplicar-filtro" onclick="applyFilters()">Aplicar</button>
-                </div>
-                <div class="sort-filter">
-                    <strong>Ordenar por</strong>
-                    <select id="sort-select" onchange="applySort()">
-                        <option value="default">Recomendado</option>
-                        <option value="price-asc">Precio: menor a mayor</option>
-                        <option value="price-desc">Precio: mayor a menor</option>
-                        <option value="name-asc">Nombre: A - Z</option>
-                        <option value="newest">Mas recientes</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="categorias">
-            <button class="btn-categoria activa" data-category="todos">Todos</button>
-            <button class="btn-categoria" data-category="buzos">Buzos</button>
-            <button class="btn-categoria" data-category="jeans">Jeans</button>
-            <button class="btn-categoria" data-category="sudaderas">Sudaderas</button>
-            <button class="btn-categoria" data-category="gorras">Gorras</button>
-        </div>
-
-        <div class="productos-grid" id="productos-container">
+        <div class="productos-grid" id="productos-container" data-categoria-fija="gorras">
             <p style="text-align: center; grid-column: 1 / -1; padding: 20px; color: var(--gris);">Cargando catalogo...</p>
         </div>
     </section>

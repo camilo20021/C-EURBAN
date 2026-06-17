@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión | C&E Urban</title>
+    <title>Iniciar sesion | C&E Urban Wear</title>
     <link rel="icon" href="IMAGENES/favicon.png">
-    <link rel="stylesheet" href="CSS/index.css">
-    <link rel="stylesheet" href="CSS/ux-improvements.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/main.css">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
+    <div class="fondo-estrellas"></div>
+
     <header class="header">
         <a href="index.html" class="logo">
-            <img src="IMAGENES/favicon.png" alt="Logo">
-            <h1>C&E URBAN</h1>
+            <img src="IMAGENES/favicon.png" alt="Logo C&E Urban Wear">
+            <span class="logo-text">C&amp;E URBAN<span>WEAR</span></span>
         </a>
 
         <nav class="navbar">
@@ -22,23 +25,22 @@
                 <button class="dropbtn">Productos</button>
                 <div class="dropdown-content">
                     <a href="productos.html">Todos</a>
-                    <a href="ropa.html">Jeans</a>
-                    <a href="accesorios.html">Sudaderas</a>
-                    <a href="vehiculos.html">Buzos</a>
-                    <a href="tecnologia.html">Gorras</a>
+                    <a href="buzos.html">Buzos</a>
+                    <a href="jeans.html">Jeans</a>
+                    <a href="sudaderas.html">Sudaderas</a>
+                    <a href="gorras.html">Gorras</a>
                 </div>
             </div>
-            <a href="index.html#collections">Colecciones</a>
-            <a href="index.html#nosotros">Nosotros</a>
             <a href="contacto.html">Contacto</a>
-            <a href="admin.html" class="admin-link hidden">Dashboard</a>
         </nav>
+        <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+        <div class="icons"></div>
     </header>
 
     <main class="auth-page">
         <section class="auth-card">
-            <h1>Iniciar sesión con Google</h1>
-            
+            <h1>Iniciar sesion</h1>
+
             <div id="g_id_onload"
                  data-client_id="96439361582-vlr4e3bdiabhaoog22o040pbafjrrd96.apps.googleusercontent.com"
                  data-context="signin"
@@ -46,15 +48,16 @@
                  data-callback="handleCredentialResponse"
                  data-auto_prompt="false">
             </div>
-            
+
             <div class="g_id_signin"
                  data-type="standard"
                  data-shape="rectangular"
-                 data-theme="outline"
+                 data-theme="filled_black"
                  data-text="signin_with"
                  data-size="large"
                  data-logo_alignment="left">
             </div>
+
             <div id="logged-user" class="user-card hidden">
                 <img id="user-picture" src="" alt="Perfil">
                 <div>
@@ -64,49 +67,42 @@
             </div>
 
             <div class="auth-help">
-                <p>También puedes registrarte manualmente si no tienes acceso a Google.</p>
+                <p>Tambien puedes registrarte manualmente si no tienes cuenta de Google.</p>
                 <form id="manual-register" class="manual-form">
                     <input type="text" id="manual-name" placeholder="Nombre completo" required>
-                    <input type="email" id="manual-email" placeholder="Correo electrónico" required>
-                    <input type="tel" id="manual-phone" placeholder="Teléfono">
+                    <input type="email" id="manual-email" placeholder="Correo electronico" required>
+                    <input type="tel" id="manual-phone" placeholder="Telefono">
                     <button type="submit">Registrarme</button>
                 </form>
             </div>
 
-            <button id="logout-btn" class="logout-btn hidden">Cerrar sesión</button>
+            <button id="logout-btn" class="logout-btn hidden">Cerrar sesion</button>
         </section>
     </main>
 
-    <script src="jvs/auth.js"></script>
-    <script src="jvs/user-state.js"></script>
     <footer class="footer">
         <div class="footer-box">
-            <img src="IMAGENES/favicon.png" alt="Logo" width="80">
-            <h2>C&E URBAN</h2>
-            <p>Moda urbana, accesorios y productos modernos para todos los estilos.</p>
+            <img src="IMAGENES/favicon.png" alt="Logo" width="56">
+            <h2>C&amp;E URBAN</h2>
+            <p>Ropa urbana con actitud. Buzos, jeans, sudaderas y gorras para tu estilo.</p>
         </div>
-
         <div class="footer-box">
             <h3>Enlaces</h3>
-            <a href="#">Inicio</a>
+            <a href="index.html">Inicio</a>
             <a href="productos.html">Productos</a>
-            <a href="index.html#collections">Colecciones</a>
-            <a href="index.html#nosotros">Nosotros</a>
             <a href="contacto.html">Contacto</a>
         </div>
-
         <div class="footer-box">
-            <h3>Categorías</h3>
-            <a href="ropa.html">Ropa</a>
-            <a href="accesorios.html">Accesorios</a>
-            <a href="vehiculos.html">Vehículos</a>
-            <a href="tecnologia.html">Tecnología</a>
+            <h3>Categorias</h3>
+            <a href="buzos.html">Buzos</a>
+            <a href="jeans.html">Jeans</a>
+            <a href="sudaderas.html">Sudaderas</a>
+            <a href="gorras.html">Gorras</a>
         </div>
-
         <div class="footer-box">
             <h3>Contacto</h3>
-            <p>📍 Bogotá, Colombia</p>
-            <p>📞 +57 300 000 0000</p>
+            <p>📍 Bogota, Colombia</p>
+            <p>📞 +57 314 292 1523</p>
             <p>✉ contacto@ceurban.com</p>
         </div>
     </footer>
@@ -115,5 +111,7 @@
         <p>© 2026 C&E Urban Wear | Todos los derechos reservados</p>
     </div>
 
+    <script src="jvs/auth.js"></script>
+    <script src="jvs/user-state.js"></script>
 </body>
 </html>
