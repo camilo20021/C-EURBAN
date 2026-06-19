@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     configurarFiltros();
     configurarBuscador();
     iniciarCarrusel();
-    configurarMenuHamburguesa();
     actualizarAdminLink();
 });
 
@@ -293,23 +292,5 @@ function iniciarCarrusel(interval = 3000, visibleDesktop = 3) {
     window.addEventListener('resize', onResize);
 }
 
-function configurarMenuHamburguesa() {
-    const toggle = document.querySelector('.menu-toggle');
-    const navbar = document.querySelector('.navbar');
-    const navLinks = document.querySelectorAll('.navbar a');
-    if (!toggle || !navbar) return;
-
-    toggle.addEventListener('click', () => {
-        navbar.classList.toggle('abierto');
-        toggle.textContent = navbar.classList.contains('abierto') ? '✖' : '☰';
-    });
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (navbar.classList.contains('abierto')) {
-                navbar.classList.remove('abierto');
-                toggle.textContent = '☰';
-            }
-        });
-    });
-}
+// La navegacion (menu hamburguesa y dropdown de Productos) vive en navegacion.js
+// para que se comparta entre todas las paginas del sitio.

@@ -185,7 +185,7 @@ button {
     min-width: 180px;
     box-shadow: var(--sombra);
     overflow: hidden;
-    z-index: 50;
+    z-index: 60;
 }
 
 .dropdown-content a {
@@ -204,7 +204,11 @@ button {
     color: var(--blanco);
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown-content.abierto {
+    display: block;
+}
+
+.dropdown.abierto .dropdown-content {
     display: block;
 }
 
@@ -875,7 +879,7 @@ button {
    ========================================================================== */
 .personalizados {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 40px;
     padding: 70px 5%;
@@ -914,6 +918,8 @@ button {
     width: 320px;
     height: 320px;
     flex-shrink: 0;
+    position: sticky;
+    top: 100px;
 }
 
 /* ==========================================================================
@@ -1059,10 +1065,15 @@ button {
 
     .dropdown-content {
         position: static;
-        display: block;
         margin-top: 6px;
         border: none;
         background: var(--negro-suave);
+        border-radius: 6px;
+    }
+
+    .dropbtn::after {
+        content: ' ▾';
+        font-size: 10px;
     }
 
     .search-container input {
@@ -1097,6 +1108,7 @@ button {
     .personalizados-img {
         width: 240px;
         height: 240px;
+        position: static;
     }
 }
 
@@ -1326,7 +1338,7 @@ button {
     margin-bottom: 8px;
 }
 
-.contacto-form input, .contacto-form textarea {
+.contacto-form input, .contacto-form textarea, .contacto-form select {
     width: 100%;
     background: var(--negro-suave);
     border: 1px solid var(--gris-linea);
@@ -1338,13 +1350,149 @@ button {
     resize: vertical;
 }
 
-.contacto-form input:focus, .contacto-form textarea:focus {
+.contacto-form input:focus, .contacto-form textarea:focus, .contacto-form select:focus {
     outline: none;
     border-color: var(--azul-claro);
+}
+
+.contacto-form input[type="file"] {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.contacto-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
 }
 
 @media (max-width: 800px) {
     .contacto-page {
         grid-template-columns: 1fr;
     }
+
+    .contacto-form .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   PANEL DE PAGOS (interno, protegido por clave)
+   ========================================================================== */
+.panel-pagos-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 5% 80px;
+    position: relative;
+    z-index: 1;
+}
+
+.panel-pagos-page h1 {
+    font-family: var(--fuente-display);
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.panel-pagos-page .subtitle {
+    color: var(--gris);
+    font-size: 13px;
+    margin-bottom: 28px;
+}
+
+.clave-box {
+    background: var(--negro-card);
+    border: 1px solid var(--gris-linea);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 28px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.clave-box input {
+    flex: 1;
+    min-width: 200px;
+    background: var(--negro-suave);
+    border: 1px solid var(--gris-linea);
+    border-radius: 6px;
+    padding: 12px 14px;
+    color: var(--blanco);
+    font-size: 14px;
+}
+
+.clave-box button {
+    background: var(--azul);
+    color: var(--blanco);
+    border: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.clave-box button:hover {
+    background: var(--azul-claro);
+}
+
+.pedido-card {
+    background: var(--negro-card);
+    border: 1px solid var(--gris-linea);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.pedido-card .pedido-info h4 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.pedido-card .pedido-info p {
+    font-size: 13px;
+    color: var(--gris);
+    margin-bottom: 3px;
+}
+
+.pedido-card .pedido-total {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--acento);
+    font-family: var(--fuente-display);
+}
+
+.btn-confirmar-pago {
+    background: #2ecc71;
+    color: var(--negro);
+    border: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.btn-confirmar-pago:hover {
+    background: #58d68d;
+}
+
+.btn-confirmar-pago:disabled {
+    background: var(--gris);
+    cursor: not-allowed;
+}
+
+.mensaje-estado {
+    text-align: center;
+    color: var(--gris);
+    padding: 30px;
+    font-size: 14px;
 }

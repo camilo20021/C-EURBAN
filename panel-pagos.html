@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de pagos | C&E Urban Wear</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="IMAGENES/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/main.css">
+</head>
+<body>
+    <div class="fondo-estrellas"></div>
+
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="IMAGENES/favicon.png" alt="Logo C&E Urban Wear">
+            <span class="logo-text">C&amp;E URBAN<span>WEAR</span></span>
+        </a>
+        <nav class="navbar">
+            <a href="index.html">Volver al sitio</a>
+        </nav>
+        <div class="icons"></div>
+    </header>
+
+    <main class="panel-pagos-page">
+        <h1>Panel de pagos</h1>
+        <p class="subtitle">Pagina de uso interno para confirmar pagos recibidos. No la compartas publicamente.</p>
+
+        <div class="clave-box">
+            <input type="password" id="clave-input" placeholder="Clave de administrador">
+            <button id="clave-guardar">Entrar</button>
+        </div>
+
+        <div id="pedidos-wrap">
+            <p class="mensaje-estado">Ingresa la clave para ver los pedidos pendientes.</p>
+        </div>
+    </main>
+
+    <script>
+        const STORAGE_KEY = 'ceurbanAdminKey';
+        const pedidosWrap = document.getElementById('pedidos-wrap');
+        const claveInput = document.getElementById('clave-input');
+        const claveGuardar = document.getElementById('clave-guardar');
+
+        function getClave() {
+            return sessionStorage.getItem(STORAGE_KEY) || '';
+        }
+
+        async function cargarPedidos() {
+            const clave = getClave();
+            if (!clave) return;
+
+            pedidosWrap.innerHTML = '<p class="mensaje-estado">Cargando pedidos...</p>';
+
+            try {
+                const respuesta = await fetch('/api/orders/pendientes', {
+                    headers: { 'x-admin-key': clave }
+                });
+
+                if (respuesta.status === 401) {
+                    pedidosWrap.innerHTML = '<p class="mensaje-estado">Clave incorrecta. Verifica e intenta de nuevo.</p>';
+                    sessionStorage.removeItem(STORAGE_KEY);
+                    return;
+                }
+
+                const data = await respuesta.json();
+                if (!respuesta.ok) {
+                    pedidosWrap.innerHTML = `<p class="mensaje-estado">Error: ${data.error || 'No se pudo cargar.'}</p>`;
+                    return;
+                }
+
+                renderPedidos(data.pedidos || []);
+            } catch (error) {
+                console.error(error);
+                pedidosWrap.innerHTML = '<p class="mensaje-estado">No se pudo conectar con el servidor.</p>';
+            }
+        }
+
+        function renderPedidos(pedidos) {
+            if (pedidos.length === 0) {
+                pedidosWrap.innerHTML = '<p class="mensaje-estado">No hay pedidos pendientes por confirmar.</p>';
+                return;
+            }
+
+            pedidosWrap.innerHTML = pedidos.map(p => `
+                <div class="pedido-card" data-pedido-id="${p.id}">
+                    <div class="pedido-info">
+                        <h4>Pedido #${p.id} — ${p.nombre || 'Sin nombre'}</h4>
+                        <p>${p.email || 'Sin email'} ${p.telefono ? '· ' + p.telefono : ''}</p>
+                        <p>Metodo: ${p.metodo_pago || 'No especificado'} · ${new Date(p.creado_en).toLocaleString('es-CO')}</p>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:16px;">
+                        <span class="pedido-total">$${(p.total || 0).toLocaleString('es-CO')}</span>
+                        <button class="btn-confirmar-pago" data-confirmar-id="${p.id}">Confirmar pago</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function confirmarPago(pedidoId, boton) {
+            const clave = getClave();
+            boton.disabled = true;
+            boton.textContent = 'Confirmando...';
+
+            try {
+                const respuesta = await fetch(`/api/orders/${pedidoId}/confirmar-pago`, {
+                    method: 'POST',
+                    headers: { 'x-admin-key': clave }
+                });
+                const data = await respuesta.json();
+
+                if (!respuesta.ok) {
+                    alert(`Error: ${data.error || 'No se pudo confirmar el pago.'}`);
+                    boton.disabled = false;
+                    boton.textContent = 'Confirmar pago';
+                    return;
+                }
+
+                if (data.warning) {
+                    alert(`Pago confirmado, pero: ${data.warning}`);
+                } else {
+                    alert('Pago confirmado. Se envio el correo al cliente.');
+                }
+
+                cargarPedidos();
+            } catch (error) {
+                console.error(error);
+                alert('No se pudo conectar con el servidor.');
+                boton.disabled = false;
+                boton.textContent = 'Confirmar pago';
+            }
+        }
+
+        claveGuardar.addEventListener('click', () => {
+            const valor = claveInput.value.trim();
+            if (!valor) return;
+            sessionStorage.setItem(STORAGE_KEY, valor);
+            claveInput.value = '';
+            cargarPedidos();
+        });
+
+        claveInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') claveGuardar.click();
+        });
+
+        pedidosWrap.addEventListener('click', (e) => {
+            const btn = e.target.closest('[data-confirmar-id]');
+            if (!btn) return;
+            const pedidoId = btn.dataset.confirmarId;
+            if (confirm(`¿Confirmar que el pedido #${pedidoId} ya fue pagado? Se le enviara un correo al cliente.`)) {
+                confirmarPago(pedidoId, btn);
+            }
+        });
+
+        if (getClave()) {
+            cargarPedidos();
+        }
+    </script>
+</body>
+</html>

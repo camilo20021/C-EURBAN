@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /panel-pagos.html
 
 Sitemap: https://urbandriveaccesorios.online/sitemap.xml

@@ -154,11 +154,57 @@
     <section class="personalizados" id="personalizados">
         <div class="personalizados-texto">
             <p class="subtitulo-personalizados">Hazlo unico</p>
-            <h2>PERSONALIZA<br>A TU MANERA</h2>
-            <p>Creamos buzos, sudaderas y gorras con tu propio diseno, en la talla y color que necesites. Envianos tu idea por WhatsApp.</p>
-            <a href="https://wa.me/573142921523?text=Hola%20C%26E%20Urban%2C%20quiero%20personalizar%20una%20prenda" target="_blank" rel="noopener">
-                <button class="btn-primario">Personalizar ahora</button>
-            </a>
+            <h2>PERSONALIZA<br>TU BUZO</h2>
+            <p>Sube tu logo o diseño, elige talla y color, y cuentanos como lo quieres. Te contactamos por WhatsApp para confirmar precio y forma de pago.</p>
+
+            <form id="personalizar-form" class="contacto-form" style="margin-top: 8px;">
+                <div class="form-group">
+                    <label for="personalizar-nombre">Nombre completo *</label>
+                    <input type="text" id="personalizar-nombre" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="personalizar-email">Correo electronico *</label>
+                        <input type="email" id="personalizar-email" placeholder="tu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="personalizar-telefono">Telefono *</label>
+                        <input type="tel" id="personalizar-telefono" placeholder="+57 300 000 0000" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="personalizar-talla">Talla</label>
+                        <select id="personalizar-talla">
+                            <option value="S">S</option>
+                            <option value="M" selected>M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="personalizar-color">Color del buzo</label>
+                        <select id="personalizar-color">
+                            <option value="Negro" selected>Negro</option>
+                            <option value="Azul">Azul</option>
+                            <option value="Gris">Gris</option>
+                            <option value="Blanco">Blanco</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="personalizar-imagen">Tu logo o diseño (imagen)</label>
+                    <input type="file" id="personalizar-imagen" accept="image/*">
+                    <p id="personalizar-peso" style="font-size: 12px; color: var(--gris); margin-top: 6px;"></p>
+                    <div id="personalizar-preview" style="margin-top: 10px;"></div>
+                </div>
+                <div class="form-group">
+                    <label for="personalizar-notas">Notas de diseño</label>
+                    <textarea id="personalizar-notas" rows="3" placeholder="Ej: el logo va en el pecho, tamaño mediano..."></textarea>
+                </div>
+                <button type="submit" id="personalizar-submit" class="btn-primario" style="width: 100%; justify-content: center;">Enviar pedido personalizado</button>
+            </form>
         </div>
         <div class="personalizados-img">
             <div class="prenda-placeholder">
@@ -230,6 +276,7 @@
 
     <div class="toast">Producto agregado al carrito</div>
 
+    <script src="jvs/navegacion.js"></script>
     <script src="jvs/placeholders.js"></script>
     <script src="jvs/advanced-features.js"></script>
     <script src="jvs/ux-enhancements.js"></script>
@@ -237,5 +284,6 @@
     <script src="jvs/index.js"></script>
     <script src="jvs/carrito.js"></script>
     <script src="jvs/user-state.js"></script>
+    <script src="jvs/personalizar.js"></script>
 </body>
 </html>

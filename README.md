@@ -98,6 +98,66 @@ verdad. Los pedidos siguen guardandose normalmente en `store.db`; cuando
 quieras retomar un panel de administracion, hay que construirlo con
 autenticacion validada del lado del servidor.
 
+## Base de datos y emails automaticos
+
+El backend (`server.js` + `db.js`) ya guarda todo en SQLite (`store.db`) y
+envia dos correos automaticos:
+
+1. **Al confirmar el pedido** (cuando el cliente llena el formulario de
+   `pago.html` o el de personalizado): se guarda el pedido completo y se
+   envia un correo de "pedido recibido" al cliente.
+2. **Al confirmar el pago** (ustedes, manualmente, cuando reciban el pago
+   por Nequi/Daviplata/transferencia/datafono): deben llamar a la ruta
+   `POST /api/orders/:id/confirmar-pago` con el ID del pedido. Esto marca
+   el pedido como pagado y envia un segundo correo al cliente confirmando
+   el pago.
+
+Esa ruta esta protegida con una clave secreta (`ADMIN_SECRET_KEY` en tu
+`.env`). Para confirmar un pago, hay que enviar esa clave en el header
+`x-admin-key`.
+
+### Opcion facil: panel de pagos visual
+
+En `panel-pagos.html` hay una pagina simple para hacer esto sin usar la
+terminal: pones tu clave una vez, ves la lista de pedidos pendientes, y
+con un boton confirmas el pago de cada uno. Esta pagina:
+
+- NO esta enlazada desde ningun menu del sitio publico (solo se accede
+  escribiendo la URL directamente, ej. `tudominio.com/panel-pagos.html`).
+- Esta bloqueada en `robots.txt` para que no aparezca en buscadores.
+- Guarda la clave solo en la sesion del navegador (`sessionStorage`), nunca
+  en el codigo ni en la base de datos. Se borra al cerrar la pestaña.
+
+No comparas el link de esta pagina publicamente, y no se la envies a nadie
+fuera de ustedes dos.
+
+### Opcion alterna: linea de comandos
+
+Si prefieres, tambien puedes confirmar un pago con curl, usando el ID del
+pedido:
+
+```bash
+curl -X POST http://localhost:3000/api/orders/5/confirmar-pago \
+  -H "x-admin-key: TU_CLAVE_SECRETA"
+```
+
+(El "5" es el ID del pedido que quieres confirmar).
+
+## Personalizar buzo con imagen
+
+En `index.html`, la seccion "Personalizar tu buzo" tiene un formulario real
+donde el cliente puede subir una foto de su diseño. La imagen se comprime
+automaticamente en el navegador (maximo 900px de ancho, calidad JPEG 72%)
+antes de enviarse, asi que el archivo final pesa poco (tipicamente 100-400KB)
+sin importar que tan pesada sea la foto original.
+
+Esa imagen se guarda en la base de datos junto con el pedido, en la columna
+`imagen_personalizada` de la tabla `pedido_items`, como texto base64. El
+cliente tambien es redirigido a WhatsApp para coordinar el precio final
+(estos pedidos no tienen precio fijo, se cotizan segun el diseño).
+
+
+
 ## Inicio de sesion con Google
 
 El boton de Google en `login.html` usa un Client ID que viene del proyecto

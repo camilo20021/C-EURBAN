@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '8mb' }));
 app.use(express.static(path.join(__dirname)));
 
 initialize();
@@ -79,9 +79,20 @@ function saveOrder(order, callback) {
         function (err) {
             if (err) return callback(err);
             const pedidoId = this.lastID;
-            const stmt = db.prepare('INSERT INTO pedido_items (pedido_id, nombre_producto, cantidad, precio_unitario, total_item) VALUES (?, ?, ?, ?, ?)');
+            const stmt = db.prepare(`INSERT INTO pedido_items
+                (pedido_id, nombre_producto, cantidad, precio_unitario, total_item, talla, imagen_personalizada, notas_personalizacion)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)`);
             items.forEach(item => {
-                stmt.run(pedidoId, item.nombre_producto, item.cantidad, item.precio_unitario, item.total_item);
+                stmt.run(
+                    pedidoId,
+                    item.nombre_producto,
+                    item.cantidad,
+                    item.precio_unitario,
+                    item.total_item,
+                    item.talla || null,
+                    item.imagen_personalizada || null,
+                    item.notas_personalizacion || null
+                );
             });
             stmt.finalize(error => {
                 if (error) return callback(error);
@@ -91,26 +102,57 @@ function saveOrder(order, callback) {
     );
 }
 
-function buildEmailHtml(orderData) {
+function buildOrderEmailHtml(orderData) {
+    const esPersonalizado = orderData.total === 0;
+
     const itemsHtml = orderData.items
-        .map(item => `<li>${item.nombre_producto} x${item.cantidad} - $${item.total_item.toLocaleString()}</li>`)
+        .map(item => {
+            const talla = item.talla ? ` (talla ${item.talla})` : '';
+            const personalizado = item.imagen_personalizada ? ' — diseño personalizado adjunto' : '';
+            const precio = esPersonalizado ? ' - Cotizacion pendiente' : ` - $${item.total_item.toLocaleString('es-CO')}`;
+            return `<li>${item.nombre_producto}${talla} x${item.cantidad}${precio}${personalizado}</li>`;
+        })
         .join('');
+
+    const bloqueTotales = esPersonalizado
+        ? `<p>Tu pedido es personalizado, asi que el precio final se confirma por WhatsApp segun el diseño y la cantidad.</p>`
+        : `
+            <p><strong>Subtotal:</strong> $${orderData.subtotal.toLocaleString('es-CO')}</p>
+            <p><strong>Envio:</strong> $${orderData.envio.toLocaleString('es-CO')}</p>
+            <p><strong>Total:</strong> $${orderData.total.toLocaleString('es-CO')}</p>
+        `;
+
+    const bloqueDireccion = esPersonalizado
+        ? ''
+        : `
+            <h3>Datos de envio</h3>
+            <p>${orderData.direccion}, ${orderData.ciudad}</p>
+        `;
 
     return `
         <div style="font-family: Arial, sans-serif; color: #111;">
-            <h2>Gracias por tu compra en C&E Urban</h2>
+            <h2>Gracias por tu pedido en C&E Urban Wear</h2>
             <p>Hola <strong>${orderData.nombre}</strong>,</p>
-            <p>Hemos recibido tu pedido y estamos procesándolo.</p>
-            <h3>Resumen de compra</h3>
+            <p>Hemos recibido tu pedido. En breve te contactaremos por WhatsApp para coordinar el pago y el envio.</p>
+            <h3>Resumen del pedido</h3>
             <ul>${itemsHtml}</ul>
-            <p><strong>Subtotal:</strong> $${orderData.subtotal.toLocaleString()}</p>
-            <p><strong>Envío:</strong> $${orderData.envio.toLocaleString()}</p>
-            <p><strong>Total:</strong> $${orderData.total.toLocaleString()}</p>
-            <h3>Datos de envío</h3>
-            <p>${orderData.direccion}, ${orderData.ciudad}</p>
-            <p><strong>Teléfono:</strong> ${orderData.telefono}</p>
-            <p><strong>Método de pago:</strong> ${orderData.metodo_pago}</p>
-            <p>Gracias por confiar en C&E Urban.</p>
+            ${bloqueTotales}
+            ${bloqueDireccion}
+            <p><strong>Telefono:</strong> ${orderData.telefono}</p>
+            <p><strong>Metodo de pago preferido:</strong> ${orderData.metodo_pago}</p>
+            <p>Gracias por confiar en C&E Urban Wear.</p>
+        </div>
+    `;
+}
+
+function buildPaymentConfirmedEmailHtml(orderData) {
+    return `
+        <div style="font-family: Arial, sans-serif; color: #111;">
+            <h2>Tu pago fue confirmado</h2>
+            <p>Hola <strong>${orderData.nombre}</strong>,</p>
+            <p>Confirmamos que recibimos el pago de tu pedido <strong>#${orderData.pedidoId}</strong> por un total de <strong>$${orderData.total.toLocaleString('es-CO')}</strong>.</p>
+            <p>Estamos preparando tu pedido para el envio. Te avisaremos por WhatsApp cuando salga.</p>
+            <p>Gracias por confiar en C&E Urban Wear.</p>
         </div>
     `;
 }
@@ -139,7 +181,10 @@ app.post('/api/orders', async (req, res) => {
                 nombre_producto: item.nombre,
                 cantidad: item.cantidad,
                 precio_unitario: item.precio,
-                total_item: item.cantidad * item.precio
+                total_item: item.cantidad * item.precio,
+                talla: item.talla || null,
+                imagen_personalizada: item.imagen_personalizada || null,
+                notas_personalizacion: item.notas_personalizacion || null
             }))
         };
 
@@ -152,10 +197,10 @@ app.post('/api/orders', async (req, res) => {
             try {
                 const transporter = await createTransporter();
                 const info = await transporter.sendMail({
-                    from: process.env.FROM_EMAIL || 'C&E Urban <no-reply@ceurban.com>',
+                    from: process.env.FROM_EMAIL || 'C&E Urban Wear <no-reply@ceurban.com>',
                     to: email,
-                    subject: 'Gracias por tu compra en C&E Urban',
-                    html: buildEmailHtml({
+                    subject: `Pedido #${pedidoId} recibido - C&E Urban Wear`,
+                    html: buildOrderEmailHtml({
                         nombre,
                         items: orderData.items,
                         subtotal,
@@ -168,12 +213,96 @@ app.post('/api/orders', async (req, res) => {
                     })
                 });
 
+                db.run('UPDATE pedidos SET email_pedido_enviado = 1 WHERE id = ?', [pedidoId]);
                 res.json({ success: true, pedidoId, emailInfo: info });
             } catch (sendErr) {
                 console.error(sendErr);
-                res.status(500).json({ success: true, pedidoId, warning: 'Pedido guardado, pero no se pudo enviar el correo.' });
+                res.status(200).json({ success: true, pedidoId, warning: 'Pedido guardado, pero no se pudo enviar el correo.' });
             }
         });
+    });
+});
+
+function validarClaveAdmin(req, res, next) {
+    const claveRecibida = req.headers['x-admin-key'] || req.body?.claveAdmin || req.query?.claveAdmin;
+    const claveCorrecta = process.env.ADMIN_SECRET_KEY;
+
+    if (!claveCorrecta) {
+        console.error('ADMIN_SECRET_KEY no esta configurada en el .env del servidor.');
+        return res.status(500).json({ error: 'El servidor no tiene configurada la clave de administrador.' });
+    }
+
+    if (!claveRecibida || claveRecibida !== claveCorrecta) {
+        return res.status(401).json({ error: 'Clave de administrador invalida o ausente.' });
+    }
+
+    next();
+}
+
+app.get('/api/orders/pendientes', validarClaveAdmin, (req, res) => {
+    const query = `SELECT p.id, p.total, p.estado, p.metodo_pago, p.creado_en, c.nombre, c.email, c.telefono
+        FROM pedidos p
+        LEFT JOIN clientes c ON p.cliente_id = c.id
+        WHERE p.estado = 'pendiente'
+        ORDER BY p.creado_en DESC
+        LIMIT 50`;
+
+    db.all(query, [], (err, rows) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error al recuperar pedidos.' });
+        }
+        res.json({ pedidos: rows });
+    });
+});
+
+app.post('/api/orders/:id/confirmar-pago', validarClaveAdmin, async (req, res) => {
+    const pedidoId = parseInt(req.params.id);
+    if (!pedidoId) {
+        return res.status(400).json({ error: 'Id de pedido invalido.' });
+    }
+
+    const query = `SELECT p.id, p.total, c.nombre, c.email
+        FROM pedidos p
+        LEFT JOIN clientes c ON p.cliente_id = c.id
+        WHERE p.id = ?`;
+
+    db.get(query, [pedidoId], async (err, pedido) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Error buscando el pedido.' });
+        }
+        if (!pedido) {
+            return res.status(404).json({ error: 'Pedido no encontrado.' });
+        }
+
+        db.run(
+            "UPDATE pedidos SET estado = 'pagado', pago_confirmado_en = CURRENT_TIMESTAMP WHERE id = ?",
+            [pedidoId]
+        );
+
+        if (!pedido.email) {
+            return res.json({ success: true, warning: 'Pedido marcado como pagado, pero el cliente no tiene email registrado.' });
+        }
+
+        try {
+            const transporter = await createTransporter();
+            await transporter.sendMail({
+                from: process.env.FROM_EMAIL || 'C&E Urban Wear <no-reply@ceurban.com>',
+                to: pedido.email,
+                subject: `Pago confirmado - Pedido #${pedido.id} - C&E Urban Wear`,
+                html: buildPaymentConfirmedEmailHtml({
+                    nombre: pedido.nombre,
+                    pedidoId: pedido.id,
+                    total: pedido.total
+                })
+            });
+            db.run('UPDATE pedidos SET email_pago_enviado = 1 WHERE id = ?', [pedidoId]);
+            res.json({ success: true });
+        } catch (sendErr) {
+            console.error(sendErr);
+            res.status(200).json({ success: true, warning: 'Pago confirmado, pero no se pudo enviar el correo.' });
+        }
     });
 });
 
