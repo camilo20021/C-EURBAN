@@ -1,46 +1,266 @@
 [
     {
         "id": 1,
-        "nombre": "Buzo Oversize Negro",
+        "nombre": "Buzo Nueva Coleccion",
         "precio": 95000,
         "categoria": "buzos",
-        "descripcion": "Buzo oversize de algodon premium, capucha doble forrada y bolsillo canguro. Estilo urbano clasico C&E.",
+        "descripcion": "Buzo negro con estampado exclusivo, capucha comoda y tela afelpada de alto gramaje.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "placeholder",
+        "imagen": "IMAGENES/Buzos/HOODIE (1).png",
         "color": "#0a0a0f"
     },
     {
         "id": 2,
-        "nombre": "Buzo Street Azul",
+        "nombre": "Buzo Homero Simpson",
         "precio": 98000,
         "categoria": "buzos",
-        "descripcion": "Buzo con detalles bordados, corte relajado y tela afelpada de alto gramaje. Edicion C&E Urban Wear.",
+        "descripcion": "Buzo con estampado de Homero Simpson, ideal para un look casual y divertido.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "placeholder",
+        "imagen": "IMAGENES/Buzos/Homero Simpson.png",
         "color": "#1c2f6e"
     },
     {
         "id": 3,
-        "nombre": "Jean Slim Fit Negro",
-        "precio": 110000,
-        "categoria": "jeans",
-        "descripcion": "Jean slim fit de mezclilla resistente, corte moderno y acabado desgastado sutil.",
-        "tallas": ["28", "30", "32", "34", "36", "38"],
-        "imagen": "placeholder",
-        "color": "#151515"
+        "nombre": "Buzo Marvel",
+        "precio": 95000,
+        "categoria": "buzos",
+        "descripcion": "Buzo oversize con estampado Marvel, tela suave premium.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/Marvel.png",
+        "color": "#3454a8"
     },
     {
         "id": 4,
-        "nombre": "Jean Cargo Urbano",
-        "precio": 125000,
-        "categoria": "jeans",
-        "descripcion": "Jean tipo cargo con bolsillos laterales, ideal para un look urbano funcional.",
-        "tallas": ["28", "30", "32", "34", "36", "38"],
-        "imagen": "placeholder",
-        "color": "#2b2b2b"
+        "nombre": "Buzo Nasa Rocket",
+        "precio": 98000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con estampado Nasa Rocket, estilo urbano espacial.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/Nasarocket.png",
+        "color": "#1c2f6e"
     },
     {
         "id": 5,
+        "nombre": "Buzo Bucks Basketball",
+        "precio": 95000,
+        "categoria": "buzos",
+        "descripcion": "Buzo verde estilo basketball Bucks, capucha doble forrada.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/1716945775WhatsApp Image 2024-05-27 at 9.38.36 PM.jpeg",
+        "color": "#14241a"
+    },
+    {
+        "id": 6,
+        "nombre": "Buzo Marshmello Marfil",
+        "precio": 98000,
+        "categoria": "buzos",
+        "descripcion": "Buzo color marfil con estampado Marshmello al frente y espalda.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/1764421015MARSHMELLO RAMON MARFIL.jpg",
+        "color": "#cfc9bd"
+    },
+    {
+        "id": 7,
+        "nombre": "Buzo Astronauta 23",
+        "precio": 95000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con estampado de astronauta, diseno urbano exclusivo.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/astronauta 23.png",
+        "color": "#1c2f6e"
+    },
+    {
+        "id": 8,
+        "nombre": "Buzo California",
+        "precio": 98000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con estampado California, estilo streetwear.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/california.png",
+        "color": "#0a0a0f"
+    },
+    {
+        "id": 9,
+        "nombre": "Buzo Createboom",
+        "precio": 95000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con estampado Createboom, edicion exclusiva C&E.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/createboom.png",
+        "color": "#1c2f6e"
+    },
+    {
+        "id": 10,
+        "nombre": "Buzo Disney",
+        "precio": 98000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con estampado Disney, diseno divertido y comodo.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/disney.png",
+        "color": "#0a0a0f"
+    },
+    {
+        "id": 11,
+        "nombre": "Buzo Flowers",
+        "precio": 95000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con estampado floral, corte relajado.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/florwers.png",
+        "color": "#8a1230"
+    },
+    {
+        "id": 12,
+        "nombre": "Buzo Good Mood",
+        "precio": 98000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con estampado Good Mood, ideal para el dia a dia.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/goodmood.png",
+        "color": "#1c2f6e"
+    },
+    {
+        "id": 13,
+        "nombre": "Buzo Hope Margaritas",
+        "precio": 95000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con estampado de margaritas, diseno exclusivo C&E.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/hopemargaritas.png",
+        "color": "#1c2f6e"
+    },
+    {
+        "id": 14,
+        "nombre": "Buzo Leon Cruz",
+        "precio": 98000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con estampado de leon, estilo urbano con actitud.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/leoncruz.png",
+        "color": "#0a0a0f"
+    },
+    {
+        "id": 15,
+        "nombre": "Buzo Looney Tunes",
+        "precio": 95000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con estampado Looney Tunes variado.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/looneyyvarios.png",
+        "color": "#1c2f6e"
+    },
+    {
+        "id": 16,
+        "nombre": "Buzo Loveys",
+        "precio": 98000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con estampado Loveys, diseno exclusivo C&E.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/loveys.png",
+        "color": "#8a1230"
+    },
+    {
+        "id": 17,
+        "nombre": "Buzo Love Margaritas",
+        "precio": 95000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con estampado de margaritas y corazones.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/Lovemargaritas.png",
+        "color": "#8a1230"
+    },
+    {
+        "id": 18,
+        "nombre": "Buzo Nasa",
+        "precio": 98000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con estampado Nasa, estilo espacial urbano.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/nasa.png",
+        "color": "#1c2f6e"
+    },
+    {
+        "id": 19,
+        "nombre": "Buzo Cuidese de la Envidia",
+        "precio": 95000,
+        "categoria": "buzos",
+        "descripcion": "Buzo negro con mensaje 'Cuidese de la envidia mijo', capucha comoda.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/Nueva coleccion (1).jpeg",
+        "color": "#0a0a0f"
+    },
+    {
+        "id": 20,
+        "nombre": "Buzo Estilo Negro",
+        "precio": 98000,
+        "categoria": "buzos",
+        "descripcion": "Buzo negro minimalista con logo bordado, diseno exclusivo.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/Nueva colleccion.jpeg",
+        "color": "#0a0a0f"
+    },
+    {
+        "id": 21,
+        "nombre": "Buzo Oso Genuine",
+        "precio": 95000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con estampado de oso 'Genuine', diseno urbano.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/osogenuine.png",
+        "color": "#1c2f6e"
+    },
+    {
+        "id": 22,
+        "nombre": "Buzo Pato",
+        "precio": 98000,
+        "categoria": "buzos",
+        "descripcion": "Buzo con estampado de pato, diseno divertido.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/pato.png",
+        "color": "#1c2f6e"
+    },
+    {
+        "id": 23,
+        "nombre": "Buzo Personalizado",
+        "precio": 95000,
+        "categoria": "buzos",
+        "descripcion": "Buzo gris para personalizar con tu logo o diseno favorito.",
+        "tallas": ["S", "M", "L", "XL", "XXL"],
+        "imagen": "IMAGENES/Buzos/personaliza.jpg",
+        "color": "#8a8a96"
+    },
+    {
+        "id": 24,
+        "nombre": "Jean Barrel Francia",
+        "precio": 180000,
+        "categoria": "jeans",
+        "descripcion": "Jean barrel con cotilla tipo pinza y detalles deportivos laterales.",
+        "tallas": ["6", "8", "10", "12", "14"],
+        "imagen": "IMAGENES/jeans/643069fa-0b29-4b37-b117-51125e94e882.jpg",
+        "color": "#2b3a55"
+    },
+    {
+        "id": 25,
+        "nombre": "Jean Mom Iran",
+        "precio": 180000,
+        "categoria": "jeans",
+        "descripcion": "Jean mom tiro alto, bota semi recta, tela indigo rigido, 5 bolsillos funcionales.",
+        "tallas": ["6", "8", "10", "12", "14"],
+        "imagen": "IMAGENES/jeans/jean mom iran.jpg",
+        "color": "#2b3a55"
+    },
+    {
+        "id": 26,
+        "nombre": "Pantalon Ajustado Negro",
+        "precio": 180000,
+        "categoria": "jeans",
+        "descripcion": "Pantalon ajustado en negro, elegancia y comodidad en un solo diseno.",
+        "tallas": ["6", "8", "10", "12", "14"],
+        "imagen": "IMAGENES/jeans/pantalon Elegancia y comodidad en negro.png",
+        "color": "#151515"
+    },
+    {
+        "id": 27,
         "nombre": "Sudadera Crewneck C&E",
         "precio": 78000,
         "categoria": "sudaderas",
@@ -50,7 +270,7 @@
         "color": "#8a1230"
     },
     {
-        "id": 6,
+        "id": 28,
         "nombre": "Sudadera Urban Wear Blanca",
         "precio": 78000,
         "categoria": "sudaderas",
@@ -60,23 +280,33 @@
         "color": "#e8e8e8"
     },
     {
-        "id": 7,
-        "nombre": "Gorra Snapback C&E",
-        "precio": 45000,
+        "id": 29,
+        "nombre": "Cachucha Kaki Chile",
+        "precio": 25000,
         "categoria": "gorras",
-        "descripcion": "Gorra snapback ajustable con logo bordado en 3D, visera plana.",
+        "descripcion": "Cachucha kaki bordada con diseno de chile, ajustable.",
         "tallas": ["Unica"],
-        "imagen": "placeholder",
-        "color": "#0a0a0f"
+        "imagen": "IMAGENES/Gorras/cachuca kaki beisbolera con diseño de chile.png",
+        "color": "#e8e3d8"
     },
     {
-        "id": 8,
-        "nombre": "Gorra Dad Hat Azul",
-        "precio": 42000,
+        "id": 30,
+        "nombre": "Cachucha Social Tourist LA",
+        "precio": 25000,
         "categoria": "gorras",
-        "descripcion": "Gorra estilo dad hat, perfil bajo y correa ajustable trasera.",
+        "descripcion": "Cachucha beisbolera bordada 'Social Tourist Los Angeles'.",
         "tallas": ["Unica"],
-        "imagen": "placeholder",
-        "color": "#1c2f6e"
+        "imagen": "IMAGENES/Gorras/cachuca kaki beisbolera.png",
+        "color": "#e8e3d8"
+    },
+    {
+        "id": 31,
+        "nombre": "Gorra New York",
+        "precio": 25000,
+        "categoria": "gorras",
+        "descripcion": "Gorra snapback estilo New York, bordado clasico NY.",
+        "tallas": ["Unica"],
+        "imagen": "IMAGENES/Gorras/gorra nwy york.png",
+        "color": "#14141c"
     }
 ]

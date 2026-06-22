@@ -44,10 +44,19 @@ const SVG_PRENDAS = {
 };
 
 /**
- * Genera el marcador visual (placeholder elegante) de un producto.
- * Usa una silueta SVG segun la categoria, tenida con el color del producto.
+ * Genera el marcador visual de un producto.
+ * Si el producto tiene una foto real (campo "imagen" distinto de "placeholder"), la muestra.
+ * Si no, usa una silueta SVG segun la categoria, tenida con el color del producto.
  */
 function generarPlaceholderProducto(producto) {
+    if (producto.imagen && producto.imagen !== 'placeholder') {
+        return `
+            <div class="prenda-placeholder foto-real">
+                <img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy">
+            </div>
+        `;
+    }
+
     const generador = SVG_PRENDAS[producto.categoria] || SVG_PRENDAS.buzos;
     const color = producto.color || '#1c2f6e';
     return `
