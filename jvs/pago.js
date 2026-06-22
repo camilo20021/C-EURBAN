@@ -103,8 +103,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.removeItem('carrito');
             }
 
-            const productosTexto = carrito.map(p => `- ${p.nombre} x${p.quantity || 1}: $${(p.precio * (p.quantity || 1)).toLocaleString('es-CO')}`).join('\n');
-            const mensaje = `Hola C&E Urban Wear,%0A%0AHe terminado de seleccionar mi pedido y quiero confirmar la compra.%0A%0ANombre: ${encodeURIComponent(nombre)}%0AEmail: ${encodeURIComponent(email)}%0ADireccion: ${encodeURIComponent(direccion)}%0ACiudad: ${encodeURIComponent(ciudad)}%0ATelefono: ${encodeURIComponent(telefono)}%0AMetodo de pago: ${encodeURIComponent(metodo_pago)}%0A%0AProductos:%0A${encodeURIComponent(productosTexto)}%0A%0ATotal: ${encodeURIComponent(totalEl.textContent)}%0A%0AMuchas gracias.`;
+            const metodoPagoLabels = {
+                nequi: 'Nequi',
+                daviplata: 'Daviplata',
+                transferencia: 'transferencia bancaria',
+                contraentrega: 'efectivo contraentrega'
+            };
+            const metodoPagoTexto = metodoPagoLabels[metodo_pago] || metodo_pago;
+            const cierrePago = metodo_pago === 'contraentrega'
+                ? 'Quedo atento para coordinar la entrega y pagar en efectivo contraentrega.'
+                : `Quedo atento a los datos para pagar por ${metodoPagoTexto}.`;
+
+            const totalUnidades = carrito.reduce((acc, p) => acc + (p.quantity || 1), 0);
+            const productosTexto = carrito.map(p => `🔸 ${p.nombre} x${p.quantity || 1} — $${(p.precio * (p.quantity || 1)).toLocaleString('es-CO')}`).join('\n');
+
+            const mensaje = `¡Hola C&E Urban Wear! 👋%0A%0AQuiero confirmar mis productos a pagar (${totalUnidades} producto${totalUnidades > 1 ? 's' : ''}):%0A%0A🛒 Productos a pagar:%0A${encodeURIComponent(productosTexto)}%0A%0A💰 Total a pagar: ${encodeURIComponent(totalEl.textContent)}%0A%0A📍 Datos de envio:%0ANombre: ${encodeURIComponent(nombre)}%0ATelefono: ${encodeURIComponent(telefono)}%0AEmail: ${encodeURIComponent(email)}%0ADireccion: ${encodeURIComponent(direccion)}, ${encodeURIComponent(ciudad)}%0A%0A💳 ${encodeURIComponent(cierrePago)}%0A%0A¡Gracias!`;
 
             const whatsappUrl = `https://wa.me/573142921523?text=${mensaje}`;
             window.location.href = whatsappUrl;

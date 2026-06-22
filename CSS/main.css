@@ -1,20 +1,21 @@
 /* ==========================================================================
    C&E URBAN WEAR — Sistema de diseño
-   Negro profundo + Azul electrico + Rojo + Blanco hueso
+   Gris carbon + Naranja electrico + Rojo rosado + Amarillo neon
    ========================================================================== */
 
 :root {
-    --negro: #0a0a0f;
-    --negro-suave: #14141c;
-    --negro-card: #1a1a24;
-    --azul: #1c2f6e;
-    --azul-claro: #3454a8;
-    --rojo: #c41e3a;
-    --rojo-claro: #e8334f;
+    --negro: #15161c;
+    --negro-suave: #1b1d28;
+    --negro-card: #20222e;
+    --azul: #4d5bff;
+    --azul-claro: #6e7aff;
+    --rojo: #ff2d55;
+    --rojo-claro: #ff5277;
     --blanco: #f5f5f0;
-    --gris: #8a8a96;
-    --gris-linea: #2a2a36;
-    --acento: #ff6b35;
+    --gris: #9b9ba7;
+    --gris-linea: #313447;
+    --acento: #ff5b1f;
+    --amarillo: #ffd23f;
 
     --fuente-display: 'Anton', 'Arial Narrow', sans-serif;
     --fuente-cuerpo: 'Inter', -apple-system, 'Segoe UI', sans-serif;
@@ -495,7 +496,19 @@ button {
     width: 600px;
     height: 600px;
     background: radial-gradient(circle, var(--azul) 0%, transparent 70%);
-    opacity: 0.25;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -25%;
+    left: -5%;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, var(--acento) 0%, transparent 70%);
+    opacity: 0.22;
     z-index: 0;
 }
 
@@ -1177,6 +1190,143 @@ button {
 .toast.exito { border-left-color: #2ecc71; }
 .toast.error { border-left-color: var(--rojo); }
 .toast.aviso { border-left-color: var(--acento); }
+
+/* ==========================================================================
+   BARRA DE ANUNCIOS
+   ========================================================================== */
+.promo-bar {
+    background: linear-gradient(90deg, var(--rojo) 0%, var(--acento) 50%, var(--amarillo) 100%);
+    color: var(--negro);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 9px 5%;
+    position: relative;
+    z-index: 210;
+}
+
+.promo-bar span {
+    margin: 0 14px;
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   WHATSAPP FLOTANTE Y VOLVER ARRIBA
+   ========================================================================== */
+.whatsapp-flotante {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25d366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: var(--sombra);
+    z-index: 290;
+    transition: transform 0.2s;
+}
+
+.whatsapp-flotante:hover {
+    transform: scale(1.08);
+}
+
+.volver-arriba {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--negro-card);
+    border: 1px solid var(--gris-linea);
+    color: var(--blanco);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--sombra);
+    z-index: 290;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.25s, transform 0.25s, border-color 0.2s;
+}
+
+.volver-arriba.visible {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+}
+
+.volver-arriba:hover {
+    border-color: var(--acento);
+    color: var(--acento);
+}
+
+/* ==========================================================================
+   PREGUNTAS FRECUENTES (FAQ)
+   ========================================================================== */
+.faq {
+    padding: 60px 5% 80px;
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--negro-card);
+    border: 1px solid var(--gris-linea);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.faq-pregunta {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--blanco);
+    text-align: left;
+    padding: 18px 22px;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.faq-pregunta::after {
+    content: '+';
+    font-size: 20px;
+    color: var(--acento);
+    flex-shrink: 0;
+    transition: transform 0.25s;
+}
+
+.faq-item.abierto .faq-pregunta::after {
+    transform: rotate(45deg);
+}
+
+.faq-respuesta {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+}
+
+.faq-respuesta p {
+    color: var(--gris);
+    font-size: 13px;
+    line-height: 1.6;
+    padding: 0 22px 18px;
+}
 
 /* ==========================================================================
    RESPONSIVE

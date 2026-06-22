@@ -45,15 +45,15 @@ class UserDashboardPanel {
         `;
 
         this.style = `
-            <style>
+            <style id="dashboard-styles">
                 .user-dashboard-panel {
                     position: fixed;
                     right: -400px;
                     top: 0;
                     width: 400px;
                     height: 100vh;
-                    background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(40, 40, 40, 0.95) 100%);
-                    border: 1px solid rgba(255, 102, 0, 0.2);
+                    background: linear-gradient(135deg, var(--negro-card) 0%, var(--negro-suave) 100%);
+                    border: 1px solid rgba(255, 91, 31, 0.2);
                     box-shadow: -4px 0 16px rgba(0, 0, 0, 0.5);
                     z-index: 999;
                     transition: right 0.3s ease;
@@ -96,7 +96,7 @@ class UserDashboardPanel {
                 }
 
                 .dashboard-header h2 {
-                    color: #ff6b35;
+                    color: var(--acento);
                     margin: 0;
                 }
 
@@ -110,7 +110,7 @@ class UserDashboardPanel {
                 }
 
                 .close-dashboard:hover {
-                    color: #ff6b35;
+                    color: var(--acento);
                     transform: rotate(90deg);
                 }
 
@@ -134,13 +134,13 @@ class UserDashboardPanel {
                 }
 
                 .tab-btn:hover {
-                    color: #ff6b35;
-                    background: rgba(255, 102, 0, 0.05);
+                    color: var(--acento);
+                    background: rgba(255, 91, 31, 0.05);
                 }
 
                 .tab-btn.active {
-                    color: #ff6b35;
-                    border-bottom-color: #ff6b35;
+                    color: var(--acento);
+                    border-bottom-color: var(--acento);
                 }
 
                 .tab-content {
@@ -155,7 +155,7 @@ class UserDashboardPanel {
 
                 .loyalty-section, .points-section {
                     background: rgba(255, 255, 255, 0.05);
-                    border: 1px solid rgba(255, 102, 0, 0.2);
+                    border: 1px solid rgba(255, 91, 31, 0.2);
                     border-radius: 12px;
                     padding: 20px;
                 }
@@ -166,8 +166,8 @@ class UserDashboardPanel {
                 }
 
                 .loyalty-card {
-                    background: linear-gradient(135deg, rgba(255, 102, 0, 0.1) 0%, rgba(255, 102, 0, 0.05) 100%);
-                    border: 1px solid rgba(255, 102, 0, 0.3);
+                    background: linear-gradient(135deg, rgba(255, 91, 31, 0.1) 0%, rgba(255, 91, 31, 0.05) 100%);
+                    border: 1px solid rgba(255, 91, 31, 0.3);
                     border-radius: 8px;
                     padding: 16px;
                     text-align: center;
@@ -181,7 +181,7 @@ class UserDashboardPanel {
                 .level-name {
                     font-size: 18px;
                     font-weight: bold;
-                    color: #ff6b35;
+                    color: var(--acento);
                 }
 
                 .level-benefit {
@@ -201,7 +201,7 @@ class UserDashboardPanel {
 
                 .progress-fill {
                     height: 100%;
-                    background: linear-gradient(90deg, #ff6b35, #ff8c5a);
+                    background: linear-gradient(90deg, var(--acento), var(--amarillo));
                     transition: width 0.3s ease;
                 }
 
@@ -233,7 +233,7 @@ class UserDashboardPanel {
 
                 .favorite-info h4, .history-info h4 {
                     margin: 0 0 4px 0;
-                    color: #ff6b35;
+                    color: var(--acento);
                     font-size: 13px;
                 }
 
@@ -243,7 +243,7 @@ class UserDashboardPanel {
                 }
 
                 .remove-favorite {
-                    background: #f44336;
+                    background: var(--rojo);
                     color: white;
                     border: none;
                     padding: 6px 10px;
@@ -253,7 +253,7 @@ class UserDashboardPanel {
                 }
 
                 .remove-favorite:hover {
-                    background: #d32f2f;
+                    background: var(--rojo-claro);
                 }
 
                 .empty-message {
@@ -389,7 +389,7 @@ class UserDashboardPanel {
         const totalSpent = loyalty.getTotalSpent();
         pointsInfo.innerHTML = `
             <div class="loyalty-card">
-                <div style="font-size: 28px; font-weight: bold; color: #ff6b35;">${points}</div>
+                <div style="font-size: 28px; font-weight: bold; color: var(--acento);">${points}</div>
                 <p style="color: #ccc; margin: 8px 0 0 0;">Puntos disponibles</p>
                 <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 12px 0;">
                 <p style="color: #ccc; font-size: 13px; margin: 0;"><strong>Total Gastado:</strong> $${totalSpent.toLocaleString('es-CO')}</p>

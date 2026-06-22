@@ -94,7 +94,7 @@ class QuickViewModal {
 
         const wishlistBtn = this.modal.querySelector('.modal-wishlist-btn');
         if (wishlist.isInWishlist(product.id)) {
-            wishlistBtn.style.background = '#ff6b35';
+            wishlistBtn.style.background = 'var(--acento)';
         } else {
             wishlistBtn.style.background = '';
         }
@@ -131,7 +131,7 @@ class QuickViewModal {
             notifier.info('Removido de favoritos');
         } else {
             wishlist.addToWishlist(this.currentProduct);
-            wishlistBtn.style.background = '#ff6b35';
+            wishlistBtn.style.background = 'var(--acento)';
             notifier.success('Agregado a favoritos');
         }
     }
