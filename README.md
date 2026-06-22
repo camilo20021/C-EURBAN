@@ -1,6 +1,6 @@
 # C&E Urban Wear — Tienda online
 
-Sitio de la marca C&E Urban Wear (buzos, jeans, sudaderas y gorras), con
+Sitio de la marca C&E Urban Wear (buzos, jeans y gorras), con
 catalogo dinamico, carrito de compras, sistema de favoritos y puntos de
 lealtad, y backend en Node.js que guarda clientes y pedidos en SQLite.
 
@@ -24,7 +24,6 @@ index.html          Pagina principal
 productos.html       Catalogo completo con filtros
 buzos.html            Categoria: buzos
 jeans.html             Categoria: jeans
-sudaderas.html        Categoria: sudaderas
 gorras.html            Categoria: gorras
 contacto.html         Formulario de contacto (envia por WhatsApp)
 login.html            Inicio de sesion (Google + registro manual)

@@ -250,26 +250,6 @@
         "color": "#151515"
     },
     {
-        "id": 27,
-        "nombre": "Sudadera Crewneck C&E",
-        "precio": 78000,
-        "categoria": "sudaderas",
-        "descripcion": "Sudadera cuello redondo, tela suave de algodon perchado y logo bordado en pecho.",
-        "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "placeholder",
-        "color": "#8a1230"
-    },
-    {
-        "id": 28,
-        "nombre": "Sudadera Urban Wear Blanca",
-        "precio": 78000,
-        "categoria": "sudaderas",
-        "descripcion": "Sudadera blanca con estampado frontal C&E, corte recto unisex.",
-        "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "placeholder",
-        "color": "#e8e8e8"
-    },
-    {
         "id": 29,
         "nombre": "Cachucha Kaki Chile",
         "precio": 25000,

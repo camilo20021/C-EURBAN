@@ -14,14 +14,6 @@ const SVG_PRENDAS = {
             <path d="M88 100 L100 112 L116 92" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     `,
-    sudaderas: (color) => `
-        <svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M65 28 L100 18 L135 28 L135 36 L165 48 L176 86 L154 96 L146 76 L146 195 C146 204 139 208 130 208 L70 208 C61 208 54 204 54 195 L54 76 L46 96 L24 86 L35 48 L65 36 Z"
-                fill="${color}" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
-            <circle cx="100" cy="95" r="20" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" fill="none"/>
-            <path d="M91 95 L100 104 L112 88" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    `,
     jeans: (color) => `
         <svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M62 12 L138 12 L142 60 L150 200 L120 204 L106 92 L100 92 L94 92 L80 204 L50 200 L58 60 Z"
