@@ -220,16 +220,6 @@
         "color": "#1c2f6e"
     },
     {
-        "id": 23,
-        "nombre": "Buzo Personalizado",
-        "precio": 95000,
-        "categoria": "buzos",
-        "descripcion": "Buzo gris para personalizar con tu logo o diseno favorito.",
-        "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/personaliza.jpg",
-        "color": "#8a8a96"
-    },
-    {
         "id": 24,
         "nombre": "Jean Barrel Francia",
         "precio": 180000,
