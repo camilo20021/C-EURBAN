@@ -704,6 +704,84 @@ button {
 }
 
 /* ==========================================================================
+   SECCION TESTIMONIOS
+   ========================================================================== */
+.testimonios {
+    padding: 40px 5% 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.carrusel-testimonios {
+    height: 270px;
+}
+
+.carrusel-testimonios .carrusel-item {
+    background: transparent;
+}
+
+.testimonio-card {
+    height: 100%;
+    background: var(--negro-card);
+    border: 1px solid var(--gris-linea);
+    border-radius: 10px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonio-estrellas {
+    color: var(--acento);
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.testimonio-texto {
+    color: var(--blanco);
+    font-size: 14px;
+    line-height: 1.6;
+    flex: 1;
+}
+
+.testimonio-autor {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--gris-linea);
+}
+
+.testimonio-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--azul);
+    color: var(--blanco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--fuente-display);
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.testimonio-nombre {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.testimonio-producto {
+    font-size: 11px;
+    color: var(--gris);
+}
+
+@media (max-width: 768px) {
+    .carrusel-testimonios { height: 300px; }
+}
+
+/* ==========================================================================
    SECCION PRODUCTOS / GRID
    ========================================================================== */
 .productos {

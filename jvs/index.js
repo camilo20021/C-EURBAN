@@ -208,8 +208,13 @@ function applySort() {
 }
 
 function iniciarCarrusel(interval = 3000, visibleDesktop = 3) {
-    const container = document.querySelector('.carrusel-contenedor');
-    const track = document.querySelector('.carrusel-imagenes');
+    document.querySelectorAll('.carrusel-contenedor').forEach(container => {
+        iniciarUnCarrusel(container, interval, visibleDesktop);
+    });
+}
+
+function iniciarUnCarrusel(container, interval, visibleDesktop) {
+    const track = container.querySelector('.carrusel-imagenes');
     if (!container || !track) return;
 
     let items = Array.from(track.querySelectorAll('.carrusel-item'));
