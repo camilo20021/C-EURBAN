@@ -2,7 +2,7 @@
     {
         "id": 1,
         "nombre": "Buzo Nueva Coleccion",
-        "precio": 95000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo negro con estampado exclusivo, capucha comoda y tela afelpada de alto gramaje.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -12,7 +12,7 @@
     {
         "id": 2,
         "nombre": "Buzo Homero Simpson",
-        "precio": 98000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado de Homero Simpson, ideal para un look casual y divertido.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -22,7 +22,7 @@
     {
         "id": 3,
         "nombre": "Buzo Marvel",
-        "precio": 95000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo oversize con estampado Marvel, tela suave premium.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -32,7 +32,7 @@
     {
         "id": 4,
         "nombre": "Buzo Nasa Rocket",
-        "precio": 98000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado Nasa Rocket, estilo urbano espacial.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -42,7 +42,7 @@
     {
         "id": 5,
         "nombre": "Buzo Bucks Basketball",
-        "precio": 95000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo verde estilo basketball Bucks, capucha doble forrada.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -52,7 +52,7 @@
     {
         "id": 6,
         "nombre": "Buzo Marshmello Marfil",
-        "precio": 98000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo color marfil con estampado Marshmello al frente y espalda.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -62,7 +62,7 @@
     {
         "id": 7,
         "nombre": "Buzo Astronauta 23",
-        "precio": 95000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado de astronauta, diseno urbano exclusivo.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -72,7 +72,7 @@
     {
         "id": 8,
         "nombre": "Buzo California",
-        "precio": 98000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado California, estilo streetwear.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -82,7 +82,7 @@
     {
         "id": 9,
         "nombre": "Buzo Createboom",
-        "precio": 95000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado Createboom, edicion exclusiva C&E.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -92,7 +92,7 @@
     {
         "id": 10,
         "nombre": "Buzo Disney",
-        "precio": 98000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado Disney, diseno divertido y comodo.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -102,7 +102,7 @@
     {
         "id": 11,
         "nombre": "Buzo Flowers",
-        "precio": 95000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado floral, corte relajado.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -112,7 +112,7 @@
     {
         "id": 12,
         "nombre": "Buzo Good Mood",
-        "precio": 98000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado Good Mood, ideal para el dia a dia.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -122,7 +122,7 @@
     {
         "id": 13,
         "nombre": "Buzo Hope Margaritas",
-        "precio": 95000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado de margaritas, diseno exclusivo C&E.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -132,7 +132,7 @@
     {
         "id": 14,
         "nombre": "Buzo Leon Cruz",
-        "precio": 98000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado de leon, estilo urbano con actitud.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -142,7 +142,7 @@
     {
         "id": 15,
         "nombre": "Buzo Looney Tunes",
-        "precio": 95000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado Looney Tunes variado.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -152,7 +152,7 @@
     {
         "id": 16,
         "nombre": "Buzo Loveys",
-        "precio": 98000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado Loveys, diseno exclusivo C&E.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -162,7 +162,7 @@
     {
         "id": 17,
         "nombre": "Buzo Love Margaritas",
-        "precio": 95000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado de margaritas y corazones.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -172,7 +172,7 @@
     {
         "id": 18,
         "nombre": "Buzo Nasa",
-        "precio": 98000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado Nasa, estilo espacial urbano.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -182,7 +182,7 @@
     {
         "id": 19,
         "nombre": "Buzo Cuidese de la Envidia",
-        "precio": 95000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo negro con mensaje 'Cuidese de la envidia mijo', capucha comoda.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -192,7 +192,7 @@
     {
         "id": 20,
         "nombre": "Buzo Estilo Negro",
-        "precio": 98000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo negro minimalista con logo bordado, diseno exclusivo.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -202,7 +202,7 @@
     {
         "id": 21,
         "nombre": "Buzo Oso Genuine",
-        "precio": 95000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado de oso 'Genuine', diseno urbano.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -212,7 +212,7 @@
     {
         "id": 22,
         "nombre": "Buzo Pato",
-        "precio": 98000,
+        "precio": 70000,
         "categoria": "buzos",
         "descripcion": "Buzo con estampado de pato, diseno divertido.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
@@ -222,7 +222,7 @@
     {
         "id": 24,
         "nombre": "Jean Barrel Francia",
-        "precio": 180000,
+        "precio": 50000,
         "categoria": "jeans",
         "descripcion": "Jean barrel con cotilla tipo pinza y detalles deportivos laterales.",
         "tallas": ["6", "8", "10", "12", "14"],
@@ -232,7 +232,7 @@
     {
         "id": 25,
         "nombre": "Jean Mom Iran",
-        "precio": 180000,
+        "precio": 50000,
         "categoria": "jeans",
         "descripcion": "Jean mom tiro alto, bota semi recta, tela indigo rigido, 5 bolsillos funcionales.",
         "tallas": ["6", "8", "10", "12", "14"],
@@ -242,7 +242,7 @@
     {
         "id": 26,
         "nombre": "Pantalon Ajustado Negro",
-        "precio": 180000,
+        "precio": 50000,
         "categoria": "jeans",
         "descripcion": "Pantalon ajustado en negro, elegancia y comodidad en un solo diseno.",
         "tallas": ["6", "8", "10", "12", "14"],
@@ -252,7 +252,7 @@
     {
         "id": 29,
         "nombre": "Cachucha Kaki Chile",
-        "precio": 25000,
+        "precio": 30000,
         "categoria": "gorras",
         "descripcion": "Cachucha kaki bordada con diseno de chile, ajustable.",
         "tallas": ["Unica"],
@@ -262,7 +262,7 @@
     {
         "id": 30,
         "nombre": "Cachucha Social Tourist LA",
-        "precio": 25000,
+        "precio": 30000,
         "categoria": "gorras",
         "descripcion": "Cachucha beisbolera bordada 'Social Tourist Los Angeles'.",
         "tallas": ["Unica"],
@@ -272,7 +272,7 @@
     {
         "id": 31,
         "nombre": "Gorra New York",
-        "precio": 25000,
+        "precio": 30000,
         "categoria": "gorras",
         "descripcion": "Gorra snapback estilo New York, bordado clasico NY.",
         "tallas": ["Unica"],
