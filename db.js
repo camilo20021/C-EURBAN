@@ -6,6 +6,7 @@ const db = new sqlite3.Database(dbPath);
 
 function initialize() {
     db.serialize(() => {
+        // TABLA DE CLIENTES
         db.run(`CREATE TABLE IF NOT EXISTS clientes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nombre TEXT NOT NULL,
@@ -17,6 +18,7 @@ function initialize() {
             actualizado_en TEXT DEFAULT CURRENT_TIMESTAMP
         )`);
 
+        // TABLA DE PEDIDOS
         db.run(`CREATE TABLE IF NOT EXISTS pedidos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             cliente_id INTEGER,
@@ -35,6 +37,7 @@ function initialize() {
             FOREIGN KEY(cliente_id) REFERENCES clientes(id)
         )`);
 
+        // TABLA DE ITEMS EN UN PEDIDO
         db.run(`CREATE TABLE IF NOT EXISTS pedido_items (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             pedido_id INTEGER NOT NULL,

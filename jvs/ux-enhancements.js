@@ -23,6 +23,9 @@ class QuickViewModal {
                                 <span id="modal-stock-status">En Stock</span>
                             </div>
                             <div class="modal-actions">
+                                <div class="size-selector-wrap" id="size-selector-wrap" style="display: none;">
+                                    <select id="modal-size-selector" class="size-selector"></select>
+                                </div>
                                 <div class="quantity-selector">
                                     <button class="qty-btn" id="qty-minus">-</button>
                                     <input type="number" id="modal-quantity" value="1" min="1">
@@ -76,6 +79,40 @@ class QuickViewModal {
         });
     }
 
+    getUrbanDescription(product) {
+        const brand = "C&E Urban Wear";
+        switch (product.categoria) {
+            case 'buzos':
+                return `Domina el asfalto con este buzo de ${brand}. Diseñado para el movimiento, su tejido premium te da confort y una silueta impecable. La pieza clave que define tu look, del día a la noche.`;
+            case 'jeans':
+                return `Forjado en la calle, para la calle. Este jean de ${brand} no es solo una prenda, es una declaración. Con un corte que se adapta a tu ritmo y una resistencia que aguanta tu rutina, es el aliado perfecto para conquistar la ciudad.`;
+            case 'gorras':
+                return `La corona del rey urbano. Esta gorra de ${brand} es el toque final que sella tu estilo. Protección, actitud y un diseño que no pasa desapercibido. Llévala y haz que cada esquina sea tu trono.`;
+            default:
+                return product.descripcion || `Un producto esencial de ${brand} para tu estilo de vida.`;
+        }
+    }
+
+    renderSizeSelector(product) {
+        const sizeWrap = this.modal.querySelector('#size-selector-wrap');
+        const sizeSelector = this.modal.querySelector('#modal-size-selector');
+        sizeSelector.innerHTML = '';
+
+        let tallas = [];
+        if (product.categoria === 'buzos') {
+            tallas = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
+        } else if (product.categoria === 'jeans') {
+            tallas = ['27', '28', '30', '32', '34'];
+        }
+
+        if (tallas.length > 0) {
+            sizeSelector.innerHTML = `<option value="">Elige tu talla</option>` + tallas.map(t => `<option value="${t}">Talla ${t}</option>`).join('');
+            sizeWrap.style.display = 'block';
+        } else {
+            sizeWrap.style.display = 'none';
+        }
+    }
+
     open(product) {
         this.currentProduct = product;
 
@@ -89,8 +126,10 @@ class QuickViewModal {
         }
         this.modal.querySelector('#modal-product-name').textContent = product.nombre;
         this.modal.querySelector('#modal-product-price').textContent = `$${product.precio.toLocaleString('es-CO')}`;
-        this.modal.querySelector('#modal-product-description').textContent = product.descripcion || '';
+        this.modal.querySelector('#modal-product-description').textContent = this.getUrbanDescription(product);
         this.modal.querySelector('#modal-quantity').value = '1';
+
+        this.renderSizeSelector(product);
 
         const wishlistBtn = this.modal.querySelector('.modal-wishlist-btn');
         if (wishlist.isInWishlist(product.id)) {
@@ -117,7 +156,21 @@ class QuickViewModal {
 
     addToCart() {
         const quantity = parseInt(this.modal.querySelector('#modal-quantity').value);
-        cart.addItem(this.currentProduct, quantity);
+        const sizeSelector = this.modal.querySelector('#modal-size-selector');
+        const sizeWrap = this.modal.querySelector('#size-selector-wrap');
+        let tallaSeleccionada = null;
+
+        if (sizeWrap.style.display !== 'none') {
+            if (!sizeSelector.value) {
+                notifier.error('Por favor, elige una talla para continuar.');
+                return;
+            }
+            tallaSeleccionada = sizeSelector.value;
+        }
+
+        const productToAdd = { ...this.currentProduct, talla: tallaSeleccionada };
+
+        cart.addItem(productToAdd, quantity);
         notifier.success(`${this.currentProduct.nombre} agregado al carrito`);
         updateCartUI();
         this.close();

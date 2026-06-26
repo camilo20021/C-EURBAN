@@ -36,12 +36,29 @@ document.addEventListener("DOMContentLoaded", () => {
     subtotalEl.textContent = `$${acumulado.toLocaleString('es-CO')}`;
     totalEl.textContent = `$${acumulado.toLocaleString('es-CO')}`;
 
+    // --- MEJORA DE EXPERIENCIA DE USUARIO ---
     const usuarioGuardado = JSON.parse(localStorage.getItem('ceurbanUser') || 'null');
     if (usuarioGuardado) {
         const nameInput = document.getElementById('customer-name');
         const emailInput = document.getElementById('customer-email');
-        if (nameInput) nameInput.value = usuarioGuardado.nombre || '';
-        if (emailInput) emailInput.value = usuarioGuardado.email || '';
+
+        // Pre-llenamos los campos (aunque estarán ocultos)
+        if (nameInput) nameInput.value = usuarioGuardado.nombre;
+        if (emailInput) emailInput.value = usuarioGuardado.email;
+
+        // Ocultamos los campos de nombre y email y mostramos un saludo
+        const nameWrapper = nameInput.parentElement;
+        const emailWrapper = emailInput.parentElement;
+        if (nameWrapper && emailWrapper) {
+            nameWrapper.style.display = 'none';
+            emailWrapper.style.display = 'none';
+
+            const saludoHTML = `
+                <div class="logged-in-user-info">
+                    <p>Hola, <strong>${usuarioGuardado.nombre}</strong>. Finaliza tu compra ingresando los datos de envío.</p>
+                </div>`;
+            formulario.insertAdjacentHTML('afterbegin', saludoHTML);
+        }
     }
 
     if (formulario) {

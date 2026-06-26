@@ -111,16 +111,18 @@ class ShoppingCart {
     }
 
     addItem(product, quantity = 1) {
-        const existingItem = this.cart.find(item => item.id === product.id);
+        // Un producto es "igual" si tiene mismo ID y misma talla
+        const existingItem = this.cart.find(item => item.id === product.id && item.talla === product.talla);
         
         if (existingItem) {
             existingItem.quantity += quantity;
         } else {
             this.cart.push({
-                id: product.id,
+                ...product, // Copia toda la info del producto
                 nombre: product.nombre,
                 precio: product.precio,
                 color: product.color,
+                talla: product.talla || null,
                 quantity
             });
         }
