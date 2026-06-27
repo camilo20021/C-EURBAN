@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     actualizarMenuProductos();
     insertarBarraDeAnuncios();
+    insertarMediosDePago();
     insertarWhatsappYVolverArriba();
     configurarFaq();
 });
@@ -93,6 +94,26 @@ function insertarBarraDeAnuncios() {
         <span>💬 Coordinamos tu pedido por WhatsApp</span>
     `;
     document.body.insertBefore(barra, document.body.firstChild);
+}
+
+// Barra de medios de pago encima del copyright.
+function insertarMediosDePago() {
+    const barra = document.createElement('div');
+    barra.className = 'pagos-bar';
+    barra.innerHTML = `
+        <span class="pagos-label">Medios de pago</span>
+        <div class="pagos-iconos">
+            <div class="pago-badge visa">VISA</div>
+            <div class="pago-badge mastercard">
+                <span class="mc-red"></span>
+                <span class="mc-orange"></span>
+            </div>
+            <div class="pago-badge nequi">nequi</div>
+            <div class="pago-badge daviplata">daviplata</div>
+        </div>
+    `;
+    const copyright = document.querySelector('.copyright');
+    if (copyright) copyright.parentNode.insertBefore(barra, copyright);
 }
 
 // Boton flotante de WhatsApp (mismo numero que usa el resto del sitio) y boton de volver arriba.
