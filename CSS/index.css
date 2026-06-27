@@ -121,6 +121,67 @@ body {
     display: block;
 }
 
+/* ========================================== */
+/* SUBMENU CAMISETAS (HOMBRE/DAMA) */
+/* ========================================== */
+
+/* --- Estilos para MÓVIL (acordeón al hacer clic) --- */
+@media (max-width: 900px) {
+    .submenu-container .submenu-trigger {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .submenu-container .submenu-trigger::after {
+        content: '›';
+        font-size: 1.2em;
+        transition: transform 0.3s;
+    }
+
+    .submenu-container.abierto .submenu-trigger::after {
+        transform: rotate(90deg);
+    }
+
+    .submenu {
+        display: none;
+        padding-left: 15px; /* Indentación para los sub-items */
+        overflow: hidden;
+    }
+
+    .submenu-container.abierto .submenu {
+        display: block;
+    }
+
+    .submenu a {
+        padding: 10px 16px;
+        font-size: 0.9em; /* Un poco más pequeños que los items principales */
+        color: #ccc;
+        text-transform: none;
+    }
+}
+
+/* --- Estilos para PC (desplegable al pasar el mouse) --- */
+@media (min-width: 901px) {
+    .submenu-container:hover .submenu {
+        display: block;
+    }
+
+    .submenu {
+        padding-left: 15px;
+    }
+
+    .submenu a {
+        font-size: 0.9em;
+        color: #ccc;
+    }
+
+    .submenu a:hover {
+        color: white;
+    }
+}
+
 .menu-toggle {
     display: none;
     font-size: 24px;
