@@ -220,33 +220,36 @@
         "color": "#1c2f6e"
     },
     {
+        "id": 23,
+        "nombre": "Camiseta Polo Elegante Boss en Tono Beige",
+        "precio": 45000,
+        "categoria": "camisetas-caballeros",
+        "descripcion": "Esta camiseta Polo beige con el icónico logotipo de Boss en negro es la elección perfecta para un look casual y sofisticado.",
+        "tallas": ["S", "M", "L"],
+        "imagen": "IMAGENES/camisetas/hombre/cpolbossbeis.png",
+        "destacado": true,
+        "color": "#f0f0f0"
+    },
+    {
         "id": 24,
-        "nombre": "Jean Barrel Francia",
-        "precio": 50000,
-        "categoria": "jeans",
-        "descripcion": "Jean barrel con cotilla tipo pinza y detalles deportivos laterales.",
-        "tallas": ["6", "8", "10", "12", "14"],
-        "imagen": "IMAGENES/jeans/643069fa-0b29-4b37-b117-51125e94e882.jpg",
-        "color": "#2b3a55"
+        "nombre": "Camiseta Polo Caballero Negro con Emblema Ecuestre",
+        "precio": 45000,
+        "categoria": "camisetas-caballeros",
+        "descripcion": "Camiseta para caballero con estampado urbano, corte regular.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/cpolcabnegro.png",
+        "destacado": true,
+        "color": "#151515"
     },
     {
         "id": 25,
-        "nombre": "Jean Mom Iran",
-        "precio": 50000,
-        "categoria": "jeans",
-        "descripcion": "Jean mom tiro alto, bota semi recta, tela indigo rigido, 5 bolsillos funcionales.",
-        "tallas": ["6", "8", "10", "12", "14"],
-        "imagen": "IMAGENES/jeans/jean mom iran.jpg",
-        "color": "#2b3a55"
-    },
-    {
-        "id": 26,
-        "nombre": "Pantalon Ajustado Negro",
-        "precio": 50000,
-        "categoria": "jeans",
-        "descripcion": "Pantalon ajustado en negro, elegancia y comodidad en un solo diseno.",
-        "tallas": ["6", "8", "10", "12", "14"],
-        "imagen": "IMAGENES/jeans/pantalon Elegancia y comodidad en negro.png",
+        "nombre": "Camiseta Polo Baloncesto Beige",
+        "precio": 60000,
+        "categoria": "camisetas-caballeros",
+        "descripcion": "Camiseta basica de algodon premium, ideal para cualquier ocasion.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/cpolobalcesbeich.png",
+        "destacado": true,
         "color": "#151515"
     },
     {
@@ -278,5 +281,87 @@
         "tallas": ["Unica"],
         "imagen": "IMAGENES/Gorras/gorra nwy york.png",
         "color": "#14141c"
+    },
+    {
+        "id": 32,
+        "nombre": "Camiseta Grafica Urbana",
+        "precio": 48000,
+        "categoria": "camisetas-caballeros",
+        "descripcion": "Camiseta para hombre con estampado grafico de alta definicion, 100% algodon.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/camiseta-grafica-1.jpg",
+        "destacado": true,
+        "color": "#222222"
+    },
+    {
+        "id": 33,
+        "nombre": "Camiseta Manga Larga",
+        "precio": 55000,
+        "categoria": "camisetas-caballeros",
+        "descripcion": "Camiseta de manga larga con diseno minimalista, perfecta para un look en capas.",
+        "tallas": ["S", "M", "L"],
+        "imagen": "IMAGENES/camisetas/camiseta-manga-larga-blanca.jpg",
+        "color": "#f5f5f5"
+    },
+    {
+        "id": 34,
+        "nombre": "Camiseta con Bolsillo",
+        "precio": 42000,
+        "categoria": "camisetas-caballeros",
+        "descripcion": "Camiseta basica con bolsillo de contraste en el pecho. Comoda y versatil.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/camiseta-bolsillo-verde.jpg",
+        "color": "#3a5a40"
+    },
+    {
+        "id": 35,
+        "nombre": "Camiseta Estampado Espalda",
+        "precio": 48000,
+        "categoria": "camisetas-caballeros",
+        "descripcion": "Camiseta con un pequeno logo en el frente y un gran estampado en la espalda.",
+        "tallas": ["M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/camiseta-estampado-espalda-negra.jpg",
+        "destacado": true,
+        "color": "#000000"
+    },
+    {
+        "id": 36,
+        "nombre": "Camiseta Polo Negra",
+        "precio": 50000,
+        "categoria": "camisetas-caballeros",
+        "descripcion": "Camiseta tipo polo en algodon pima, color negro clasico.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/camiseta-polo-negra.jpg",
+        "color": "#111111"
+    },
+    {
+        "id": 37,
+        "nombre": "Camiseta Estampado Central",
+        "precio": 47000,
+        "categoria": "camisetas-caballeros",
+        "descripcion": "Camiseta blanca con estampado central de alto contraste.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/camiseta-estampado-central.jpg",
+        "color": "#FFFFFF"
+    },
+    {
+        "id": 38,
+        "nombre": "Camiseta Basica Gris",
+        "precio": 40000,
+        "categoria": "camisetas-caballeros",
+        "descripcion": "Camiseta basica en color gris jaspeado, un esencial en tu armario.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/camiseta-basica-gris.jpg",
+        "color": "#a9a9a9"
+    },
+    {
+        "id": 39,
+        "nombre": "Camiseta Cuello Redondo Verde",
+        "precio": 42000,
+        "categoria": "camisetas-caballeros",
+        "descripcion": "Camiseta de cuello redondo en un vibrante color verde militar.",
+        "tallas": ["S", "M", "L"],
+        "imagen": "IMAGENES/camisetas/camiseta-verde-militar.jpg",
+        "color": "#556b2f"
     }
 ]

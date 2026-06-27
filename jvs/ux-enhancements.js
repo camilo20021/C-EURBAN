@@ -84,10 +84,12 @@ class QuickViewModal {
         switch (product.categoria) {
             case 'buzos':
                 return `Domina el asfalto con este buzo de ${brand}. Diseñado para el movimiento, su tejido premium te da confort y una silueta impecable. La pieza clave que define tu look, del día a la noche.`;
-            case 'jeans':
-                return `Forjado en la calle, para la calle. Este jean de ${brand} no es solo una prenda, es una declaración. Con un corte que se adapta a tu ritmo y una resistencia que aguanta tu rutina, es el aliado perfecto para conquistar la ciudad.`;
             case 'gorras':
                 return `La corona del rey urbano. Esta gorra de ${brand} es el toque final que sella tu estilo. Protección, actitud y un diseño que no pasa desapercibido. Llévala y haz que cada esquina sea tu trono.`;
+            case 'camisetas-caballeros':
+            case 'camisetas-damas':
+            case 'camisetas':
+                return `La base de tu estilo urbano. Esta camiseta de ${brand} combina comodidad y actitud. Hecha con algodon suave para el dia a dia, es el lienzo perfecto para tus outfits mas creativos.`;
             default:
                 return product.descripcion || `Un producto esencial de ${brand} para tu estilo de vida.`;
         }
@@ -99,10 +101,10 @@ class QuickViewModal {
         sizeSelector.innerHTML = '';
 
         let tallas = [];
-        if (product.categoria === 'buzos') {
+        if (product.categoria === 'buzos' || product.categoria.startsWith('camisetas')) {
             tallas = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
-        } else if (product.categoria === 'jeans') {
-            tallas = ['27', '28', '30', '32', '34'];
+        } else if (product.categoria === 'jeans') { // Dejado por si se vuelve a usar en el futuro
+            tallas = ['6', '8', '10', '12', '14'];
         }
 
         if (tallas.length > 0) {
