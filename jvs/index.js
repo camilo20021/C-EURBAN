@@ -2,6 +2,7 @@ let productosContainer;
 let botonesCategoria;
 let searchInput;
 let listaProductos = [];
+let listaBase = [];
 let categoriaActivaActual = 'todos';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -33,11 +34,18 @@ async function cargarProductos() {
         listaProductos = await respuesta.json();
 
         const filtroPagina = productosContainer ? productosContainer.dataset.categoriaFija : null;
+        const excluir = productosContainer ? productosContainer.dataset.excluirCategorias : null;
+
         if (filtroPagina) {
-            mostrarProductos(listaProductos.filter(p => p.categoria === filtroPagina));
+            listaBase = listaProductos.filter(p => p.categoria === filtroPagina);
+        } else if (excluir) {
+            const excluidos = excluir.split(',').map(s => s.trim());
+            listaBase = listaProductos.filter(p => !excluidos.includes(p.categoria));
         } else {
-            mostrarProductos(listaProductos);
+            listaBase = listaProductos;
         }
+
+        mostrarProductos(listaBase);
     } catch (error) {
         console.error("Error cargando el catalogo:", error);
         if (productosContainer) {
@@ -152,7 +160,7 @@ function configurarBuscador() {
 }
 
 function aplicarFiltrosCombinados() {
-    let resultado = listaProductos;
+    let resultado = listaBase;
 
     if (categoriaActivaActual !== 'todos') {
         resultado = resultado.filter(p => p.categoria === categoriaActivaActual);
@@ -170,7 +178,7 @@ function applyFilters() {
     const minPrice = parseInt(document.getElementById('min-price')?.value) || 0;
     const maxPrice = parseInt(document.getElementById('max-price')?.value) || Infinity;
 
-    let resultado = listaProductos.filter(p => p.precio >= minPrice && p.precio <= maxPrice);
+    let resultado = listaBase.filter(p => p.precio >= minPrice && p.precio <= maxPrice);
 
     if (categoriaActivaActual !== 'todos') {
         resultado = resultado.filter(p => p.categoria === categoriaActivaActual);
@@ -181,7 +189,7 @@ function applyFilters() {
 
 function applySort() {
     const sortValue = document.getElementById('sort-select')?.value;
-    let resultado = [...listaProductos];
+    let resultado = [...listaBase];
 
     if (categoriaActivaActual !== 'todos') {
         resultado = resultado.filter(p => p.categoria === categoriaActivaActual);

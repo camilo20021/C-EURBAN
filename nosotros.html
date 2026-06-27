@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | C&E Urban Wear</title>
+    <meta name="description" content="Conoce la historia, mision y vision de C&E Urban Wear. Una marca nacida en Bogota con actitud urbana y ropa para durar.">
+    <link rel="icon" href="IMAGENES/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="CSS/componentes.css">
+    <style>
+        /* ===== HERO NOSOTROS ===== */
+        .nos-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 100px 5% 80px;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% 40%, rgba(77, 91, 255, 0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 20% 80%, rgba(255, 45, 85, 0.12) 0%, transparent 60%),
+                var(--negro);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .nos-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,0.25) 50%, transparent),
+                radial-gradient(1px 1px at 75% 15%, rgba(255,255,255,0.2) 50%, transparent),
+                radial-gradient(1.5px 1.5px at 55% 65%, rgba(255,255,255,0.18) 50%, transparent),
+                radial-gradient(1px 1px at 85% 75%, rgba(255,255,255,0.22) 50%, transparent),
+                radial-gradient(1.5px 1.5px at 30% 80%, rgba(255,255,255,0.15) 50%, transparent),
+                radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,0.2) 50%, transparent);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .nos-hero > * { position: relative; z-index: 1; }
+
+        .nos-logo-wrap {
+            margin-bottom: 36px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .nos-logo-wrap::before {
+            content: '';
+            position: absolute;
+            inset: -12px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 45, 85, 0.25) 0%, transparent 70%);
+            animation: logoBrillo 3s ease-in-out infinite;
+        }
+
+        @keyframes logoBrillo {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.12); opacity: 1; }
+        }
+
+        .nos-logo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 3px solid var(--rojo);
+            box-shadow:
+                0 0 0 6px rgba(255, 45, 85, 0.12),
+                0 0 40px rgba(255, 45, 85, 0.35),
+                0 20px 60px rgba(0,0,0,0.6);
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nos-eyebrow {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--rojo);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .nos-titulo {
+            font-family: var(--fuente-display);
+            font-size: clamp(48px, 8vw, 96px);
+            line-height: 0.92;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+
+        .nos-titulo span {
+            display: block;
+            color: var(--rojo);
+        }
+
+        .nos-titulo em {
+            display: block;
+            font-style: normal;
+            font-family: var(--fuente-cuerpo);
+            font-size: clamp(11px, 1.5vw, 14px);
+            letter-spacing: 6px;
+            color: var(--gris);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .nos-subtitulo {
+            margin-top: 28px;
+            max-width: 520px;
+            color: var(--gris);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .nos-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--rojo), var(--acento));
+            margin: 32px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== HISTORIA ===== */
+        .nos-historia {
+            padding: 100px 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .historia-texto .label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--acento);
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .historia-texto h2 {
+            font-family: var(--fuente-display);
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1;
+            margin-bottom: 28px;
+        }
+
+        .historia-texto h2 span {
+            color: var(--rojo);
+        }
+
+        .historia-texto p {
+            color: var(--gris);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .historia-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .historia-badge {
+            width: 100%;
+            max-width: 380px;
+            aspect-ratio: 1;
+            background: var(--negro-card);
+            border: 1px solid var(--gris-linea);
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .historia-badge::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(77, 91, 255, 0.08) 0%, transparent 60%);
+        }
+
+        .historia-badge img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid var(--gris-linea);
+        }
+
+        .historia-badge-texto {
+            text-align: center;
+            position: relative;
+        }
+
+        .historia-badge-texto h3 {
+            font-family: var(--fuente-display);
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        .historia-badge-texto p {
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gris);
+            margin-top: 6px;
+        }
+
+        .historia-badge-linea {
+            width: 48px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--rojo), var(--acento));
+            border-radius: 1px;
+        }
+
+        .historia-badge-ciudad {
+            font-size: 12px;
+            color: var(--gris);
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        /* ===== MISION Y VISION ===== */
+        .mv-section {
+            padding: 0 5% 100px;
+        }
+
+        .mv-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .mv-header .label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--rojo);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 14px;
+        }
+
+        .mv-header h2 {
+            font-family: var(--fuente-display);
+            font-size: clamp(28px, 4vw, 42px);
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .mv-card {
+            background: var(--negro-card);
+            border: 1px solid var(--gris-linea);
+            border-radius: 20px;
+            padding: 52px 44px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .mv-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .mv-card.mision::before {
+            background: linear-gradient(90deg, var(--rojo), var(--acento));
+        }
+
+        .mv-card.vision::before {
+            background: linear-gradient(90deg, var(--azul), var(--azul-claro));
+        }
+
+        .mv-card:hover.mision {
+            border-color: var(--rojo);
+        }
+
+        .mv-card:hover.vision {
+            border-color: var(--azul);
+        }
+
+        .mv-card::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            right: -60px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            opacity: 0.04;
+        }
+
+        .mv-card.mision::after {
+            background: var(--rojo);
+        }
+
+        .mv-card.vision::after {
+            background: var(--azul);
+        }
+
+        .mv-icono {
+            font-size: 44px;
+            margin-bottom: 24px;
+            display: block;
+            line-height: 1;
+        }
+
+        .mv-card h3 {
+            font-family: var(--fuente-display);
+            font-size: 28px;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .mv-card.mision h3 { color: var(--rojo); }
+        .mv-card.vision h3 { color: var(--azul-claro); }
+
+        .mv-card p {
+            color: var(--gris);
+            font-size: 15px;
+            line-height: 1.85;
+        }
+
+        /* ===== VALORES ===== */
+        .valores-section {
+            padding: 80px 5% 100px;
+            background: var(--negro-suave);
+            border-top: 1px solid var(--gris-linea);
+            border-bottom: 1px solid var(--gris-linea);
+        }
+
+        .valores-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .valores-header .label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--acento);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 14px;
+        }
+
+        .valores-header h2 {
+            font-family: var(--fuente-display);
+            font-size: clamp(28px, 4vw, 42px);
+        }
+
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .valor-card {
+            background: var(--negro-card);
+            border: 1px solid var(--gris-linea);
+            border-radius: 16px;
+            padding: 36px 28px;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+            cursor: default;
+        }
+
+        .valor-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--acento);
+        }
+
+        .valor-icono {
+            font-size: 36px;
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .valor-card h4 {
+            font-family: var(--fuente-display);
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            color: var(--blanco);
+        }
+
+        .valor-card p {
+            font-size: 13px;
+            color: var(--gris);
+            line-height: 1.7;
+        }
+
+        /* ===== STATS ===== */
+        .stats-section {
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+        .stats-header {
+            margin-bottom: 64px;
+        }
+
+        .stats-header .label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--rojo);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 14px;
+        }
+
+        .stats-header h2 {
+            font-family: var(--fuente-display);
+            font-size: clamp(28px, 4vw, 42px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--gris-linea);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .stat-item {
+            background: var(--negro-card);
+            padding: 48px 24px;
+            transition: background 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: var(--negro-suave);
+        }
+
+        .stat-numero {
+            font-family: var(--fuente-display);
+            font-size: clamp(40px, 5vw, 64px);
+            line-height: 1;
+            color: var(--blanco);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .stat-numero span {
+            color: var(--rojo);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--gris);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        /* ===== CTA ===== */
+        .nos-cta {
+            padding: 80px 5%;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 45, 85, 0.06) 0%, rgba(77, 91, 255, 0.06) 100%);
+            border-top: 1px solid var(--gris-linea);
+        }
+
+        .nos-cta h2 {
+            font-family: var(--fuente-display);
+            font-size: clamp(28px, 4vw, 48px);
+            margin-bottom: 20px;
+        }
+
+        .nos-cta h2 span {
+            color: var(--rojo);
+        }
+
+        .nos-cta p {
+            color: var(--gris);
+            font-size: 15px;
+            max-width: 480px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+
+        .nos-cta-btns {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .nos-historia {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .mv-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .valores-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 540px) {
+            .mv-card {
+                padding: 36px 28px;
+            }
+
+            .valores-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nos-historia {
+                padding: 60px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="fondo-estrellas"></div>
+
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="IMAGENES/favicon.png" alt="Logo C&E Urban Wear">
+            <span class="logo-text">C&amp;E URBAN<span>WEAR</span></span>
+        </a>
+
+        <nav class="navbar">
+            <a href="index.html">Inicio</a>
+            <div class="dropdown">
+                <button class="dropbtn">Productos</button>
+                <div class="dropdown-content">
+                    <a href="productos.html">Todos</a>
+                    <a href="buzos.html">Buzos</a>
+                    <a href="jeans.html">Jeans</a>
+                    <a href="gorras.html">Gorras</a>
+                </div>
+            </div>
+            <a href="index.html#personalizados">Personalizados</a>
+            <a href="nosotros.html" style="color: var(--acento);">Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+
+        <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+
+        <div class="icons">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Buscar productos...">
+                <span class="search-icon">🔍</span>
+            </div>
+            <a href="login.html" class="user-icon" title="Iniciar sesion">👤</a>
+            <div class="cart-icon">
+                🛒
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="cart-overlay"></div>
+    <div class="cart-panel">
+        <div class="cart-header">
+            <h2>Tu carrito</h2>
+            <div class="cart-header-actions">
+                <button class="clear-cart" title="Vaciar carrito">🗑</button>
+                <button class="close-cart" title="Cerrar">✕</button>
+            </div>
+        </div>
+        <div class="cart-items">
+            <p class="empty-cart">Tu carrito esta vacio</p>
+        </div>
+        <div class="cart-footer">
+            <h3><span>Total</span><span id="cart-total">$0</span></h3>
+            <a href="pago.html">
+                <button class="checkout-btn">Finalizar compra</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <section class="nos-hero">
+        <div class="nos-logo-wrap">
+            <img src="IMAGENES/favicon.png" alt="C&E Urban Wear" class="nos-logo">
+        </div>
+        <p class="nos-eyebrow">Conocenos</p>
+        <h1 class="nos-titulo">
+            C&amp;E
+            <span>URBAN</span>
+            <em>WEAR — BOGOTÁ, COLOMBIA</em>
+        </h1>
+        <p class="nos-subtitulo">
+            Una marca nacida en las calles de Bogotá con una sola conviccion:
+            la ropa que usas dice quién eres. Hacemos que lo digas con estilo.
+        </p>
+        <div class="nos-divider"></div>
+    </section>
+
+    <!-- ===== HISTORIA ===== -->
+    <section class="nos-historia">
+        <div class="historia-texto">
+            <span class="label">Nuestra historia</span>
+            <h2>Mas que ropa,<br><span>una actitud</span></h2>
+            <p>
+                C&amp;E Urban Wear nacio de la pasion por el streetwear autentico y el convencimiento
+                de que la moda urbana de calidad no tenia que costar una fortuna. Desde el primer dia,
+                apostamos por diseños que hablan, telas que duran y estampados que no desaparecen
+                con la primera lavada.
+            </p>
+            <p>
+                Hoy somos una marca que llega a todas las ciudades de Colombia, construyendo
+                comunidad con cada buzo, cada camiseta polo y cada gorra que sale de nuestras manos.
+                Cada pieza es un producto hecho con cuidado, pensado para la calle y diseñado para durar.
+            </p>
+        </div>
+        <div class="historia-visual">
+            <div class="historia-badge">
+                <img src="IMAGENES/favicon.png" alt="C&E Urban Wear">
+                <div class="historia-badge-texto">
+                    <h3>C&amp;E URBAN</h3>
+                    <p>Urban Wear Collection</p>
+                </div>
+                <div class="historia-badge-linea"></div>
+                <p class="historia-badge-ciudad">📍 Bogota, Colombia</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MISION Y VISION ===== -->
+    <section class="mv-section">
+        <div class="mv-header">
+            <span class="label">Lo que nos mueve</span>
+            <h2>Mision &amp; Vision</h2>
+        </div>
+
+        <div class="mv-grid">
+            <div class="mv-card mision">
+                <span class="mv-icono">🎯</span>
+                <h3>Mision</h3>
+                <p>
+                    Crear ropa urbana de alta calidad que refleje la identidad y la actitud
+                    de cada persona. Trabajamos con los mejores materiales y diseños autenticos
+                    para que el estilo streetwear sea real, accesible y duradero para todos
+                    en Colombia. Cada prenda que entregamos es nuestra promesa de calidad contigo.
+                </p>
+            </div>
+
+            <div class="mv-card vision">
+                <span class="mv-icono">🚀</span>
+                <h3>Vision</h3>
+                <p>
+                    Convertirnos en la marca de ropa urbana mas reconocida de Colombia, expandiendo
+                    nuestra presencia por toda Latinoamerica con colecciones que definan tendencias,
+                    conecten comunidades y representen la cultura urbana de nuestra generacion.
+                    Queremos que C&amp;E sea sinonimo de autenticidad, calidad y actitud.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VALORES ===== -->
+    <section class="valores-section">
+        <div class="valores-header">
+            <span class="label">Lo que nos define</span>
+            <h2>Nuestros valores</h2>
+        </div>
+
+        <div class="valores-grid">
+            <div class="valor-card">
+                <span class="valor-icono">⭐</span>
+                <h4>Calidad</h4>
+                <p>Telas resistentes y estampados de alta duracion que superan expectativas en cada lavada.</p>
+            </div>
+            <div class="valor-card">
+                <span class="valor-icono">🔥</span>
+                <h4>Autenticidad</h4>
+                <p>Diseños genuinos que reflejan la verdadera cultura urbana y streetwear sin imitar a nadie.</p>
+            </div>
+            <div class="valor-card">
+                <span class="valor-icono">🤝</span>
+                <h4>Comunidad</h4>
+                <p>Construimos vinculos reales con nuestros clientes mas alla de una simple transaccion.</p>
+            </div>
+            <div class="valor-card">
+                <span class="valor-icono">💡</span>
+                <h4>Innovacion</h4>
+                <p>Colecciones que evolucionan con las tendencias globales sin perder nuestra esencia local.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="stats-section">
+        <div class="stats-header">
+            <span class="label">En numeros</span>
+            <h2>Lo que hemos construido</h2>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-numero">50<span>+</span></span>
+                <p class="stat-label">Diseños disponibles</p>
+            </div>
+            <div class="stat-item">
+                <span class="stat-numero">500<span>+</span></span>
+                <p class="stat-label">Clientes satisfechos</p>
+            </div>
+            <div class="stat-item">
+                <span class="stat-numero">32<span>+</span></span>
+                <p class="stat-label">Ciudades de envio</p>
+            </div>
+            <div class="stat-item">
+                <span class="stat-numero">3<span>+</span></span>
+                <p class="stat-label">Anos de experiencia</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="nos-cta">
+        <h2>Haz parte de<br><span>C&amp;E Urban Wear</span></h2>
+        <p>Explora nuestra coleccion, personaliza tu prenda o escribenos directamente. Estamos listos para vestirte con actitud.</p>
+        <div class="nos-cta-btns">
+            <a href="productos.html"><button class="btn-primario">Ver coleccion</button></a>
+            <a href="contacto.html"><button class="btn-secundario">Contactanos</button></a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-box">
+            <img src="IMAGENES/favicon.png" alt="Logo" width="56">
+            <h2>C&amp;E URBAN</h2>
+            <p>Ropa urbana con actitud. Buzos, jeans y gorras para tu estilo.</p>
+        </div>
+        <div class="footer-box">
+            <h3>Enlaces</h3>
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="index.html#personalizados">Personalizados</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-box">
+            <h3>Categorias</h3>
+            <a href="buzos.html">Buzos</a>
+            <a href="jeans.html">Jeans</a>
+            <a href="gorras.html">Gorras</a>
+            <a href="camisetas-hombres.html">Camisetas Hombre</a>
+            <a href="camisetas-damas.html">Camisetas Dama</a>
+        </div>
+        <div class="footer-box">
+            <h3>Contacto</h3>
+            <p>📍 Bogota, Colombia</p>
+            <p>📞 +57 314 292 1523</p>
+            <p>✉ contacto@ceurban.com</p>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        <p>© 2026 C&E Urban Wear | Todos los derechos reservados</p>
+    </div>
+
+    <div class="toast">Producto agregado al carrito</div>
+
+    <script src="jvs/navegacion.js"></script>
+    <script src="jvs/advanced-features.js"></script>
+    <script src="jvs/ux-enhancements.js"></script>
+    <script src="jvs/carrito.js"></script>
+    <script src="jvs/user-state.js"></script>
+</body>
+</html>

@@ -1,46 +1,31 @@
 // Logica de navegacion compartida por TODAS las paginas:
 // menu hamburguesa movil y dropdown de Productos por click.
 
-/**
- * Actualiza dinámicamente el menú de productos para reflejar las categorías correctas.
- * Reemplaza 'Jeans' por 'Camisetas' con submenús para 'Hombre' y 'Dama'.
- */
 function actualizarMenuProductos() {
     const dropdownContent = document.querySelector('.dropdown-content');
     if (!dropdownContent) return;
 
-    // Busca el enlace de 'Jeans' para reemplazarlo.
-    const linkJeans = Array.from(dropdownContent.querySelectorAll('a')).find(a => a.textContent.trim() === 'Jeans');
+    if (dropdownContent.querySelector('.submenu-container')) return;
 
-    if (linkJeans) {
-        // Crea el nuevo elemento de menú para 'Camisetas' con un submenú.
-        const camisetasSubmenu = document.createElement('div');
-        camisetasSubmenu.className = 'submenu-container'; // Clase para estilizar si es necesario.
-        // Se cambia el href del enlace principal para que no navegue, solo despliegue.
-        camisetasSubmenu.innerHTML = `
-            <a href="#" class="submenu-trigger">Camisetas</a>
-            <div class="submenu">
-                <a href="productos.html?categoria=camisetas-caballeros">Hombre</a>
-                <a href="productos.html?categoria=camisetas-damas">Dama</a>
-            </div>`;
-        linkJeans.replaceWith(camisetasSubmenu);
+    const camisetasSubmenu = document.createElement('div');
+    camisetasSubmenu.className = 'submenu-container';
+    camisetasSubmenu.innerHTML = `
+        <a href="#" class="submenu-trigger">Camisetas</a>
+        <div class="submenu">
+            <a href="camisetas-hombres.html">Hombre</a>
+            <a href="camisetas-damas.html">Dama</a>
+        </div>`;
+    dropdownContent.appendChild(camisetasSubmenu);
 
-        // Lógica para desplegar el submenú al hacer clic
-        const trigger = camisetasSubmenu.querySelector('.submenu-trigger');
-        const submenu = camisetasSubmenu.querySelector('.submenu');
-
-        trigger.addEventListener('click', (e) => {
-            e.preventDefault(); // Evita que el enlace navegue
-            e.stopPropagation(); // Evita que el menú principal se cierre
-
-            // Cierra otros submenús si los hubiera
-            document.querySelectorAll('.submenu-container.abierto').forEach(container => {
-                if (container !== camisetasSubmenu) container.classList.remove('abierto');
-            });
-
-            camisetasSubmenu.classList.toggle('abierto');
+    const trigger = camisetasSubmenu.querySelector('.submenu-trigger');
+    trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelectorAll('.submenu-container.abierto').forEach(container => {
+            if (container !== camisetasSubmenu) container.classList.remove('abierto');
         });
-    }
+        camisetasSubmenu.classList.toggle('abierto');
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
