@@ -22,11 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const itemRow = document.createElement("div");
         itemRow.style.cssText = "display:flex; align-items:center; gap:15px; margin-bottom:15px; background:rgba(255,255,255,0.02); padding:10px; border-radius:6px; border:1px solid var(--gris-linea);";
 
+        const thumbHtml = producto.imagen
+            ? `<img src="${producto.imagen}" alt="${producto.nombre}" style="width:56px;height:56px;border-radius:6px;object-fit:cover;flex-shrink:0;">`
+            : `<div style="width:56px;height:56px;border-radius:6px;flex-shrink:0;background:${producto.color || '#1c2f6e'};"></div>`;
+
+        const tallaHtml = producto.talla
+            ? `<p style="color:var(--gris);font-size:12px;margin:2px 0;">Talla: ${producto.talla}</p>`
+            : '';
+
         itemRow.innerHTML = `
-            <div style="width:50px; height:50px; border-radius:6px; flex-shrink:0; background:${producto.color || '#1c2f6e'};"></div>
-            <div style="flex: 1;">
-                <h4 style="font-size: 14px; margin-bottom: 2px; color: white;">${producto.nombre} ${cantidad > 1 ? `x${cantidad}` : ''}</h4>
-                <p style="color: var(--acento); font-size: 13px; font-weight: bold;">$${(producto.precio * cantidad).toLocaleString('es-CO')}</p>
+            ${thumbHtml}
+            <div style="flex:1; min-width:0;">
+                <h4 style="font-size:14px;margin-bottom:2px;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${producto.nombre}${cantidad > 1 ? ` x${cantidad}` : ''}</h4>
+                ${tallaHtml}
+                <p style="color:var(--acento);font-size:13px;font-weight:bold;margin-top:2px;">$${(producto.precio * cantidad).toLocaleString('es-CO')}</p>
             </div>
         `;
         container.appendChild(itemRow);
@@ -132,12 +141,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 : `Quedo atento a los datos para pagar por ${metodoPagoTexto}.`;
 
             const totalUnidades = carrito.reduce((acc, p) => acc + (p.quantity || 1), 0);
-            const productosTexto = carrito.map(p => `🔸 ${p.nombre} x${p.quantity || 1} — $${(p.precio * (p.quantity || 1)).toLocaleString('es-CO')}`).join('\n');
+            const productosTexto = carrito.map(p => {
+                const tallaInfo = p.talla ? ` — Talla ${p.talla}` : '';
+                const cant = p.quantity || 1;
+                return `• ${p.nombre}${tallaInfo} x${cant} — $${(p.precio * cant).toLocaleString('es-CO')}`;
+            }).join('\n');
 
-            const mensaje = `¡Hola C&E Urban Wear! 👋%0A%0AQuiero confirmar mis productos a pagar (${totalUnidades} producto${totalUnidades > 1 ? 's' : ''}):%0A%0A🛒 Productos a pagar:%0A${encodeURIComponent(productosTexto)}%0A%0A💰 Total a pagar: ${encodeURIComponent(totalEl.textContent)}%0A%0A📍 Datos de envio:%0ANombre: ${encodeURIComponent(nombre)}%0ATelefono: ${encodeURIComponent(telefono)}%0AEmail: ${encodeURIComponent(email)}%0ADireccion: ${encodeURIComponent(direccion)}, ${encodeURIComponent(ciudad)}%0A%0A💳 ${encodeURIComponent(cierrePago)}%0A%0A¡Gracias!`;
+            const mensajeWsp =
+`¡Hola C&E Urban Wear! 👋
 
-            const whatsappUrl = `https://wa.me/573142921523?text=${mensaje}`;
-            window.location.href = whatsappUrl;
+Quiero confirmar mi pedido (${totalUnidades} producto${totalUnidades > 1 ? 's' : ''}):
+
+🛒 Productos:
+${productosTexto}
+
+💰 Total: ${totalEl.textContent}
+
+📍 Datos de envio:
+• Nombre: ${nombre}
+• Telefono: ${telefono}
+• Email: ${email}
+• Direccion: ${direccion}, ${ciudad}
+
+💳 ${cierrePago}
+
+¡Gracias!`;
+
+            window.location.href = `https://wa.me/573142921523?text=${encodeURIComponent(mensajeWsp)}`;
         });
     }
 });

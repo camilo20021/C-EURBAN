@@ -36,7 +36,9 @@ function actualizarInterfazInicial() {
                 prod.color || '#1c2f6e',
                 index,
                 prod.id || index,
-                prod.quantity || 1
+                prod.quantity || 1,
+                prod.talla || null,
+                prod.imagen || null
             );
         });
     } else {
@@ -81,18 +83,21 @@ document.addEventListener("click", (e) => {
     const nombre = boton.dataset.name;
     const precio = parseInt(boton.dataset.price);
     const id = parseInt(boton.dataset.id) || Date.now();
+    const talla = boton.dataset.talla || null;
+    const imagen = boton.dataset.img || null;
     const productoCompleto = (typeof listaProductos !== 'undefined') ? listaProductos.find(p => p.id === id) : null;
     const color = productoCompleto ? productoCompleto.color : '#1c2f6e';
+    const imagenFinal = imagen || (productoCompleto ? productoCompleto.imagen : null);
 
     if (typeof cart !== 'undefined' && cart.addItem) {
-        const product = { id, nombre, precio, color };
+        const product = { id, nombre, precio, color, talla, imagen: imagenFinal };
         cart.addItem(product, 1);
     } else {
-        const existente = carrito.find(p => p.id === id);
+        const existente = carrito.find(p => p.id === id && p.talla === talla);
         if (existente) {
             existente.quantity = (existente.quantity || 1) + 1;
         } else {
-            carrito.push({ id, nombre, precio, color, quantity: 1 });
+            carrito.push({ id, nombre, precio, color, talla, imagen: imagenFinal, quantity: 1 });
         }
         localStorage.setItem("carrito", JSON.stringify(carrito));
     }
@@ -113,16 +118,21 @@ function updateCartUI() {
     actualizarInterfazInicial();
 }
 
-function crearItemEnCarritoHTML(nombre, precio, color, index, productId = index, quantity = 1) {
+function crearItemEnCarritoHTML(nombre, precio, color, index, productId = index, quantity = 1, talla = null, imagen = null) {
     const item = document.createElement("div");
     item.classList.add("cart-item");
     item.setAttribute("data-index", index);
     item.setAttribute("data-product-id", productId);
 
+    const thumbHTML = imagen
+        ? `<div class="cart-item-thumb"><img src="${imagen}" alt="${nombre}"></div>`
+        : `<div class="cart-item-thumb" style="background:${color};"></div>`;
+
     item.innerHTML = `
-        <div class="cart-item-thumb" style="background:${color}; border-radius:6px;"></div>
+        ${thumbHTML}
         <div class="cart-item-info">
             <h4>${nombre}</h4>
+            ${talla ? `<span class="cart-item-talla">Talla: ${talla}</span>` : ''}
             <span class="precio">$${precio.toLocaleString('es-CO')}</span>
             <div class="cart-item-qty">
                 <button class="qty-decrease" data-product-id="${productId}">-</button>

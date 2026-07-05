@@ -30,7 +30,7 @@
                     <a href="gorras.html">Gorras</a>
                 </div>
             </div>
-            <a href="index.html#personalizados">Personalizados</a>
+            <a href="personalizados.html">Personalizados</a>
             <a href="nosotros.html">Nosotros</a>
             <a href="contacto.html">Contacto</a>
         </nav>
@@ -79,7 +79,7 @@
             </p>
             <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content: center;">
                 <a href="productos.html"><button class="btn-primario">Ver coleccion</button></a>
-                <a href="#personalizados"><button class="btn-secundario">Personalizar</button></a>
+                <a href="personalizados.html"><button class="btn-secundario">Personalizar</button></a>
             </div>
         </div>
     </section>
@@ -91,8 +91,7 @@
         </div>
         <div class="carrusel-contenedor">
             <div class="carrusel-imagenes">
-                <div class="carrusel-item"><img src="IMAGENES/Buzos/HOODIE (1).png" alt="Buzo Hoodie" loading="eager"></div>
-                <div class="carrusel-item"><img src="IMAGENES/Buzos/Homero Simpson.png" alt="Buzo Homero Simpson" loading="lazy"></div>
+                <div class="carrusel-item"><img src="IMAGENES/Buzos/Homero Simpson.png" alt="Buzo Homero Simpson" loading="eager"></div>
                 <div class="carrusel-item"><img src="IMAGENES/Buzos/Marvel.png" alt="Buzo Marvel" loading="lazy"></div>
                 <div class="carrusel-item"><img src="IMAGENES/Buzos/Nasarocket.png" alt="Buzo Nasa Rocket" loading="lazy"></div>
                 <div class="carrusel-item"><img src="IMAGENES/Buzos/1716945775WhatsApp Image 2024-05-27 at 9.38.36 PM.jpeg" alt="Buzo Bucks Basketball" loading="lazy"></div>
@@ -109,51 +108,35 @@
                 <div class="carrusel-item"><img src="IMAGENES/Buzos/loveys.png" alt="Buzo Loveys" loading="lazy"></div>
                 <div class="carrusel-item"><img src="IMAGENES/Buzos/Lovemargaritas.png" alt="Buzo Love Margaritas" loading="lazy"></div>
                 <div class="carrusel-item"><img src="IMAGENES/Buzos/nasa.png" alt="Buzo Nasa" loading="lazy"></div>
-                <div class="carrusel-item"><img src="IMAGENES/Buzos/Nueva coleccion (1).jpeg" alt="Buzo Nueva Coleccion - mensaje" loading="lazy"></div>
-                <div class="carrusel-item"><img src="IMAGENES/Buzos/Nueva colleccion.jpeg" alt="Buzo Nueva Coleccion - estilo" loading="lazy"></div>
                 <div class="carrusel-item"><img src="IMAGENES/Buzos/osogenuine.png" alt="Buzo Oso Genuine" loading="lazy"></div>
                 <div class="carrusel-item"><img src="IMAGENES/Buzos/pato.png" alt="Buzo Pato" loading="lazy"></div>
             </div>
         </div>
     </section>
 
+    <!-- Banner nueva coleccion de camisetas -->
+    <section class="banner-nueva-coleccion">
+        <a href="camisetas-hombres.html">
+            <img src="IMAGENES/camisetas/hombre/Gemini_Generated_Image_mdiiytmdiiytmdii.png" alt="Nueva Coleccion Camisetas Urbanas">
+            <div class="banner-overlay">
+                <span class="banner-badge">NUEVO</span>
+                <h3>Nueva Coleccion<br>de Camisetas</h3>
+                <p>Desde <strong>$40.000</strong> — Lacoste, Hugo Boss, Gucci, Versace y mas</p>
+                <span class="banner-cta">Ver coleccion →</span>
+            </div>
+        </a>
+    </section>
+
     <section class="productos">
         <div class="productos-header">
-            <h2>Lo mas nuevo</h2>
+            <h2>Destacados</h2>
             <a href="productos.html">Ver todo →</a>
         </div>
+        <p style="color: var(--gris); margin-bottom: 28px; max-width: 560px;">Una seleccion de lo mejor de nuestra coleccion. Buzos, camisetas y conjuntos con estilo urbano.</p>
 
-        <div class="filter-section">
-            <h3>Filtros</h3>
-            <div class="filter-grid">
-                <div>
-                    <strong>Rango de precio</strong>
-                    <div class="price-range-slider">
-                        <input type="number" id="min-price" placeholder="Min" min="0">
-                        <input type="number" id="max-price" placeholder="Max" min="0">
-                    </div>
-                    <button class="btn-aplicar-filtro" onclick="applyFilters()">Aplicar</button>
-                </div>
-                <div class="sort-filter">
-                    <strong>Ordenar por</strong>
-                    <select id="sort-select" onchange="applySort()">
-                        <option value="default">Recomendado</option>
-                        <option value="price-asc">Precio: menor a mayor</option>
-                        <option value="price-desc">Precio: mayor a menor</option>
-                        <option value="name-asc">Nombre: A - Z</option>
-                        <option value="newest">Mas recientes</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="categorias">
-            <button class="btn-categoria activa" data-category="todos">Todos</button>
-            <button class="btn-categoria" data-category="buzos">Buzos</button>
-            <button class="btn-categoria" data-category="gorras">Gorras</button>
-        </div>
-
-        <div class="productos-grid" id="productos-container" data-excluir-categorias="camisetas-hombres,camisetas-damas">
+        <div class="productos-grid" id="productos-container"
+            data-solo-destacados="true"
+            data-limite="8">
             <p style="text-align: center; grid-column: 1 / -1; padding: 20px; color: var(--gris);">Cargando catalogo...</p>
         </div>
     </section>
@@ -163,55 +146,10 @@
             <p class="subtitulo-personalizados">Hazlo unico</p>
             <h2>PERSONALIZA<br>TU BUZO</h2>
             <p>Sube tu logo o diseño, elige talla y color, y cuentanos como lo quieres. Te contactamos por WhatsApp para confirmar precio y forma de pago.</p>
-
-            <form id="personalizar-form" class="contacto-form" style="margin-top: 8px;">
-                <div class="form-group">
-                    <label for="personalizar-nombre">Nombre completo *</label>
-                    <input type="text" id="personalizar-nombre" placeholder="Tu nombre" required>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="personalizar-email">Correo electronico *</label>
-                        <input type="email" id="personalizar-email" placeholder="tu@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="personalizar-telefono">Telefono *</label>
-                        <input type="tel" id="personalizar-telefono" placeholder="+57 300 000 0000" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="personalizar-talla">Talla</label>
-                        <select id="personalizar-talla">
-                            <option value="S">S</option>
-                            <option value="M" selected>M</option>
-                            <option value="L">L</option>
-                            <option value="XL">XL</option>
-                            <option value="XXL">XXL</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="personalizar-color">Color del buzo</label>
-                        <select id="personalizar-color">
-                            <option value="Negro" selected>Negro</option>
-                            <option value="Azul">Azul</option>
-                            <option value="Gris">Gris</option>
-                            <option value="Blanco">Blanco</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="personalizar-imagen">Tu logo o diseño (imagen)</label>
-                    <input type="file" id="personalizar-imagen" accept="image/*">
-                    <p id="personalizar-peso" style="font-size: 12px; color: var(--gris); margin-top: 6px;"></p>
-                    <div id="personalizar-preview" style="margin-top: 10px;"></div>
-                </div>
-                <div class="form-group">
-                    <label for="personalizar-notas">Notas de diseño</label>
-                    <textarea id="personalizar-notas" rows="3" placeholder="Ej: el logo va en el pecho, tamaño mediano..."></textarea>
-                </div>
-                <button type="submit" id="personalizar-submit" class="btn-primario" style="width: 100%; justify-content: center;">Enviar pedido personalizado</button>
-            </form>
+            <div style="margin-top: 28px; display: flex; flex-direction: column; gap: 14px;">
+                <a href="personalizados.html"><button class="btn-primario" style="width: 100%; justify-content: center;">Personalizar mi buzo</button></a>
+                <a href="personalizados.html#galeria" style="color: var(--gris); font-size: 14px; text-align: center;">Ver buzos que hemos personalizado →</a>
+            </div>
         </div>
         <div class="personalizados-img">
             <div class="prenda-placeholder foto-real">
@@ -364,7 +302,7 @@
             <h3>Enlaces</h3>
             <a href="index.html">Inicio</a>
             <a href="productos.html">Productos</a>
-            <a href="index.html#personalizados">Personalizados</a>
+            <a href="personalizados.html">Personalizados</a>
             <a href="contacto.html">Contacto</a>
         </div>
         <div class="footer-box">

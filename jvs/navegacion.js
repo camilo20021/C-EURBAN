@@ -10,7 +10,7 @@ function actualizarMenuProductos() {
     const camisetasSubmenu = document.createElement('div');
     camisetasSubmenu.className = 'submenu-container';
     camisetasSubmenu.innerHTML = `
-        <a href="#" class="submenu-trigger">Camisetas</a>
+        <a href="#" class="submenu-trigger">Camisetas <span class="trigger-arrow">›</span></a>
         <div class="submenu">
             <a href="camisetas-hombres.html">Hombre</a>
             <a href="camisetas-damas.html">Dama</a>

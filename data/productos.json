@@ -1,15 +1,5 @@
 [
     {
-        "id": 1,
-        "nombre": "Buzo Nueva Coleccion",
-        "precio": 70000,
-        "categoria": "buzos",
-        "descripcion": "Buzo negro con estampado exclusivo, capucha comoda y tela afelpada de alto gramaje.",
-        "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/HOODIE (1).png",
-        "color": "#0a0a0f"
-    },
-    {
         "id": 2,
         "nombre": "Buzo Homero Simpson",
         "precio": 70000,
@@ -180,26 +170,6 @@
         "color": "#1c2f6e"
     },
     {
-        "id": 19,
-        "nombre": "Buzo Cuidese de la Envidia",
-        "precio": 70000,
-        "categoria": "buzos",
-        "descripcion": "Buzo negro con mensaje 'Cuidese de la envidia mijo', capucha comoda.",
-        "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/Nueva coleccion (1).jpeg",
-        "color": "#0a0a0f"
-    },
-    {
-        "id": 20,
-        "nombre": "Buzo Estilo Negro",
-        "precio": 70000,
-        "categoria": "buzos",
-        "descripcion": "Buzo negro minimalista con logo bordado, diseno exclusivo.",
-        "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/Nueva colleccion.jpeg",
-        "color": "#0a0a0f"
-    },
-    {
         "id": 21,
         "nombre": "Buzo Oso Genuine",
         "precio": 70000,
@@ -258,7 +228,9 @@
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolbossbeis.png",
         "destacado": true,
-        "color": "#c8b89a"
+        "color": "#c8b89a",
+        "grupo": "Polo Boss",
+        "colorNombre": "Beige"
     },
     {
         "id": 101,
@@ -268,7 +240,9 @@
         "descripcion": "Camiseta tipo polo con el iconic logo Boss, color blanco. Corte regular, 100% algodon premium.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolbossblanco.png",
-        "color": "#f5f5f0"
+        "color": "#f5f5f0",
+        "grupo": "Polo Boss",
+        "colorNombre": "Blanco"
     },
     {
         "id": 102,
@@ -278,7 +252,9 @@
         "descripcion": "Camiseta tipo polo con el iconic logo Boss, color gris. Corte regular, 100% algodon premium.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolbossgris.png",
-        "color": "#9e9e9e"
+        "color": "#9e9e9e",
+        "grupo": "Polo Boss",
+        "colorNombre": "Gris"
     },
     {
         "id": 103,
@@ -289,7 +265,9 @@
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolbossneg.png",
         "destacado": true,
-        "color": "#111111"
+        "color": "#111111",
+        "grupo": "Polo Boss",
+        "colorNombre": "Negro"
     },
     {
         "id": 104,
@@ -299,7 +277,9 @@
         "descripcion": "Polo estilo ecuestre, color beige. Diseno elegante con bordado en el pecho.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolcabbeich.png",
-        "color": "#c8b89a"
+        "color": "#c8b89a",
+        "grupo": "Polo Ecuestre",
+        "colorNombre": "Beige"
     },
     {
         "id": 105,
@@ -309,7 +289,9 @@
         "descripcion": "Polo estilo ecuestre, color blanco. Diseno elegante con bordado en el pecho.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolcabblanco.png",
-        "color": "#f5f5f0"
+        "color": "#f5f5f0",
+        "grupo": "Polo Ecuestre",
+        "colorNombre": "Blanco"
     },
     {
         "id": 106,
@@ -319,7 +301,9 @@
         "descripcion": "Polo estilo ecuestre, color gris. Diseno elegante con bordado en el pecho.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolcabgr.png",
-        "color": "#9e9e9e"
+        "color": "#9e9e9e",
+        "grupo": "Polo Ecuestre",
+        "colorNombre": "Gris"
     },
     {
         "id": 107,
@@ -329,7 +313,9 @@
         "descripcion": "Polo estilo ecuestre, color naranja. Diseno elegante con bordado en el pecho.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolcabnar.png",
-        "color": "#e07b39"
+        "color": "#e07b39",
+        "grupo": "Polo Ecuestre",
+        "colorNombre": "Naranja"
     },
     {
         "id": 108,
@@ -340,7 +326,9 @@
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolcabnegro.png",
         "destacado": true,
-        "color": "#151515"
+        "color": "#151515",
+        "grupo": "Polo Ecuestre",
+        "colorNombre": "Negro"
     },
     {
         "id": 109,
@@ -350,7 +338,9 @@
         "descripcion": "Polo estilo ecuestre, color verde. Diseno elegante con bordado en el pecho.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolcabver.png",
-        "color": "#3d7a3d"
+        "color": "#3d7a3d",
+        "grupo": "Polo Ecuestre",
+        "colorNombre": "Verde"
     },
     {
         "id": 110,
@@ -361,17 +351,9 @@
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolobalcesbeich.png",
         "destacado": true,
-        "color": "#c8b89a"
-    },
-    {
-        "id": 111,
-        "nombre": "Polo Balcese Beige Premium",
-        "precio": 50000,
-        "categoria": "camisetas-hombres",
-        "descripcion": "Polo Balcese color beige, version premium con acabado especial.",
-        "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolobalcesbeigh.png",
-        "color": "#d4c5a9"
+        "color": "#c8b89a",
+        "grupo": "Polo Balcese",
+        "colorNombre": "Beige"
     },
     {
         "id": 112,
@@ -381,7 +363,9 @@
         "descripcion": "Polo Balcese color blanco, tejido de alta calidad con corte moderno.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolobalcesblan.png",
-        "color": "#f5f5f0"
+        "color": "#f5f5f0",
+        "grupo": "Polo Balcese",
+        "colorNombre": "Blanco"
     },
     {
         "id": 113,
@@ -391,7 +375,9 @@
         "descripcion": "Polo Balcese color gris, tejido de alta calidad con corte moderno.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolobalcesgris.png",
-        "color": "#9e9e9e"
+        "color": "#9e9e9e",
+        "grupo": "Polo Balcese",
+        "colorNombre": "Gris"
     },
     {
         "id": 114,
@@ -402,7 +388,9 @@
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpologiorgiobeich.png",
         "destacado": true,
-        "color": "#c8b89a"
+        "color": "#c8b89a",
+        "grupo": "Polo Giorgio",
+        "colorNombre": "Beige"
     },
     {
         "id": 115,
@@ -412,7 +400,9 @@
         "descripcion": "Polo Giorgio color blanco, diseno italiano con logo bordado al frente.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpologiorgioblan.png",
-        "color": "#f5f5f0"
+        "color": "#f5f5f0",
+        "grupo": "Polo Giorgio",
+        "colorNombre": "Blanco"
     },
     {
         "id": 116,
@@ -422,7 +412,9 @@
         "descripcion": "Polo Giorgio color gris, diseno italiano con logo bordado al frente.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpologiorgiogrs.png",
-        "color": "#9e9e9e"
+        "color": "#9e9e9e",
+        "grupo": "Polo Giorgio",
+        "colorNombre": "Gris"
     },
     {
         "id": 117,
@@ -432,7 +424,9 @@
         "descripcion": "Polo Giorgio color naranja, diseno italiano con logo bordado al frente.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpologiorgionaraja.png",
-        "color": "#e07b39"
+        "color": "#e07b39",
+        "grupo": "Polo Giorgio",
+        "colorNombre": "Naranja"
     },
     {
         "id": 118,
@@ -443,7 +437,9 @@
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpologiorgioneg.png",
         "destacado": true,
-        "color": "#111111"
+        "color": "#111111",
+        "grupo": "Polo Giorgio",
+        "colorNombre": "Negro"
     },
     {
         "id": 119,
@@ -453,7 +449,9 @@
         "descripcion": "Polo Giorgio color verde, diseno italiano con logo bordado al frente.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpologiorgioverde.png",
-        "color": "#3d7a3d"
+        "color": "#3d7a3d",
+        "grupo": "Polo Giorgio",
+        "colorNombre": "Verde"
     },
     {
         "id": 120,
@@ -463,7 +461,9 @@
         "descripcion": "Polo Paj color blanco, corte slim fit con cuello clasico.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolopajblanco.png",
-        "color": "#f5f5f0"
+        "color": "#f5f5f0",
+        "grupo": "Polo Paj",
+        "colorNombre": "Blanco"
     },
     {
         "id": 121,
@@ -473,7 +473,9 @@
         "descripcion": "Polo Paj color gris, corte slim fit con cuello clasico.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolopajgrs.png",
-        "color": "#9e9e9e"
+        "color": "#9e9e9e",
+        "grupo": "Polo Paj",
+        "colorNombre": "Gris"
     },
     {
         "id": 122,
@@ -483,7 +485,9 @@
         "descripcion": "Polo Paj color naranja, corte slim fit con cuello clasico.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolopajnara.png",
-        "color": "#e07b39"
+        "color": "#e07b39",
+        "grupo": "Polo Paj",
+        "colorNombre": "Naranja"
     },
     {
         "id": 123,
@@ -494,7 +498,9 @@
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolopajnegr.png",
         "destacado": true,
-        "color": "#111111"
+        "color": "#111111",
+        "grupo": "Polo Paj",
+        "colorNombre": "Negro"
     },
     {
         "id": 124,
@@ -504,6 +510,415 @@
         "descripcion": "Polo Paj color verde, corte slim fit con cuello clasico.",
         "tallas": ["S", "M", "L", "XL"],
         "imagen": "IMAGENES/camisetas/hombre/cpolopajverde.png",
-        "color": "#3d7a3d"
+        "color": "#3d7a3d",
+        "grupo": "Polo Paj",
+        "colorNombre": "Verde"
+    },
+    {
+        "id": 200,
+        "nombre": "Camiseta New Balance",
+        "precio": 40000,
+        "categoria": "camisetas-hombres",
+        "descripcion": "Camiseta New Balance estampado original. Tela 100% algodon de alta calidad.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771164.png",
+        "destacado": true,
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 201,
+        "nombre": "Camiseta Lacoste Original",
+        "precio": 40000,
+        "categoria": "camisetas-hombres",
+        "descripcion": "Camiseta Lacoste 1927 Francia Paris. Estampado frontal exclusivo en algodon premium.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771165.png",
+        "destacado": true,
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 202,
+        "nombre": "Camiseta Versace Medusa",
+        "precio": 40000,
+        "categoria": "camisetas-hombres",
+        "descripcion": "Camiseta Versace con logo Medusa estampado. Diseno italiano de lujo casual.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/5021757332962085838.png",
+        "destacado": true,
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 203,
+        "nombre": "Camiseta Nike No1",
+        "precio": 40000,
+        "categoria": "camisetas-hombres",
+        "descripcion": "Camiseta Nike No1 con estampado deportivo premium. Corte urbano y comodo.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771166.png",
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 204,
+        "nombre": "Camiseta Amiri",
+        "precio": 40000,
+        "categoria": "camisetas-hombres",
+        "descripcion": "Camiseta Amiri estilo streetwear de lujo. Estampado grafico de impacto visual.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771167.png",
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 205,
+        "nombre": "Camiseta New York Brooklyn",
+        "precio": 40000,
+        "categoria": "camisetas-hombres",
+        "descripcion": "Camiseta New York Brooklyn con diseno urbano tipografico. Estilo NYC autentico.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771168.png",
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 206,
+        "nombre": "Camiseta The North Face",
+        "precio": 40000,
+        "categoria": "camisetas-hombres",
+        "descripcion": "Camiseta The North Face con logo estampado. Tela ligera y resistente para uso diario.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771169.png",
+        "destacado": true,
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 207,
+        "nombre": "Camiseta Palm Angels",
+        "precio": 40000,
+        "categoria": "camisetas-hombres",
+        "descripcion": "Camiseta Palm Angels estilo streetwear californiano. Diseno editorial exclusivo.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771170.png",
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 208,
+        "nombre": "Camiseta Los Angeles 98",
+        "precio": 40000,
+        "categoria": "camisetas-hombres",
+        "descripcion": "Camiseta Los Angeles 98 con diseno tipografico retro urbano. Edicion especial.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771171.png",
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 209,
+        "nombre": "Camiseta Brooklyn New York",
+        "precio": 40000,
+        "categoria": "camisetas-hombres",
+        "descripcion": "Camiseta Brooklyn New York estilo urbano con estampado tipografico premium.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771172.png",
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 210,
+        "nombre": "Camiseta Adidas",
+        "precio": 40000,
+        "categoria": "camisetas-hombres",
+        "descripcion": "Camiseta Adidas con logo estampado. Clasico deportivo con corte urbano moderno.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771173.png",
+        "destacado": true,
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 211,
+        "nombre": "Camiseta The Hustle Houston",
+        "precio": 40000,
+        "categoria": "camisetas-hombres",
+        "descripcion": "Camiseta The Hustle Houston con diseno grafico urbano. Inspirada en la cultura del esfuerzo.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771174.png",
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 212,
+        "nombre": "Camiseta Hugo Boss",
+        "precio": 40000,
+        "categoria": "camisetas-hombres",
+        "descripcion": "Camiseta Hugo Boss con logo estampado frontal. Elegancia casual de marca premium.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771175.png",
+        "destacado": true,
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 213,
+        "nombre": "Camiseta Gucci",
+        "precio": 40000,
+        "categoria": "camisetas-hombres",
+        "descripcion": "Camiseta Gucci con logo estampado. Lujo italiano en un diseno casual de alto impacto.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771176.png",
+        "destacado": true,
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 214,
+        "nombre": "Camiseta Hermes Paris",
+        "precio": 40000,
+        "categoria": "camisetas-hombres",
+        "descripcion": "Camiseta Hermes Paris con estampado exclusivo. Sofisticacion francesa en tela premium.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771177.png",
+        "destacado": true,
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 300,
+        "nombre": "Conjunto Mariposa Leopard Blanco",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta blanca con mariposa leopard estampada + leggis leopard. Tela suave y comoda.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146185.png",
+        "destacado": true,
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 301,
+        "nombre": "Conjunto Mariposa Leopard Negro",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta negra con mariposa leopard estampada + leggis leopard. Tela suave y comoda.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146186.png",
+        "destacado": true,
+        "color": "#111111"
+    },
+    {
+        "id": 302,
+        "nombre": "Conjunto Perfectly Imperfect Rosa",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta rosa 'Perfectly Imperfect' + leggis leopard. Diseno unico con mensaje positivo.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146187.png",
+        "destacado": true,
+        "color": "#f7b8c8"
+    },
+    {
+        "id": 303,
+        "nombre": "Conjunto Corazones Rosa",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta rosa con corazones verticales estampados + leggis leopard.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146188.png",
+        "color": "#f7b8c8"
+    },
+    {
+        "id": 304,
+        "nombre": "Conjunto Mariposa Rosa",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta rosa con mariposa estampada + leggis leopard. Estilo romantico y casual.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146189.png",
+        "color": "#f7b8c8"
+    },
+    {
+        "id": 305,
+        "nombre": "Conjunto Perfectly Imperfect Blanco",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta blanca 'Perfectly Imperfect' + leggis leopard. Diseno elegante y positivo.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146190.png",
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 306,
+        "nombre": "Conjunto Corazon Love Blanco",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta blanca con corazon Love + leggis leopard. Fresco y romantico.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146191.png",
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 307,
+        "nombre": "Conjunto Love Lazo Fucsia",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta fucsia con estampado Love y lazo + leggis leopard. Llamativo y femenino.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146192.png",
+        "destacado": true,
+        "color": "#e8267a"
+    },
+    {
+        "id": 308,
+        "nombre": "Conjunto 6 Corazones Fucsia",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta fucsia con 6 corazones estampados + leggis azul leopard. Color vibrante y juvenil.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146193.png",
+        "color": "#e8267a"
+    },
+    {
+        "id": 309,
+        "nombre": "Conjunto Corazones Flores Blanco",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta blanca con 3 corazones florales + leggis rosa leopard. Delicado y romantico.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146194.png",
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 310,
+        "nombre": "Conjunto Love & Love Rosa",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta rosa 'Love & Love' + leggis gris leopard. Combinacion perfecta.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146195.png",
+        "color": "#f7b8c8"
+    },
+    {
+        "id": 311,
+        "nombre": "Conjunto Love & Love Negro",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta negra 'Love & Love' + leggis leopard oscuro. Elegante y sofisticado.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146196.png",
+        "color": "#111111"
+    },
+    {
+        "id": 312,
+        "nombre": "Conjunto Love Corazon Rosa Claro",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta rosa claro con corazon Love a la mitad + leggis leopard. Suave y romantico.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146197.png",
+        "color": "#f7c4d0"
+    },
+    {
+        "id": 313,
+        "nombre": "Conjunto Love Corazon Fucsia",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta fucsia con gran corazon Love + leggis azul leopard. Atrevido y llamativo.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146198.png",
+        "destacado": true,
+        "color": "#e8267a"
+    },
+    {
+        "id": 314,
+        "nombre": "Conjunto Corazones Vertical Blanco",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta blanca con corazones en vertical + leggis rosa leopard. Dulce y femenino.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146199.png",
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 315,
+        "nombre": "Conjunto 3 Corazones Rosa",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta rosa con 3 corazones estampados + leggis gris leopard. Casual y romantico.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146200.png",
+        "color": "#f7b8c8"
+    },
+    {
+        "id": 316,
+        "nombre": "Conjunto Cerezas Fucsia",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta fucsia con cerezas leopard estampadas + leggis azul leopard. Fresco y divertido.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146201.png",
+        "destacado": true,
+        "color": "#e8267a"
+    },
+    {
+        "id": 317,
+        "nombre": "Conjunto Osito Teddy Negro",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta negra con osito Teddy estampado + leggis leopard. Tierno y urbano a la vez.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146202.png",
+        "color": "#111111"
+    },
+    {
+        "id": 318,
+        "nombre": "Conjunto Cherry Blanco",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta blanca 'Cherry' con cerezas leopard + leggis leopard gris rosa. Fresco y juvenil.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146203.png",
+        "destacado": true,
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 319,
+        "nombre": "Conjunto Mariposa Grande Fucsia",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta fucsia con gran mariposa leopard + leggis leopard gris azul. Impactante y femenino.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146204.png",
+        "destacado": true,
+        "color": "#e8267a"
+    },
+    {
+        "id": 320,
+        "nombre": "Conjunto 3 Corazones Negro",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta negra con 3 corazones leopard + leggis leopard gris rosa. Elegante y romantico.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146205.png",
+        "color": "#111111"
+    },
+    {
+        "id": 321,
+        "nombre": "Conjunto Cherry Negro",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta negra 'Cherry' con cerezas leopard + leggis leopard gris rosa. Sofisticado y fresco.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146206.png",
+        "color": "#111111"
+    },
+    {
+        "id": 322,
+        "nombre": "Conjunto Corazon Grande Blanco",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta blanca con gran corazon leopard + leggis leopard gris rosa. Clasico y romantico.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146207.png",
+        "color": "#f5f5f0"
+    },
+    {
+        "id": 323,
+        "nombre": "Conjunto Mariposa Corazon Rosa",
+        "precio": 60000,
+        "categoria": "camisetas-damas",
+        "descripcion": "Conjunto femenino: camiseta rosa con mariposas y corazon estampados + leggis leopard gris oscuro. Romantico y femenino.",
+        "tallas": ["S", "M", "L", "XL"],
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146208.png",
+        "destacado": true,
+        "color": "#f7b8c8"
     }
 ]

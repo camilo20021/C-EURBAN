@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buzos Personalizados | C&E Urban Wear</title>
+    <meta name="description" content="Personaliza tu buzo con tu logo o diseño. Elige talla y color, sube tu imagen y te contactamos por WhatsApp.">
+    <link rel="icon" href="IMAGENES/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="CSS/componentes.css">
+    <style>
+        /* Hero personalizados */
+        .hero-personalizados {
+            min-height: 52vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 24px 60px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-personalizados .eyebrow {
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--acento);
+            margin-bottom: 14px;
+        }
+        .hero-personalizados h1 {
+            font-family: var(--fuente-display);
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .hero-personalizados h1 .linea-roja {
+            color: var(--rojo);
+        }
+        .hero-personalizados p {
+            color: var(--gris);
+            font-size: 1.05rem;
+            max-width: 520px;
+            margin: 0 auto 28px;
+        }
+
+        /* Galeria de trabajos */
+        .galeria-personalizados {
+            padding: 80px 24px 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .galeria-personalizados .productos-header {
+            margin-bottom: 40px;
+        }
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .galeria-card {
+            background: var(--negro-card);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--gris-linea);
+            transition: transform 0.25s, border-color 0.25s;
+        }
+        .galeria-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--acento);
+        }
+        .galeria-card img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+        .galeria-card-info {
+            padding: 14px 16px;
+        }
+        .galeria-card-info p {
+            font-size: 13px;
+            color: var(--gris);
+        }
+        .galeria-tag {
+            display: inline-block;
+            background: var(--acento);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 3px;
+            margin-bottom: 6px;
+        }
+
+        /* CTA inferior */
+        .cta-personalizar {
+            text-align: center;
+            margin-top: 64px;
+        }
+        .cta-personalizar p {
+            color: var(--gris);
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+        }
+
+        /* Ajuste form en personalizados.html */
+        .personalizados {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="fondo-estrellas"></div>
+
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="IMAGENES/favicon.png" alt="Logo C&E Urban Wear">
+            <span class="logo-text">C&amp;E URBAN<span>WEAR</span></span>
+        </a>
+
+        <nav class="navbar">
+            <a href="index.html">Inicio</a>
+            <div class="dropdown">
+                <button class="dropbtn">Productos</button>
+                <div class="dropdown-content">
+                    <a href="productos.html">Todos</a>
+                    <a href="buzos.html">Buzos</a>
+                    <a href="gorras.html">Gorras</a>
+                </div>
+            </div>
+            <a href="personalizados.html" class="activo">Personalizados</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+
+        <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+
+        <div class="icons">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Buscar buzos, gorras...">
+                <span class="search-icon">🔍</span>
+            </div>
+            <a href="login.html" class="user-icon" title="Iniciar sesion">👤</a>
+            <div class="cart-icon">
+                🛒
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="cart-overlay"></div>
+    <div class="cart-panel">
+        <div class="cart-header">
+            <h2>Tu carrito</h2>
+            <div class="cart-header-actions">
+                <button class="clear-cart" title="Vaciar carrito">🗑</button>
+                <button class="close-cart" title="Cerrar">✕</button>
+            </div>
+        </div>
+        <div class="cart-items">
+            <p class="empty-cart">Tu carrito esta vacio</p>
+        </div>
+        <div class="cart-footer">
+            <h3><span>Total</span><span id="cart-total">$0</span></h3>
+            <a href="pago.html">
+                <button class="checkout-btn">Finalizar compra</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero-personalizados">
+        <div>
+            <p class="eyebrow">Hazlo unico</p>
+            <h1>PERSONALIZA<br><span class="linea-roja">TU BUZO.</span></h1>
+            <p>Sube tu diseño, elige talla y color. Te contactamos por WhatsApp para confirmar precio y detalles.</p>
+            <a href="#personalizar-form"><button class="btn-primario">Empezar a personalizar</button></a>
+        </div>
+    </section>
+
+    <!-- Formulario personalizar -->
+    <section class="personalizados" id="personalizados">
+        <div class="personalizados-texto">
+            <p class="subtitulo-personalizados">Tu pedido</p>
+            <h2>PERSONALIZA<br>TU BUZO</h2>
+            <p>Sube tu logo o diseño, elige talla y color, y cuentanos como lo quieres. Te contactamos por WhatsApp para confirmar precio y forma de pago.</p>
+
+            <form id="personalizar-form" class="contacto-form" style="margin-top: 8px;">
+                <div class="form-group">
+                    <label for="personalizar-nombre">Nombre completo *</label>
+                    <input type="text" id="personalizar-nombre" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="personalizar-email">Correo electronico *</label>
+                        <input type="email" id="personalizar-email" placeholder="tu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="personalizar-telefono">Telefono *</label>
+                        <input type="tel" id="personalizar-telefono" placeholder="+57 300 000 0000" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="personalizar-talla">Talla</label>
+                        <select id="personalizar-talla">
+                            <option value="S">S</option>
+                            <option value="M" selected>M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="personalizar-color">Color del buzo</label>
+                        <select id="personalizar-color">
+                            <option value="Negro" selected>Negro</option>
+                            <option value="Azul">Azul</option>
+                            <option value="Gris">Gris</option>
+                            <option value="Blanco">Blanco</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="personalizar-imagen">Tu logo o diseño (imagen)</label>
+                    <input type="file" id="personalizar-imagen" accept="image/*">
+                    <p id="personalizar-peso" style="font-size: 12px; color: var(--gris); margin-top: 6px;"></p>
+                    <div id="personalizar-preview" style="margin-top: 10px;"></div>
+                </div>
+                <div class="form-group">
+                    <label for="personalizar-notas">Notas de diseño</label>
+                    <textarea id="personalizar-notas" rows="3" placeholder="Ej: el logo va en el pecho, tamaño mediano..."></textarea>
+                </div>
+                <button type="submit" id="personalizar-submit" class="btn-primario" style="width: 100%; justify-content: center;">Enviar pedido personalizado</button>
+            </form>
+        </div>
+        <div class="personalizados-img">
+            <div class="prenda-placeholder foto-real">
+                <img src="IMAGENES/Buzos/personaliza.jpg" alt="Personaliza tu buzo con tu logo o diseño">
+                <span class="marca-sello">Personalizado</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria de trabajos anteriores -->
+    <section class="galeria-personalizados" id="galeria">
+        <div class="productos-header">
+            <h2>Buzos que hemos personalizado</h2>
+            <p style="color: var(--gris); font-size: 14px; margin-top: 6px;">Fotos reales de pedidos de nuestros clientes</p>
+        </div>
+
+        <div class="galeria-grid">
+            <div class="galeria-card">
+                <img src="IMAGENES/Buzos/IMG_20250302_110709.png" alt="Buzo personalizado Spongebob" loading="lazy">
+                <div class="galeria-card-info">
+                    <span class="galeria-tag">Personalizado</span>
+                    <p>Bob Esponja — estampado pecho, color negro</p>
+                </div>
+            </div>
+            <div class="galeria-card">
+                <img src="IMAGENES/Buzos/IMG_20250518_225154.png" alt="Buzo personalizado BRS America" loading="lazy">
+                <div class="galeria-card-info">
+                    <span class="galeria-tag">Personalizado</span>
+                    <p>Logo BRS + America de Cali — doble estampado</p>
+                </div>
+            </div>
+            <div class="galeria-card">
+                <img src="IMAGENES/Buzos/IMG_20250518_225444.png" alt="Buzo Cuidese de la Envidia" loading="lazy">
+                <div class="galeria-card-info">
+                    <span class="galeria-tag">Personalizado</span>
+                    <p>Cuidese de la Envidia — estampado espalda completa</p>
+                </div>
+            </div>
+            <div class="galeria-card">
+                <img src="IMAGENES/Buzos/IMG_20250614_153437.png" alt="Buzo Mickey graffiti" loading="lazy">
+                <div class="galeria-card-info">
+                    <span class="galeria-tag">Personalizado</span>
+                    <p>Mickey graffiti — estampado colorido</p>
+                </div>
+            </div>
+            <div class="galeria-card">
+                <img src="IMAGENES/Buzos/IMG_20250630_185426.png" alt="Buzo Wildflower" loading="lazy">
+                <div class="galeria-card-info">
+                    <span class="galeria-tag">Personalizado</span>
+                    <p>Wildflower — caligrafia floral, color blanco</p>
+                </div>
+            </div>
+            <div class="galeria-card">
+                <img src="IMAGENES/Buzos/IMG_20250803_160322.png" alt="Buzo Nacimos Pobres Morimos Ricos" loading="lazy">
+                <div class="galeria-card-info">
+                    <span class="galeria-tag">Personalizado</span>
+                    <p>Nacimos Pobres Morimos Ricos — espalda completa</p>
+                </div>
+            </div>
+            <div class="galeria-card">
+                <img src="IMAGENES/Buzos/IMG_20250803_160341.png" alt="Buzo Rich Vacos" loading="lazy">
+                <div class="galeria-card-info">
+                    <span class="galeria-tag">Personalizado</span>
+                    <p>Rich Vacos — logo personalizado, color negro</p>
+                </div>
+            </div>
+            <div class="galeria-card">
+                <img src="IMAGENES/Buzos/IMG_20250803_160355.png" alt="Buzo logo circular" loading="lazy">
+                <div class="galeria-card-info">
+                    <span class="galeria-tag">Personalizado</span>
+                    <p>Logo circular — buzo color cafe, pecho izquierdo</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-personalizar">
+            <p>¿Quieres un buzo con tu propio diseño?</p>
+            <a href="#personalizar-form"><button class="btn-primario">Pedir el mio ahora</button></a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-box">
+            <img src="IMAGENES/favicon.png" alt="Logo" width="56">
+            <h2>C&amp;E URBAN</h2>
+            <p>Ropa urbana con actitud. Buzos, jeans y gorras para tu estilo.</p>
+        </div>
+        <div class="footer-box">
+            <h3>Enlaces</h3>
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="personalizados.html">Personalizados</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-box">
+            <h3>Categorias</h3>
+            <a href="buzos.html">Buzos</a>
+            <a href="gorras.html">Gorras</a>
+        </div>
+        <div class="footer-box">
+            <h3>Contacto</h3>
+            <p>📍 Bogota, Colombia</p>
+            <p>📞 +57 314 292 1523</p>
+            <p>✉ contacto@ceurban.com</p>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        <p>© 2026 C&E Urban Wear | Todos los derechos reservados</p>
+    </div>
+
+    <div class="toast">Producto agregado al carrito</div>
+
+    <script src="jvs/navegacion.js"></script>
+    <script src="jvs/carrito.js"></script>
+    <script src="jvs/user-state.js"></script>
+    <script src="jvs/personalizar.js"></script>
+</body>
+</html>

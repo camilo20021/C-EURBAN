@@ -149,9 +149,26 @@ document.addEventListener('DOMContentLoaded', () => {
             console.warn('No se pudo conectar con el servidor:', error);
         }
 
-        const textoWhatsapp = `Hola C&E Urban Wear,%0A%0AQuiero un buzo personalizado.%0A%0ANombre: ${encodeURIComponent(nombre)}%0AEmail: ${encodeURIComponent(email)}%0ATelefono: ${encodeURIComponent(telefono)}%0ATalla: ${encodeURIComponent(talla)}%0AColor base: ${encodeURIComponent(color)}%0ANotas de diseño: ${encodeURIComponent(notas || 'Ninguna, ver imagen adjunta')}%0A%0A(Ya envie mi diseño desde el formulario de la pagina, esta guardado con mi pedido)`;
+        const tieneImagen = !!imagenComprimidaBase64;
+        const mensajeWsp =
+`¡Hola C&E Urban Wear! 👋
 
-        window.open(`https://wa.me/573142921523?text=${textoWhatsapp}`, '_blank');
+Quiero un buzo personalizado. Aqui estan mis datos:
+
+📋 Pedido:
+• Talla: ${talla}
+• Color del buzo: ${color}
+• Notas de diseño: ${notas || 'Sin notas adicionales'}
+${tieneImagen ? '• ✅ Ya envie mi diseño desde el formulario del sitio web' : '• ⚠️ No adjunte imagen aun, la enviare por este chat'}
+
+👤 Mis datos:
+• Nombre: ${nombre}
+• Telefono: ${telefono}
+• Email: ${email}
+
+¡Gracias!`;
+
+        window.open(`https://wa.me/573142921523?text=${encodeURIComponent(mensajeWsp)}`, '_blank');
 
         submitBtn.disabled = false;
         submitBtn.textContent = 'Enviar pedido personalizado';

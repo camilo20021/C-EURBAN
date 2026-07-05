@@ -234,14 +234,18 @@ button {
 }
 
 .submenu-trigger::after {
-    content: '›';
+    display: none;
+}
+
+.trigger-arrow {
     font-size: 16px;
     line-height: 1;
     transition: transform 0.2s;
     margin-left: 8px;
+    display: inline-block;
 }
 
-.submenu-container.abierto .submenu-trigger::after {
+.submenu-container.abierto .trigger-arrow {
     transform: rotate(90deg);
 }
 
@@ -265,6 +269,13 @@ button {
 
 .submenu a:last-child {
     border-bottom: none;
+}
+
+.dropdown-content a::after,
+.dropdown-content a:hover::after,
+.submenu a::after,
+.submenu a:hover::after {
+    display: none !important;
 }
 
 .submenu a:hover {
@@ -429,6 +440,13 @@ button {
     height: 56px;
     border-radius: var(--radio);
     flex-shrink: 0;
+    overflow: hidden;
+}
+.cart-item-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radio);
 }
 
 .cart-item-info {
@@ -1082,6 +1100,158 @@ button {
     background: var(--azul-claro);
 }
 
+/* Selector de tallas en card */
+.card-tallas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.talla-chip {
+    padding: 4px 9px;
+    font-size: 11px;
+    font-weight: 600;
+    background: var(--negro-suave);
+    border: 1px solid var(--gris-linea);
+    border-radius: 4px;
+    color: var(--gris);
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+    line-height: 1.4;
+}
+
+.talla-chip:hover {
+    border-color: var(--azul-claro);
+    color: var(--blanco);
+}
+
+.talla-chip.active {
+    background: var(--azul);
+    border-color: var(--azul);
+    color: var(--blanco);
+}
+
+/* Swatches de color en card */
+.card-colores {
+    margin-bottom: 10px;
+}
+
+.colores-label {
+    font-size: 12px;
+    color: var(--gris);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.colores-label strong {
+    color: var(--blanco);
+}
+
+.colores-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.color-swatch {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    outline: 2px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s, outline-color 0.15s;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.color-swatch:hover {
+    transform: scale(1.2);
+}
+
+.color-swatch.active {
+    outline-color: var(--azul-claro);
+    outline-offset: 2px;
+    transform: scale(1.1);
+}
+
+/* Talla texto en item del carrito */
+.cart-item-talla {
+    font-size: 11px;
+    color: var(--gris);
+    display: block;
+    margin-bottom: 2px;
+}
+
+/* ==========================================================================
+   BANNER NUEVA COLECCION
+   ========================================================================== */
+.banner-nueva-coleccion {
+    margin: 0 5% 50px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--gris-linea);
+}
+.banner-nueva-coleccion a {
+    display: block;
+    position: relative;
+    text-decoration: none;
+}
+.banner-nueva-coleccion img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+.banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(10,10,15,0.88) 45%, rgba(10,10,15,0.2) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 6%;
+    gap: 12px;
+}
+.banner-badge {
+    background: var(--rojo);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    width: fit-content;
+}
+.banner-overlay h3 {
+    font-family: var(--fuente-display);
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    color: var(--blanco);
+    line-height: 1.05;
+    margin: 0;
+}
+.banner-overlay p {
+    color: var(--gris);
+    font-size: 14px;
+    margin: 0;
+}
+.banner-overlay p strong {
+    color: var(--acento);
+}
+.banner-cta {
+    color: var(--acento);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+@media (max-width: 600px) {
+    .banner-nueva-coleccion { margin: 0 0 40px; border-radius: 0; border-left: none; border-right: none; }
+    .banner-nueva-coleccion img { height: 220px; }
+    .banner-overlay { padding: 24px 5%; gap: 8px; }
+}
+
 /* ==========================================================================
    PERSONALIZADOS
    ========================================================================== */
@@ -1128,6 +1298,78 @@ button {
     flex-shrink: 0;
     position: sticky;
     top: 100px;
+}
+
+/* ==========================================================================
+   GALERIA PERSONALIZADOS
+   ========================================================================== */
+.galeria-personalizados {
+    padding: 70px 5%;
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.galeria-item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.galeria-item:hover img {
+    transform: scale(1.07);
+}
+
+.galeria-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 15, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.galeria-item:hover .galeria-overlay {
+    opacity: 1;
+}
+
+.galeria-overlay span {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.6);
+    padding: 6px 16px;
+    border-radius: 20px;
+}
+
+@media (max-width: 900px) {
+    .galeria-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .galeria-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
 }
 
 /* ==========================================================================
