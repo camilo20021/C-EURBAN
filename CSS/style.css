@@ -1,0 +1,49 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, sans-serif; }
+body { background: #0f1420; color: #e8e8e8; min-height: 100vh; }
+.oculto { display: none !important; }
+
+/* Login */
+#vista-login { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+.login-caja { background: #1a2132; padding: 40px; border-radius: 12px; width: 100%; max-width: 360px; }
+.login-caja h1 { font-size: 20px; margin-bottom: 24px; text-align: center; }
+.login-caja input { width: 100%; padding: 12px; margin-bottom: 12px; border-radius: 8px; border: 1px solid #2e3950; background: #0f1420; color: #fff; font-size: 14px; }
+.login-caja button { width: 100%; padding: 12px; border: none; border-radius: 8px; background: #1c2f6e; color: #fff; font-size: 15px; cursor: pointer; }
+.login-caja button:hover { background: #27408f; }
+#login-error { color: #ff6b6b; font-size: 13px; margin-top: 10px; text-align: center; }
+
+/* Panel */
+header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #1a2132; }
+header h1 { font-size: 18px; }
+#btn-salir { background: none; border: 1px solid #2e3950; color: #aaa; padding: 8px 14px; border-radius: 8px; cursor: pointer; }
+main { padding: 24px; max-width: 1000px; margin: 0 auto; }
+.filtros { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.filtros button { padding: 8px 16px; border-radius: 20px; border: 1px solid #2e3950; background: none; color: #aaa; cursor: pointer; font-size: 13px; }
+.filtros button.activo { background: #1c2f6e; color: #fff; border-color: #1c2f6e; }
+
+.pedido { background: #1a2132; border-radius: 10px; padding: 16px 20px; margin-bottom: 14px; }
+.pedido-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.pedido-top h3 { font-size: 15px; }
+.estado { padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: bold; }
+.estado.pendiente { background: #5c4d10; color: #ffd85c; }
+.estado.confirmado { background: #103a5c; color: #5cc0ff; }
+.estado.enviado { background: #3d1d5c; color: #c88bff; }
+.estado.entregado { background: #1d5c2e; color: #7dff9e; }
+.estado.cancelado { background: #5c1d1d; color: #ff8b8b; }
+.pedido-datos { color: #aaa; font-size: 13px; margin: 10px 0; line-height: 1.7; }
+.pedido-items { font-size: 13px; color: #ccc; border-top: 1px solid #2e3950; padding-top: 10px; margin-top: 4px; line-height: 1.8; }
+.pedido-acciones { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+.pedido-acciones select { padding: 8px; border-radius: 8px; background: #0f1420; color: #fff; border: 1px solid #2e3950; }
+.pedido-acciones button { padding: 8px 16px; border: none; border-radius: 8px; background: #1c2f6e; color: #fff; cursor: pointer; }
+#sin-pedidos { color: #888; text-align: center; padding: 40px; }
+.tab-btn { background: none; border: 1px solid #2e3950; color: #aaa; padding: 8px 14px; border-radius: 8px; cursor: pointer; }
+        .tab-btn.activo { background: #1c2f6e; color: #fff; border-color: #1c2f6e; }
+        .stat-caja { background: #1a2132; border-radius: 10px; padding: 14px 20px; flex: 1; min-width: 140px; }
+        .stat-caja .valor { font-size: 22px; font-weight: bold; margin-top: 4px; }
+        .inv-fila { display: flex; align-items: center; gap: 10px; background: #1a2132; border-radius: 10px; padding: 12px 16px; margin-bottom: 10px; flex-wrap: wrap; }
+        .inv-fila.stock-bajo { border-left: 4px solid #ffd85c; }
+        .inv-fila.agotado { border-left: 4px solid #ff6b6b; }
+        .inv-nombre { flex: 2; min-width: 180px; }
+        .inv-nombre small { color: #888; display: block; }
+        .inv-fila input { width: 90px; padding: 8px; border-radius: 8px; background: #0f1420; color: #fff; border: 1px solid #2e3950; }
+        .inv-fila label { font-size: 11px; color: #888; display: block; margin-bottom: 3px; }
+        .inv-fila button { padding: 8px 14px; border: none; border-radius: 8px; background: #1c2f6e; color: #fff; cursor: pointer; }
