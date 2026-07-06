@@ -37,10 +37,26 @@ async function cargarProductos() {
             `${SUPABASE_URL}/rest/v1/productos?select=*&order=creado_en.desc`,
             { headers: { apikey: SUPABASE_KEY } }
         );
-        listaProductos = await respuesta.json();
+
+        // Convertir tallas de texto ('S,M,L') a lista (['S','M','L'])
+        listaProductos = (await respuesta.json()).map(p => ({
+            ...p,
+            tallas: typeof p.tallas === 'string'
+                ? p.tallas.split(',').map(t => t.trim())
+                : (p.tallas || [])
+        }));
+
+        // Si la pagina tiene categoria fija (ej: buzos.html), filtrar desde el inicio
+        const categoriaPagina = productosContainer?.dataset.categoriaFija || productosContainer?.dataset.category;
+        if (categoriaPagina && categoriaPagina !== 'todos') {
+            categoriaActivaActual = categoriaPagina;
+            listaBase = listaProductos.filter(p => p.categoria === categoriaPagina);
+        } else {
+            listaBase = listaProductos;
+        }
 
         if (productosContainer) {
-            mostrarProductos(listaProductos, productosContainer);
+            mostrarProductos(listaBase, productosContainer);
         }
 
         // Grids extra (ej: seccion damas en el index)

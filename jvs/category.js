@@ -52,11 +52,19 @@ function mostrarProductos(productos, categoria = 'todos', filtro = '') {
     lista.forEach(producto => {
         const card = document.createElement('article');
         card.classList.add('card');
+
+        const tallas = (producto.tallas || 'S,M,L,XL').split(',').map(t => t.trim());
+        const opcionesTallas = tallas.map(t => `<option value="${t}">${t}</option>`).join('');
+
         card.innerHTML = `
             <img src="${producto.imagen}" alt="${producto.nombre}">
             <h3>${producto.nombre}</h3>
             <p>$${Number(producto.precio || 0).toLocaleString()}</p>
-            <button class="add-cart" data-name="${producto.nombre}" data-price="${producto.precio}" data-img="${producto.imagen_carrito || producto.imagen}">Agregar al carrito</button>
+            <select class="talla-select">
+                <option value="">Talla</option>
+                ${opcionesTallas}
+            </select>
+            <button class="add-cart" data-id="${producto.id}" data-name="${producto.nombre}" data-price="${producto.precio}" data-img="${producto.imagen_carrito || producto.imagen}">Agregar al carrito</button>
         `;
         productosGrid.appendChild(card);
     });

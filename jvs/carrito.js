@@ -83,7 +83,15 @@ document.addEventListener("click", (e) => {
     const nombre = boton.dataset.name;
     const precio = parseInt(boton.dataset.price);
     const id = parseInt(boton.dataset.id) || Date.now();
-    const talla = boton.dataset.talla || null;
+    const tallaSelect = boton.closest('.card')?.querySelector('.talla-select');
+    const talla = tallaSelect?.value || boton.dataset.talla || null;
+
+    if (tallaSelect && !tallaSelect.value) {
+        if (typeof notifier !== 'undefined') notifier.info('Selecciona una talla primero');
+        else alert('Selecciona una talla primero');
+        return;
+    }
+
     const imagen = boton.dataset.img || null;
     const productoCompleto = (typeof listaProductos !== 'undefined') ? listaProductos.find(p => p.id === id) : null;
     const color = productoCompleto ? productoCompleto.color : '#1c2f6e';
