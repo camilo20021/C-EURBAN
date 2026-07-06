@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function setUser(user) {
         localStorage.setItem('ceurbanUser', JSON.stringify(user));
         if (user && user.nombre) {
-            if (userPicture) userPicture.src = user.imagen || 'IMAGENES/favicon.wedp';
+            if (userPicture) userPicture.src = user.imagen || 'IMAGENES/favicon.webp';
             if (userName) userName.textContent = user.nombre;
             if (userEmail) userEmail.textContent = user.email;
             loggedUserCard?.classList.remove('hidden');
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             googleId: payload.sub || payload.googleId || `manual-${Date.now()}`,
             nombre: payload.name,
             email: payload.email,
-            imagen: payload.picture || payload.pictureUrl || 'IMAGENES/favicon.wedp',
+            imagen: payload.picture || payload.pictureUrl || 'IMAGENES/favicon.webp',
             credential
         };
 
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sub: `manual-${Date.now()}`,
             name: nombre,
             email,
-            picture: 'IMAGENES/favicon.wedp'
+            picture: 'IMAGENES/favicon.webp'
         });
     });
 });

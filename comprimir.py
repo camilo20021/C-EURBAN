@@ -6,7 +6,7 @@ total_antes, total_despues = 0, 0
 
 for raiz, dirs, archivos in os.walk(carpeta_raiz):
     for archivo in archivos:
-        if archivo.lower().endswith(('.jpg', '.png', '.wedjpegp')):
+        if archivo.lower().endswith(('.jpg', '.png', 'jpeg')):
             ruta = os.path.join(raiz, archivo)
             peso_antes = os.path.getsize(ruta)
             img = Image.open(ruta)

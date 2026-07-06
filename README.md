@@ -62,7 +62,7 @@ externos, no fotos de los productos reales de C&E Urban Wear.
 Para reemplazar un placeholder por una foto real:
 1. Sube la foto a la carpeta `IMAGENES/`.
 2. En `data/productos.json`, cambia el campo `"imagen": "placeholder"` por
-   la ruta de la foto, por ejemplo `"imagen": "IMAGENES/buzo-negro-1.wedp"`.
+   la ruta de la foto, por ejemplo `"imagen": "IMAGENES/buzo-negro-1.webp"`.
 3. Avisa para ajustar `index.js` y que muestre la foto en vez del SVG.
 
 ## Como correr el proyecto localmente
