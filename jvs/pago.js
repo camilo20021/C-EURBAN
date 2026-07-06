@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const subtotalEl = document.getElementById("checkout-subtotal");
     const totalEl = document.getElementById("checkout-total");
     const formulario = document.getElementById("payment-form");
+    const SUPABASE_URL = 'https://vtztpvjbhwlnspjpwhim.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_FdF3E71-r0Ku4NVb-uSN7A_yNvIiTqv';
 
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -106,18 +108,39 @@ document.addEventListener("DOMContentLoaded", () => {
                 total: acumulado
             };
 
-            try {
-                const respuesta = await fetch('/api/orders', {
+           try {
+                const respuesta = await fetch(`${SUPABASE_URL}/rest/v1/rpc/crear_pedido`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(orderPayload)
+                    headers: {
+                        apikey: SUPABASE_KEY,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        p_nombre: nombre,
+                        p_email: email,
+                        p_telefono: telefono,
+                        p_direccion: direccion,
+                        p_ciudad: ciudad,
+                        p_metodo_pago: metodo_pago,
+                        p_total: acumulado,
+                        p_items: carrito.map(producto => ({
+                            producto_id: producto.id || null,
+                            nombre_producto: producto.nombre,
+                            talla: producto.talla || null,
+                            cantidad: producto.quantity || 1,
+                            precio_unitario: producto.precio
+                        }))
+                    })
                 });
-                const data = await respuesta.json();
+
                 if (!respuesta.ok) {
-                    console.warn('Error guardando pedido:', data);
+                    console.warn('Error guardando pedido:', await respuesta.json());
+                } else {
+                    const pedidoId = await respuesta.json();
+                    console.log(`Pedido #${pedidoId} guardado en Supabase`);
                 }
             } catch (error) {
-                console.warn('No se pudo conectar con el servidor:', error);
+                console.warn('No se pudo conectar con Supabase:', error);
             }
 
             if (typeof loyalty !== 'undefined') {

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Panel C&E</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, sans-serif; }
+        body { background: #0f1420; color: #e8e8e8; min-height: 100vh; }
+        .oculto { display: none !important; }
+
+        /* Login */
+        #vista-login { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+        .login-caja { background: #1a2132; padding: 40px; border-radius: 12px; width: 100%; max-width: 360px; }
+        .login-caja h1 { font-size: 20px; margin-bottom: 24px; text-align: center; }
+        .login-caja input { width: 100%; padding: 12px; margin-bottom: 12px; border-radius: 8px; border: 1px solid #2e3950; background: #0f1420; color: #fff; font-size: 14px; }
+        .login-caja button { width: 100%; padding: 12px; border: none; border-radius: 8px; background: #1c2f6e; color: #fff; font-size: 15px; cursor: pointer; }
+        .login-caja button:hover { background: #27408f; }
+        #login-error { color: #ff6b6b; font-size: 13px; margin-top: 10px; text-align: center; }
+
+        /* Panel */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #1a2132; }
+        header h1 { font-size: 18px; }
+        #btn-salir { background: none; border: 1px solid #2e3950; color: #aaa; padding: 8px 14px; border-radius: 8px; cursor: pointer; }
+        main { padding: 24px; max-width: 1000px; margin: 0 auto; }
+        .filtros { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .filtros button { padding: 8px 16px; border-radius: 20px; border: 1px solid #2e3950; background: none; color: #aaa; cursor: pointer; font-size: 13px; }
+        .filtros button.activo { background: #1c2f6e; color: #fff; border-color: #1c2f6e; }
+
+        .pedido { background: #1a2132; border-radius: 10px; padding: 16px 20px; margin-bottom: 14px; }
+        .pedido-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .pedido-top h3 { font-size: 15px; }
+        .estado { padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: bold; }
+        .estado.pendiente { background: #5c4d10; color: #ffd85c; }
+        .estado.confirmado { background: #103a5c; color: #5cc0ff; }
+        .estado.enviado { background: #3d1d5c; color: #c88bff; }
+        .estado.entregado { background: #1d5c2e; color: #7dff9e; }
+        .estado.cancelado { background: #5c1d1d; color: #ff8b8b; }
+        .pedido-datos { color: #aaa; font-size: 13px; margin: 10px 0; line-height: 1.7; }
+        .pedido-items { font-size: 13px; color: #ccc; border-top: 1px solid #2e3950; padding-top: 10px; margin-top: 4px; line-height: 1.8; }
+        .pedido-acciones { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+        .pedido-acciones select { padding: 8px; border-radius: 8px; background: #0f1420; color: #fff; border: 1px solid #2e3950; }
+        .pedido-acciones button { padding: 8px 16px; border: none; border-radius: 8px; background: #1c2f6e; color: #fff; cursor: pointer; }
+        #sin-pedidos { color: #888; text-align: center; padding: 40px; }
+    </style>
+</head>
+<body>
+
+    <!-- VISTA LOGIN -->
+    <div id="vista-login">
+        <div class="login-caja">
+            <h1>Panel C&E Urban Wear</h1>
+            <input type="email" id="login-email" placeholder="Correo">
+            <input type="password" id="login-pass" placeholder="Contraseña">
+            <button id="btn-entrar">Entrar</button>
+            <p id="login-error"></p>
+        </div>
+    </div>
+
+    <!-- VISTA PANEL -->
+    <div id="vista-panel" class="oculto">
+        <header>
+            <h1>📦 Pedidos</h1>
+            <button id="btn-salir">Salir</button>
+        </header>
+        <main>
+            <div class="filtros" id="filtros">
+                <button data-estado="pendiente" class="activo">Pendientes</button>
+                <button data-estado="confirmado">Confirmados</button>
+                <button data-estado="enviado">Enviados</button>
+                <button data-estado="entregado">Entregados</button>
+                <button data-estado="todos">Todos</button>
+            </div>
+            <div id="lista-pedidos"></div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const supa = supabase.createClient(
+            'https://vtztpvjbhwlnspjpwhim.supabase.co',
+            'sb_publishable_FdF3E71-r0Ku4NVb-uSN7A_yNvIiTqv'
+        );
+
+        const vistaLogin = document.getElementById('vista-login');
+        const vistaPanel = document.getElementById('vista-panel');
+        let filtroActual = 'pendiente';
+
+        // ¿Ya hay sesión iniciada?
+        supa.auth.getSession().then(({ data }) => {
+            if (data.session) mostrarPanel();
+        });
+
+        document.getElementById('btn-entrar').addEventListener('click', async () => {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-pass').value;
+            const { error } = await supa.auth.signInWithPassword({ email, password });
+            if (error) {
+                document.getElementById('login-error').textContent = 'Correo o contraseña incorrectos';
+            } else {
+                mostrarPanel();
+            }
+        });
+
+        document.getElementById('btn-salir').addEventListener('click', async () => {
+            await supa.auth.signOut();
+            location.reload();
+        });
+
+        document.getElementById('filtros').addEventListener('click', (e) => {
+            const btn = e.target.closest('button');
+            if (!btn) return;
+            document.querySelectorAll('#filtros button').forEach(b => b.classList.remove('activo'));
+            btn.classList.add('activo');
+            filtroActual = btn.dataset.estado;
+            cargarPedidos();
+        });
+
+        function mostrarPanel() {
+            vistaLogin.classList.add('oculto');
+            vistaPanel.classList.remove('oculto');
+            cargarPedidos();
+        }
+
+        async function cargarPedidos() {
+            let consulta = supa.from('pedidos')
+                .select('*, pedido_items(*)')
+                .order('creado_en', { ascending: false });
+
+            if (filtroActual !== 'todos') {
+                consulta = consulta.eq('estado', filtroActual);
+            }
+
+            const { data: pedidos, error } = await consulta;
+            const lista = document.getElementById('lista-pedidos');
+
+            if (error) {
+                lista.innerHTML = `<p id="sin-pedidos">Error cargando pedidos: ${error.message}</p>`;
+                return;
+            }
+            if (!pedidos.length) {
+                lista.innerHTML = `<p id="sin-pedidos">No hay pedidos en este estado.</p>`;
+                return;
+            }
+
+            lista.innerHTML = pedidos.map(p => `
+                <div class="pedido">
+                    <div class="pedido-top">
+                        <h3>Pedido #${p.id} — $${Number(p.total).toLocaleString('es-CO')}</h3>
+                        <span class="estado ${p.estado}">${p.estado.toUpperCase()}</span>
+                    </div>
+                    <div class="pedido-datos">
+                        👤 ${p.cliente_nombre} · 📞 ${p.cliente_telefono}<br>
+                        📍 ${p.cliente_direccion || ''}, ${p.cliente_ciudad || ''} · 💳 ${p.metodo_pago || '-'}<br>
+                        🕐 ${new Date(p.creado_en).toLocaleString('es-CO')}
+                    </div>
+                    <div class="pedido-items">
+                        ${p.pedido_items.map(i =>
+                            `• ${i.nombre_producto}${i.talla ? ' — Talla ' + i.talla : ''} x${i.cantidad} — $${Number(i.precio_unitario * i.cantidad).toLocaleString('es-CO')}`
+                        ).join('<br>')}
+                    </div>
+                    <div class="pedido-acciones">
+                        <select id="estado-${p.id}">
+                            ${['pendiente','confirmado','enviado','entregado','cancelado'].map(e =>
+                                `<option value="${e}" ${e === p.estado ? 'selected' : ''}>${e}</option>`
+                            ).join('')}
+                        </select>
+                        <button onclick="cambiarEstado(${p.id})">Actualizar</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function cambiarEstado(id) {
+            const nuevoEstado = document.getElementById(`estado-${id}`).value;
+            const { error } = await supa.from('pedidos').update({ estado: nuevoEstado }).eq('id', id);
+            if (error) {
+                alert('Error: ' + error.message);
+            } else {
+                cargarPedidos();
+            }
+        }
+    </script>
+</body>
+</html>
