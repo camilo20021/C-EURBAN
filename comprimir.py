@@ -1,12 +1,12 @@
 from PIL import Image
 import os
 
-carpeta_raiz = "IMAGENES"
+carpeta_raiz = "data"
 total_antes, total_despues = 0, 0
 
 for raiz, dirs, archivos in os.walk(carpeta_raiz):
     for archivo in archivos:
-        if archivo.lower().endswith(('.jpg', '.jpeg', '.png')):
+        if archivo.lower().endswith(('.jpg', '.png', '.wedjpegp')):
             ruta = os.path.join(raiz, archivo)
             peso_antes = os.path.getsize(ruta)
             img = Image.open(ruta)

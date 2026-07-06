@@ -6,7 +6,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado de Homero Simpson, ideal para un look casual y divertido.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/Homero Simpson.png",
+        "imagen": "IMAGENES/Buzos/Homero Simpson.wedp",
         "color": "#1c2f6e"
     },
     {
@@ -16,7 +16,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo oversize con estampado Marvel, tela suave premium.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/Marvel.png",
+        "imagen": "IMAGENES/Buzos/Marvel.wedp",
         "color": "#3454a8"
     },
     {
@@ -26,7 +26,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado Nasa Rocket, estilo urbano espacial.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/Nasarocket.png",
+        "imagen": "IMAGENES/Buzos/Nasarocket.wedp",
         "color": "#1c2f6e"
     },
     {
@@ -36,7 +36,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo verde estilo basketball Bucks, capucha doble forrada.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/1716945775WhatsApp Image 2024-05-27 at 9.38.36 PM.jpeg",
+        "imagen": "IMAGENES/Buzos/1716945775WhatsApp Image 2024-05-27 at 9.38.36 PM.wedp",
         "color": "#14241a"
     },
     {
@@ -46,7 +46,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo color marfil con estampado Marshmello al frente y espalda.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/1764421015MARSHMELLO RAMON MARFIL.jpg",
+        "imagen": "IMAGENES/Buzos/1764421015MARSHMELLO RAMON MARFIL.wedp",
         "color": "#cfc9bd"
     },
     {
@@ -56,7 +56,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado de astronauta, diseno urbano exclusivo.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/astronauta 23.png",
+        "imagen": "IMAGENES/Buzos/astronauta 23.wedp",
         "color": "#1c2f6e"
     },
     {
@@ -66,7 +66,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado California, estilo streetwear.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/california.png",
+        "imagen": "IMAGENES/Buzos/california.wedp",
         "color": "#0a0a0f"
     },
     {
@@ -76,7 +76,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado Createboom, edicion exclusiva C&E.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/createboom.png",
+        "imagen": "IMAGENES/Buzos/createboom.wedp",
         "color": "#1c2f6e"
     },
     {
@@ -86,7 +86,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado Disney, diseno divertido y comodo.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/disney.png",
+        "imagen": "IMAGENES/Buzos/disney.wedp",
         "color": "#0a0a0f"
     },
     {
@@ -96,7 +96,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado floral, corte relajado.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/florwers.png",
+        "imagen": "IMAGENES/Buzos/florwers.wedp",
         "color": "#8a1230"
     },
     {
@@ -106,7 +106,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado Good Mood, ideal para el dia a dia.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/goodmood.png",
+        "imagen": "IMAGENES/Buzos/goodmood.wedp",
         "color": "#1c2f6e"
     },
     {
@@ -116,7 +116,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado de margaritas, diseno exclusivo C&E.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/hopemargaritas.png",
+        "imagen": "IMAGENES/Buzos/hopemargaritas.wedp",
         "color": "#1c2f6e"
     },
     {
@@ -126,7 +126,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado de leon, estilo urbano con actitud.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/leoncruz.png",
+        "imagen": "IMAGENES/Buzos/leoncruz.wedp",
         "color": "#0a0a0f"
     },
     {
@@ -136,7 +136,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado Looney Tunes variado.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/looneyyvarios.png",
+        "imagen": "IMAGENES/Buzos/looneyyvarios.wedp",
         "color": "#1c2f6e"
     },
     {
@@ -146,7 +146,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado Loveys, diseno exclusivo C&E.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/loveys.png",
+        "imagen": "IMAGENES/Buzos/loveys.wedp",
         "color": "#8a1230"
     },
     {
@@ -156,7 +156,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado de margaritas y corazones.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/Lovemargaritas.png",
+        "imagen": "IMAGENES/Buzos/Lovemargaritas.wedp",
         "color": "#8a1230"
     },
     {
@@ -166,7 +166,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado Nasa, estilo espacial urbano.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/nasa.png",
+        "imagen": "IMAGENES/Buzos/nasa.wedp",
         "color": "#1c2f6e"
     },
     {
@@ -176,7 +176,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado de oso 'Genuine', diseno urbano.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/osogenuine.png",
+        "imagen": "IMAGENES/Buzos/osogenuine.wedp",
         "color": "#1c2f6e"
     },
     {
@@ -186,7 +186,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado de pato, diseno divertido.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/pato.png",
+        "imagen": "IMAGENES/Buzos/pato.wedp",
         "color": "#1c2f6e"
     },
     {
@@ -196,7 +196,7 @@
         "categoria": "gorras",
         "descripcion": "Cachucha kaki bordada con diseno de chile, ajustable.",
         "tallas": ["Unica"],
-        "imagen": "IMAGENES/Gorras/cachuca kaki beisbolera con diseño de chile.png",
+        "imagen": "IMAGENES/Gorras/cachuca kaki beisbolera con diseño de chile.wedp",
         "color": "#e8e3d8"
     },
     {
@@ -206,7 +206,7 @@
         "categoria": "gorras",
         "descripcion": "Cachucha beisbolera bordada 'Social Tourist Los Angeles'.",
         "tallas": ["Unica"],
-        "imagen": "IMAGENES/Gorras/cachuca kaki beisbolera.png",
+        "imagen": "IMAGENES/Gorras/cachuca kaki beisbolera.wedp",
         "color": "#e8e3d8"
     },
     {
@@ -216,7 +216,7 @@
         "categoria": "gorras",
         "descripcion": "Gorra snapback estilo New York, bordado clasico NY.",
         "tallas": ["Unica"],
-        "imagen": "IMAGENES/Gorras/gorra nwy york.png",
+        "imagen": "IMAGENES/Gorras/gorra nwy york.wedp",
         "color": "#14141c"
     },
     {
@@ -226,7 +226,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta tipo polo con el iconic logo Boss, color beige. Corte regular, 100% algodon premium.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolbossbeis.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolbossbeis.webp",
         "destacado": true,
         "color": "#c8b89a",
         "grupo": "Polo Boss",
@@ -239,7 +239,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta tipo polo con el iconic logo Boss, color blanco. Corte regular, 100% algodon premium.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolbossblanco.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolbossblanco.wedp",
         "color": "#f5f5f0",
         "grupo": "Polo Boss",
         "colorNombre": "Blanco"
@@ -251,7 +251,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta tipo polo con el iconic logo Boss, color gris. Corte regular, 100% algodon premium.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolbossgris.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolbossgris.wedp",
         "color": "#9e9e9e",
         "grupo": "Polo Boss",
         "colorNombre": "Gris"
@@ -263,7 +263,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta tipo polo con el iconic logo Boss, color negro. Corte regular, 100% algodon premium.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolbossneg.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolbossneg.wedp",
         "destacado": true,
         "color": "#111111",
         "grupo": "Polo Boss",
@@ -276,7 +276,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo estilo ecuestre, color beige. Diseno elegante con bordado en el pecho.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolcabbeich.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolcabbeich.wedp",
         "color": "#c8b89a",
         "grupo": "Polo Ecuestre",
         "colorNombre": "Beige"
@@ -288,7 +288,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo estilo ecuestre, color blanco. Diseno elegante con bordado en el pecho.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolcabblanco.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolcabblanco.wedp",
         "color": "#f5f5f0",
         "grupo": "Polo Ecuestre",
         "colorNombre": "Blanco"
@@ -300,7 +300,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo estilo ecuestre, color gris. Diseno elegante con bordado en el pecho.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolcabgr.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolcabgr.wedp",
         "color": "#9e9e9e",
         "grupo": "Polo Ecuestre",
         "colorNombre": "Gris"
@@ -312,7 +312,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo estilo ecuestre, color naranja. Diseno elegante con bordado en el pecho.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolcabnar.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolcabnar.wedp",
         "color": "#e07b39",
         "grupo": "Polo Ecuestre",
         "colorNombre": "Naranja"
@@ -324,7 +324,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo estilo ecuestre, color negro. Diseno elegante con bordado en el pecho.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolcabnegro.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolcabnegro.wedp",
         "destacado": true,
         "color": "#151515",
         "grupo": "Polo Ecuestre",
@@ -337,7 +337,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo estilo ecuestre, color verde. Diseno elegante con bordado en el pecho.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolcabver.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolcabver.wedp",
         "color": "#3d7a3d",
         "grupo": "Polo Ecuestre",
         "colorNombre": "Verde"
@@ -349,7 +349,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo Balcese color beige, tejido de alta calidad con corte moderno.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolobalcesbeich.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolobalcesbeich.wedp",
         "destacado": true,
         "color": "#c8b89a",
         "grupo": "Polo Balcese",
@@ -362,7 +362,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo Balcese color blanco, tejido de alta calidad con corte moderno.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolobalcesblan.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolobalcesblan.wedp",
         "color": "#f5f5f0",
         "grupo": "Polo Balcese",
         "colorNombre": "Blanco"
@@ -374,7 +374,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo Balcese color gris, tejido de alta calidad con corte moderno.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolobalcesgris.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolobalcesgris.wedp",
         "color": "#9e9e9e",
         "grupo": "Polo Balcese",
         "colorNombre": "Gris"
@@ -386,7 +386,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo Giorgio color beige, diseno italiano con logo bordado al frente.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpologiorgiobeich.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpologiorgiobeich.wedp",
         "destacado": true,
         "color": "#c8b89a",
         "grupo": "Polo Giorgio",
@@ -399,7 +399,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo Giorgio color blanco, diseno italiano con logo bordado al frente.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpologiorgioblan.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpologiorgioblan.wedp",
         "color": "#f5f5f0",
         "grupo": "Polo Giorgio",
         "colorNombre": "Blanco"
@@ -411,7 +411,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo Giorgio color gris, diseno italiano con logo bordado al frente.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpologiorgiogrs.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpologiorgiogrs.wedp",
         "color": "#9e9e9e",
         "grupo": "Polo Giorgio",
         "colorNombre": "Gris"
@@ -423,7 +423,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo Giorgio color naranja, diseno italiano con logo bordado al frente.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpologiorgionaraja.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpologiorgionaraja.wedp",
         "color": "#e07b39",
         "grupo": "Polo Giorgio",
         "colorNombre": "Naranja"
@@ -435,7 +435,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo Giorgio color negro, diseno italiano con logo bordado al frente.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpologiorgioneg.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpologiorgioneg.wedp",
         "destacado": true,
         "color": "#111111",
         "grupo": "Polo Giorgio",
@@ -448,7 +448,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo Giorgio color verde, diseno italiano con logo bordado al frente.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpologiorgioverde.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpologiorgioverde.wedp",
         "color": "#3d7a3d",
         "grupo": "Polo Giorgio",
         "colorNombre": "Verde"
@@ -460,7 +460,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo Paj color blanco, corte slim fit con cuello clasico.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolopajblanco.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolopajblanco.wedp",
         "color": "#f5f5f0",
         "grupo": "Polo Paj",
         "colorNombre": "Blanco"
@@ -472,7 +472,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo Paj color gris, corte slim fit con cuello clasico.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolopajgrs.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolopajgrs.wedp",
         "color": "#9e9e9e",
         "grupo": "Polo Paj",
         "colorNombre": "Gris"
@@ -484,7 +484,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo Paj color naranja, corte slim fit con cuello clasico.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolopajnara.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolopajnara.wedp",
         "color": "#e07b39",
         "grupo": "Polo Paj",
         "colorNombre": "Naranja"
@@ -496,7 +496,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo Paj color negro, corte slim fit con cuello clasico.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolopajnegr.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolopajnegr.wedp",
         "destacado": true,
         "color": "#111111",
         "grupo": "Polo Paj",
@@ -509,7 +509,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Polo Paj color verde, corte slim fit con cuello clasico.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/cpolopajverde.png",
+        "imagen": "IMAGENES/camisetas/hombre/cpolopajverde.wedp",
         "color": "#3d7a3d",
         "grupo": "Polo Paj",
         "colorNombre": "Verde"
@@ -521,7 +521,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta New Balance estampado original. Tela 100% algodon de alta calidad.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/5024009132775771164.png",
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771164.wedp",
         "destacado": true,
         "color": "#f5f5f0"
     },
@@ -532,7 +532,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta Lacoste 1927 Francia Paris. Estampado frontal exclusivo en algodon premium.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/5024009132775771165.png",
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771165.wedp",
         "destacado": true,
         "color": "#f5f5f0"
     },
@@ -543,7 +543,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta Versace con logo Medusa estampado. Diseno italiano de lujo casual.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/5021757332962085838.png",
+        "imagen": "IMAGENES/camisetas/hombre/5021757332962085838.wedp",
         "destacado": true,
         "color": "#f5f5f0"
     },
@@ -554,7 +554,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta Nike No1 con estampado deportivo premium. Corte urbano y comodo.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/5024009132775771166.png",
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771166.wedp",
         "color": "#f5f5f0"
     },
     {
@@ -564,7 +564,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta Amiri estilo streetwear de lujo. Estampado grafico de impacto visual.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/5024009132775771167.png",
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771167.wedp",
         "color": "#f5f5f0"
     },
     {
@@ -574,7 +574,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta New York Brooklyn con diseno urbano tipografico. Estilo NYC autentico.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/5024009132775771168.png",
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771168.wedp",
         "color": "#f5f5f0"
     },
     {
@@ -584,7 +584,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta The North Face con logo estampado. Tela ligera y resistente para uso diario.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/5024009132775771169.png",
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771169.wedp",
         "destacado": true,
         "color": "#f5f5f0"
     },
@@ -595,7 +595,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta Palm Angels estilo streetwear californiano. Diseno editorial exclusivo.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/5024009132775771170.png",
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771170.wedp",
         "color": "#f5f5f0"
     },
     {
@@ -605,7 +605,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta Los Angeles 98 con diseno tipografico retro urbano. Edicion especial.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/5024009132775771171.png",
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771171.wedp",
         "color": "#f5f5f0"
     },
     {
@@ -615,7 +615,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta Brooklyn New York estilo urbano con estampado tipografico premium.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/5024009132775771172.png",
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771172.wedp",
         "color": "#f5f5f0"
     },
     {
@@ -625,7 +625,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta Adidas con logo estampado. Clasico deportivo con corte urbano moderno.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/5024009132775771173.png",
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771173.wedp",
         "destacado": true,
         "color": "#f5f5f0"
     },
@@ -636,7 +636,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta The Hustle Houston con diseno grafico urbano. Inspirada en la cultura del esfuerzo.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/5024009132775771174.png",
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771174.wedp",
         "color": "#f5f5f0"
     },
     {
@@ -646,7 +646,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta Hugo Boss con logo estampado frontal. Elegancia casual de marca premium.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/5024009132775771175.png",
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771175.wedp",
         "destacado": true,
         "color": "#f5f5f0"
     },
@@ -657,7 +657,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta Gucci con logo estampado. Lujo italiano en un diseno casual de alto impacto.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/5024009132775771176.png",
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771176.wedp",
         "destacado": true,
         "color": "#f5f5f0"
     },
@@ -668,7 +668,7 @@
         "categoria": "camisetas-hombres",
         "descripcion": "Camiseta Hermes Paris con estampado exclusivo. Sofisticacion francesa en tela premium.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/hombre/5024009132775771177.png",
+        "imagen": "IMAGENES/camisetas/hombre/5024009132775771177.wedp",
         "destacado": true,
         "color": "#f5f5f0"
     },
@@ -679,7 +679,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta blanca con mariposa leopard estampada + leggis leopard. Tela suave y comoda.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146185.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146185.wedp",
         "destacado": true,
         "color": "#f5f5f0"
     },
@@ -690,7 +690,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta negra con mariposa leopard estampada + leggis leopard. Tela suave y comoda.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146186.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146186.wedp",
         "destacado": true,
         "color": "#111111"
     },
@@ -701,7 +701,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta rosa 'Perfectly Imperfect' + leggis leopard. Diseno unico con mensaje positivo.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146187.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146187.wedp",
         "destacado": true,
         "color": "#f7b8c8"
     },
@@ -712,7 +712,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta rosa con corazones verticales estampados + leggis leopard.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146188.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146188.wedp",
         "color": "#f7b8c8"
     },
     {
@@ -722,7 +722,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta rosa con mariposa estampada + leggis leopard. Estilo romantico y casual.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146189.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146189.wedp",
         "color": "#f7b8c8"
     },
     {
@@ -732,7 +732,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta blanca 'Perfectly Imperfect' + leggis leopard. Diseno elegante y positivo.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146190.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146190.wedp",
         "color": "#f5f5f0"
     },
     {
@@ -742,7 +742,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta blanca con corazon Love + leggis leopard. Fresco y romantico.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146191.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146191.wedp",
         "color": "#f5f5f0"
     },
     {
@@ -752,7 +752,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta fucsia con estampado Love y lazo + leggis leopard. Llamativo y femenino.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146192.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146192.wedp",
         "destacado": true,
         "color": "#e8267a"
     },
@@ -763,7 +763,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta fucsia con 6 corazones estampados + leggis azul leopard. Color vibrante y juvenil.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146193.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146193.wedp",
         "color": "#e8267a"
     },
     {
@@ -773,7 +773,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta blanca con 3 corazones florales + leggis rosa leopard. Delicado y romantico.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146194.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146194.wedp",
         "color": "#f5f5f0"
     },
     {
@@ -783,7 +783,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta rosa 'Love & Love' + leggis gris leopard. Combinacion perfecta.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146195.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146195.wedp",
         "color": "#f7b8c8"
     },
     {
@@ -793,7 +793,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta negra 'Love & Love' + leggis leopard oscuro. Elegante y sofisticado.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146196.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146196.wedp",
         "color": "#111111"
     },
     {
@@ -803,7 +803,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta rosa claro con corazon Love a la mitad + leggis leopard. Suave y romantico.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146197.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146197.wedp",
         "color": "#f7c4d0"
     },
     {
@@ -813,7 +813,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta fucsia con gran corazon Love + leggis azul leopard. Atrevido y llamativo.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146198.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146198.wedp",
         "destacado": true,
         "color": "#e8267a"
     },
@@ -824,7 +824,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta blanca con corazones en vertical + leggis rosa leopard. Dulce y femenino.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146199.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146199.wedp",
         "color": "#f5f5f0"
     },
     {
@@ -834,7 +834,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta rosa con 3 corazones estampados + leggis gris leopard. Casual y romantico.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146200.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146200.wedp",
         "color": "#f7b8c8"
     },
     {
@@ -844,7 +844,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta fucsia con cerezas leopard estampadas + leggis azul leopard. Fresco y divertido.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146201.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146201.wedp",
         "destacado": true,
         "color": "#e8267a"
     },
@@ -855,7 +855,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta negra con osito Teddy estampado + leggis leopard. Tierno y urbano a la vez.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146202.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146202.wedp",
         "color": "#111111"
     },
     {
@@ -865,7 +865,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta blanca 'Cherry' con cerezas leopard + leggis leopard gris rosa. Fresco y juvenil.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146203.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146203.wedp",
         "destacado": true,
         "color": "#f5f5f0"
     },
@@ -876,7 +876,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta fucsia con gran mariposa leopard + leggis leopard gris azul. Impactante y femenino.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146204.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146204.wedp",
         "destacado": true,
         "color": "#e8267a"
     },
@@ -887,7 +887,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta negra con 3 corazones leopard + leggis leopard gris rosa. Elegante y romantico.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146205.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146205.wedp",
         "color": "#111111"
     },
     {
@@ -897,7 +897,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta negra 'Cherry' con cerezas leopard + leggis leopard gris rosa. Sofisticado y fresco.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146206.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146206.wedp",
         "color": "#111111"
     },
     {
@@ -907,7 +907,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta blanca con gran corazon leopard + leggis leopard gris rosa. Clasico y romantico.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146207.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146207.wedp",
         "color": "#f5f5f0"
     },
     {
@@ -917,7 +917,7 @@
         "categoria": "camisetas-damas",
         "descripcion": "Conjunto femenino: camiseta rosa con mariposas y corazon estampados + leggis leopard gris oscuro. Romantico y femenino.",
         "tallas": ["S", "M", "L", "XL"],
-        "imagen": "IMAGENES/camisetas/dama/5033165569259146208.png",
+        "imagen": "IMAGENES/camisetas/dama/5033165569259146208.wedp",
         "destacado": true,
         "color": "#f7b8c8"
     }
