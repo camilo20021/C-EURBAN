@@ -166,7 +166,7 @@
         "categoria": "buzos",
         "descripcion": "Buzo con estampado Nasa, estilo espacial urbano.",
         "tallas": ["S", "M", "L", "XL", "XXL"],
-        "imagen": "IMAGENES/Buzos/nasa.webp",
+        "imagen": "IMAGENES/Buzos/Nasarocket.webp",
         "color": "#1c2f6e"
     },
     {

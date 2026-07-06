@@ -26,7 +26,7 @@
 
     <main class="panel-pagos-page">
         <h1>Panel de pagos</h1>
-        <p class="subtitle">Pagina de uso interno para confirmar pagos recibidos. No la compartas publicamente.</p>
+        <p class="subtitle">Página de uso interno para confirmar pagos recibidos. No la compartas públicamente.</p>
 
         <div class="clave-box">
             <input type="password" id="clave-input" placeholder="Clave de administrador">
@@ -89,7 +89,7 @@
                     <div class="pedido-info">
                         <h4>Pedido #${p.id} — ${p.nombre || 'Sin nombre'}</h4>
                         <p>${p.email || 'Sin email'} ${p.telefono ? '· ' + p.telefono : ''}</p>
-                        <p>Metodo: ${p.metodo_pago || 'No especificado'} · ${new Date(p.creado_en).toLocaleString('es-CO')}</p>
+                        <p>Método: ${p.metodo_pago || 'No especificado'} · ${new Date(p.creado_en).toLocaleString('es-CO')}</p>
                     </div>
                     <div style="display:flex; align-items:center; gap:16px;">
                         <span class="pedido-total">$${(p.total || 0).toLocaleString('es-CO')}</span>
@@ -121,7 +121,7 @@
                 if (data.warning) {
                     alert(`Pago confirmado, pero: ${data.warning}`);
                 } else {
-                    alert('Pago confirmado. Se envio el correo al cliente.');
+                    alert('Pago confirmado. Se envió el correo al cliente.');
                 }
 
                 cargarPedidos();
@@ -149,7 +149,7 @@
             const btn = e.target.closest('[data-confirmar-id]');
             if (!btn) return;
             const pedidoId = btn.dataset.confirmarId;
-            if (confirm(`¿Confirmar que el pedido #${pedidoId} ya fue pagado? Se le enviara un correo al cliente.`)) {
+            if (confirm(`¿Confirmar que el pedido #${pedidoId} ya fue pagado? Se le enviará un correo al cliente.`)) {
                 confirmarPago(pedidoId, btn);
             }
         });

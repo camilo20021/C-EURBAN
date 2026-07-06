@@ -28,34 +28,19 @@ function actualizarAdminLink() {
     }
 }
 
+const SUPABASE_URL = 'https://vtztpvjbhwlnspjpwhim.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_FdF3E71-r0Ku4NVb-uSN7A_yNvIiTqv';
+
 async function cargarProductos() {
     try {
-        const respuesta = await fetch('data/productos.json');
+        const respuesta = await fetch(
+            `${SUPABASE_URL}/rest/v1/productos?select=*&order=creado_en.desc`,
+            { headers: { apikey: SUPABASE_KEY } }
+        );
         listaProductos = await respuesta.json();
 
         if (productosContainer) {
-            const filtroPagina = productosContainer.dataset.categoriaFija;
-            const excluir = productosContainer.dataset.excluirCategorias;
-            const soloDestacados = productosContainer.dataset.soloDestacados === 'true';
-            const limite = parseInt(productosContainer.dataset.limite) || Infinity;
-
-            if (filtroPagina) {
-                listaBase = listaProductos.filter(p => p.categoria === filtroPagina);
-            } else if (excluir) {
-                const excluidos = excluir.split(',').map(s => s.trim());
-                listaBase = listaProductos.filter(p => !excluidos.includes(p.categoria));
-            } else {
-                listaBase = listaProductos;
-            }
-
-            if (soloDestacados) {
-                listaBase = listaBase.filter(p => p.destacado === true);
-                // Mezcla categorias para que siempre aparezca variedad
-                listaBase = listaBase.sort(() => Math.random() - 0.5);
-            }
-            if (isFinite(limite)) listaBase = listaBase.slice(0, limite);
-
-            mostrarProductos(listaBase);
+            mostrarProductos(listaProductos, productosContainer);
         }
 
         // Grids extra (ej: seccion damas en el index)
