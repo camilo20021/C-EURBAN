@@ -152,3 +152,26 @@ function configurarFaq() {
         });
     });
 }
+// Menu dinamico segun sesion del cliente
+document.addEventListener('DOMContentLoaded', () => {
+    const usuario = JSON.parse(localStorage.getItem('ceurbanUser') || 'null');
+    const linkNosotros = document.querySelector('a[href*="nosotros"]')?.closest('li') 
+                      || document.querySelector('a[href*="nosotros"]');
+
+    if (usuario && usuario.nombre) {
+        // Logueado: "Nosotros" se convierte en "Mis compras"
+        if (linkNosotros) {
+            const enlace = linkNosotros.querySelector('a') || linkNosotros;
+            enlace.textContent = '🛍️ Mis compras';
+            enlace.setAttribute('href', 'cuenta.html');
+        }
+    } else {
+        // No logueado: agregar enlace de iniciar sesion si no existe
+        const menu = document.querySelector('nav ul');
+        if (menu && !document.querySelector('a[href*="cuenta.html"]')) {
+            const li = document.createElement('li');
+            li.innerHTML = '<a href="cuenta.html">Iniciar sesión</a>';
+            menu.appendChild(li);
+        }
+    }
+});

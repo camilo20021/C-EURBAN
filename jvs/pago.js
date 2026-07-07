@@ -56,7 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // Pre-llenamos los campos (aunque estarán ocultos)
         if (nameInput) nameInput.value = usuarioGuardado.nombre;
         if (emailInput) emailInput.value = usuarioGuardado.email;
-
+        const telInput = document.getElementById('customer-phone');
+        const dirInput = document.getElementById('customer-address');
+        const ciudadInput = document.getElementById('customer-city');
+        if (telInput && usuarioGuardado.telefono) telInput.value = usuarioGuardado.telefono;
+        if (dirInput && usuarioGuardado.direccion) dirInput.value = usuarioGuardado.direccion;
+        if (ciudadInput && usuarioGuardado.ciudad) ciudadInput.value = usuarioGuardado.ciudad;
         // Ocultamos los campos de nombre y email y mostramos un saludo
         const nameWrapper = nameInput.parentElement;
         const emailWrapper = emailInput.parentElement;
