@@ -163,6 +163,7 @@ async function cambiarEstado(id) {
                     </div>
                     <div><label>Stock</label><input type="number" min="0" id="stock-${p.id}" value="${p.stock}"></div>
                     <div><label>Precio</label><input type="number" min="0" id="precio-${p.id}" value="${p.precio}"></div>
+                    <div><label><input type="checkbox" id="destacado-${p.id}" ${p.destacado ? 'checked' : ''}> Destacado (portada)</label></div>
                     <button onclick="guardarProducto(${p.id})">Guardar</button>
                 </div>`;
             }).join('');
@@ -171,7 +172,8 @@ async function cambiarEstado(id) {
         async function guardarProducto(id) {
             const stock = parseInt(document.getElementById(`stock-${id}`).value) || 0;
             const precio = Number(document.getElementById(`precio-${id}`).value) || 0;
-            const { error } = await supa.from('productos').update({ stock, precio }).eq('id', id);
+            const destacado = document.getElementById(`destacado-${id}`).checked;
+            const { error } = await supa.from('productos').update({ stock, precio, destacado }).eq('id', id);
             if (error) alert('Error: ' + error.message);
             else cargarInventario();
         }

@@ -197,7 +197,7 @@ app.post('/api/orders', async (req, res) => {
             try {
                 const transporter = await createTransporter();
                 const info = await transporter.sendMail({
-                    from: process.env.FROM_EMAIL || 'C&E Urban Wear <no-reply@ceurban.com>',
+                    from: process.env.FROM_EMAIL || 'C&E Urban Wear <pedidos@urbandriveaccesorios.online>',
                     to: email,
                     subject: `Pedido #${pedidoId} recibido - C&E Urban Wear`,
                     html: buildOrderEmailHtml({
@@ -288,7 +288,7 @@ app.post('/api/orders/:id/confirmar-pago', validarClaveAdmin, async (req, res) =
         try {
             const transporter = await createTransporter();
             await transporter.sendMail({
-                from: process.env.FROM_EMAIL || 'C&E Urban Wear <no-reply@ceurban.com>',
+                from: process.env.FROM_EMAIL || 'C&E Urban Wear <pedidos@urbandriveaccesorios.online>',
                 to: pedido.email,
                 subject: `Pago confirmado - Pedido #${pedido.id} - C&E Urban Wear`,
                 html: buildPaymentConfirmedEmailHtml({

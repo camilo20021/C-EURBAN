@@ -56,7 +56,12 @@ async function cargarProductos() {
         }
 
         if (productosContainer) {
-            mostrarProductos(listaBase, productosContainer);
+            let baseParaMostrar = listaBase;
+            const soloDestacados = productosContainer.dataset.soloDestacados === 'true';
+            const limite = parseInt(productosContainer.dataset.limite) || Infinity;
+            if (soloDestacados) baseParaMostrar = baseParaMostrar.filter(p => p.destacado === true);
+            if (isFinite(limite)) baseParaMostrar = baseParaMostrar.slice(0, limite);
+            mostrarProductos(baseParaMostrar, productosContainer);
         }
 
         // Grids extra (ej: seccion damas en el index)
