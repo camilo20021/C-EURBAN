@@ -1,6 +1,35 @@
 // Logica de navegacion compartida por TODAS las paginas:
 // menu hamburguesa movil y dropdown de Productos por click.
 
+// Recuerda en que parte de la pagina estaba el usuario (ej: entro al carrito,
+// se arrepintio y volvio atras) y, si la url trae un ancla (#personalizados),
+// le da prioridad sobre la posicion recordada.
+// En paginas con catalogo (jvs/index.js) el alto cambia cuando llegan los
+// productos desde Supabase, asi que el ajuste se repite cuando ya esten listos.
+(function () {
+    const claveScroll = 'scrollPos:' + location.pathname;
+    let guardarPendiente;
+
+    window.addEventListener('scroll', () => {
+        clearTimeout(guardarPendiente);
+        guardarPendiente = setTimeout(() => {
+            sessionStorage.setItem(claveScroll, String(window.scrollY));
+        }, 150);
+    }, { passive: true });
+
+    function ajustarScroll() {
+        if (location.hash) {
+            const destino = document.querySelector(location.hash);
+            if (destino) { destino.scrollIntoView({ block: 'start' }); return; }
+        }
+        const y = parseInt(sessionStorage.getItem(claveScroll), 10);
+        if (!isNaN(y) && y > 0) window.scrollTo(0, y);
+    }
+
+    window.addEventListener('pageshow', ajustarScroll);
+    document.addEventListener('productos:listos', ajustarScroll);
+})();
+
 function actualizarMenuProductos() {
     const dropdownContent = document.querySelector('.dropdown-content');
     if (!dropdownContent) return;

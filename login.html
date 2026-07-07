@@ -29,6 +29,8 @@
                     <a href="gorras.html">Gorras</a>
                 </div>
             </div>
+            <a href="index.html#personalizados">Personalizados</a>
+            <a href="nosotros.html">Nosotros</a>
             <a href="contacto.html">Contacto</a>
         </nav>
         <button class="menu-toggle" aria-label="Abrir menú">☰</button>
@@ -132,6 +134,29 @@
             return await res.json();
         }
 
+        // Catalogo de productos (para mostrar la imagen real de cada articulo comprado)
+        let catalogoPorId = new Map();
+        let catalogoPorNombre = new Map();
+        async function cargarCatalogoProductos() {
+            try {
+                const res = await fetch(`${SUPA_URL}/rest/v1/productos?select=id,nombre,imagen`, {
+                    headers: { apikey: SUPA_KEY }
+                });
+                const productos = await res.json();
+                (productos || []).forEach(p => {
+                    if (p.id != null) catalogoPorId.set(String(p.id), p);
+                    if (p.nombre) catalogoPorNombre.set(p.nombre.trim().toLowerCase(), p);
+                });
+            } catch (e) { /* Sin catalogo, se usara el icono por defecto */ }
+        }
+
+        function imagenDeItem(item) {
+            const porId = item.producto_id != null ? catalogoPorId.get(String(item.producto_id)) : null;
+            const nombreItem = (item.nombre || item.nombre_producto || '').trim().toLowerCase();
+            const porNombre = !porId && nombreItem ? catalogoPorNombre.get(nombreItem) : null;
+            return (porId || porNombre)?.imagen || null;
+        }
+
         // Pestañas
         document.getElementById('tab-login').addEventListener('click', () => cambiarTab('login'));
         document.getElementById('tab-registro').addEventListener('click', () => cambiarTab('registro'));
@@ -212,6 +237,8 @@
                 return;
             }
 
+            if (catalogoPorId.size === 0) await cargarCatalogoProductos();
+
             const r = await rpc('mis_pedidos', { p_email: usuario.email, p_codigo: codigo });
 
             if (!r.ok) { cont.innerHTML = `<p style="color:#ff6b6b;">${r.error}</p>`; return; }
@@ -220,25 +247,67 @@
                 return;
             }
 
-            const ESTADOS = ['confirmado', 'enviado', 'entregado'];
+            const PASOS = [
+                { key: 'confirmado', label: 'Confirmado', icon: '📋' },
+                { key: 'enviado', label: 'Enviado', icon: '🚚' },
+                { key: 'entregado', label: 'Entregado', icon: '📦' }
+            ];
+            const ESTADO_LABEL = { pendiente: 'Pendiente', confirmado: 'Confirmado', enviado: 'Enviado', entregado: 'Entregado', cancelado: 'Cancelado' };
+
+            function crearStepper(estado) {
+                if (estado === 'cancelado') {
+                    return '<p class="pedido-cancelado">✕ Este pedido fue cancelado</p>';
+                }
+                const idxActual = PASOS.findIndex(p => p.key === estado);
+                return `
+                    <div class="pedido-stepper">
+                        ${PASOS.map((paso, i) => `
+                            <div class="paso ${i <= idxActual ? 'completado' : ''}">
+                                <span class="paso-circulo">${i < idxActual ? '✓' : paso.icon}</span>
+                                <span class="paso-label">${paso.label}</span>
+                            </div>
+                            ${i < PASOS.length - 1 ? `<span class="paso-linea ${i < idxActual ? 'completado' : ''}"></span>` : ''}
+                        `).join('')}
+                    </div>`;
+            }
+
+            function crearItem(item) {
+                const imagen = imagenDeItem(item);
+                const nombre = item.nombre || item.nombre_producto || 'Producto';
+                const cantidad = item.cantidad || 1;
+                return `
+                    <div class="pedido-item">
+                        ${imagen
+                            ? `<img src="${imagen}" alt="${nombre}" class="pedido-item-img" loading="lazy">`
+                            : `<div class="pedido-item-img pedido-item-sinimg">🛍️</div>`}
+                        <div class="pedido-item-info">
+                            <span class="pedido-item-nombre">${nombre}</span>
+                            ${item.talla ? `<span class="pedido-item-talla">Talla ${item.talla}</span>` : ''}
+                        </div>
+                        <span class="pedido-item-cantidad">x${cantidad}</span>
+                    </div>`;
+            }
+
             cont.innerHTML = r.pedidos.map(p => `
-                <div class="pedido-cliente">
-                    <div class="pc-top">
-                        <strong>Pedido #${p.id}</strong>
-                        <span class="pc-estado ${p.estado}">${p.estado.toUpperCase()}</span>
+                <div class="pedido-card">
+                    <div class="pedido-head">
+                        <div class="pedido-head-info">
+                            <span class="pedido-numero">Pedido #${p.id}</span>
+                            <span class="pedido-fecha">${new Date(p.fecha).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                        </div>
+                        <span class="pedido-estado estado-${p.estado}">${ESTADO_LABEL[p.estado] || p.estado}</span>
                     </div>
-                    <div class="pc-progreso">
-                        ${ESTADOS.map(e => {
-                            const alcanzado = ESTADOS.indexOf(p.estado) >= ESTADOS.indexOf(e) || p.estado === 'entregado' && e !== '';
-                            const activo = ESTADOS.indexOf(p.estado) >= ESTADOS.indexOf(e);
-                            return activo ? `<strong>● ${e}</strong>` : `○ ${e}`;
-                        }).join(' — ')}
+
+                    ${crearStepper(p.estado)}
+
+                    <div class="pedido-items">
+                        ${(p.items || []).map(crearItem).join('')}
                     </div>
-                    <div class="pc-items">
-                        ${(p.items || []).map(i => `• ${i.nombre}${i.talla ? ' — Talla ' + i.talla : ''} x${i.cantidad}`).join('<br>')}
+
+                    <div class="pedido-footer">
+                        <span>Total</span>
+                        <strong>$${Number(p.total).toLocaleString('es-CO')}</strong>
                     </div>
-                    <div style="margin-top:8px;font-weight:bold;">Total: $${Number(p.total).toLocaleString('es-CO')}</div>
-                    <div style="font-size:12px;color:#777;margin-top:4px;">${new Date(p.fecha).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
                 </div>
             `).join('');
         }

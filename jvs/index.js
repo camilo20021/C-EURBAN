@@ -75,12 +75,40 @@ async function cargarProductos() {
             mostrarProductos(base, grid);
         });
 
+        // Los productos llegan de forma asincrona y cambian el alto de la pagina,
+        // asi que hay que re-ajustar el scroll (anclas #hash y "volver atras") una vez listos.
+        document.dispatchEvent(new CustomEvent('productos:listos'));
+
     } catch (error) {
         console.error("Error cargando el catalogo:", error);
         if (productosContainer) {
             productosContainer.innerHTML = `<p style="color: var(--rojo-claro); grid-column: 1/-1; text-align: center; padding: 40px;">No se pudo cargar el catalogo. Intenta de nuevo en unos minutos.</p>`;
         }
     }
+}
+
+// Colores conocidos para detectar variantes cuando el nombre termina en un color
+// (ej: "Polo Ecuestre Negro" y "Polo Ecuestre Blanco" son la misma prenda en distinto color)
+const PALABRAS_COLOR = [
+    'blanco', 'blanca', 'negro', 'negra', 'gris', 'beige', 'naranja', 'verde',
+    'azul', 'rojo', 'roja', 'rosa', 'rosado', 'rosada', 'fucsia', 'morado',
+    'morada', 'amarillo', 'amarilla', 'cafe', 'marron', 'vino', 'vinotinto',
+    'kaki', 'caqui', 'plateado', 'dorado', 'marfil'
+];
+
+function quitarAcentos(texto) {
+    return texto.normalize('NFD').replace(/[̀-ͯ]/g, '');
+}
+
+function detectarVarianteColor(nombre) {
+    const palabras = nombre.trim().split(/\s+/);
+    if (palabras.length < 2) return null;
+    const ultima = quitarAcentos(palabras[palabras.length - 1]).toLowerCase();
+    if (!PALABRAS_COLOR.includes(ultima)) return null;
+    return {
+        base: palabras.slice(0, -1).join(' '),
+        colorNombre: palabras[palabras.length - 1]
+    };
 }
 
 function mostrarProductos(productos, contenedor = productosContainer) {
@@ -92,22 +120,47 @@ function mostrarProductos(productos, contenedor = productosContainer) {
         return;
     }
 
-    // Agrupar productos por campo 'grupo'
+    // Agrupar productos por campo 'grupo' explicito, o detectando automaticamente
+    // variantes de color a partir del nombre cuando ese campo no existe.
     const gruposMap = {};
-    const renderizados = new Set();
+    const claveDeProducto = new Map();
 
     productos.forEach(p => {
-        if (p.grupo) {
-            if (!gruposMap[p.grupo]) gruposMap[p.grupo] = [];
-            gruposMap[p.grupo].push(p);
+        let clave = p.grupo;
+        let colorNombre = p.colorNombre;
+        let nombreGrupo = p.grupo;
+
+        if (!clave) {
+            const variante = detectarVarianteColor(p.nombre);
+            if (variante) {
+                clave = `auto:${p.categoria}:${variante.base.toLowerCase()}`;
+                colorNombre = colorNombre || variante.colorNombre;
+                nombreGrupo = variante.base;
+            }
+        }
+
+        if (clave) {
+            if (!gruposMap[clave]) gruposMap[clave] = [];
+            gruposMap[clave].push({ ...p, colorNombre, grupo: nombreGrupo });
+            claveDeProducto.set(p.id, clave);
         }
     });
 
+    // Un grupo automatico con un solo producto no es realmente una variante de color
+    Object.keys(gruposMap).forEach(clave => {
+        if (clave.startsWith('auto:') && gruposMap[clave].length < 2) {
+            gruposMap[clave].forEach(p => claveDeProducto.delete(p.id));
+            delete gruposMap[clave];
+        }
+    });
+
+    const renderizados = new Set();
     productos.forEach(producto => {
-        if (producto.grupo) {
-            if (renderizados.has(producto.grupo)) return;
-            renderizados.add(producto.grupo);
-            contenedor.appendChild(crearCardGrupo(gruposMap[producto.grupo]));
+        const clave = claveDeProducto.get(producto.id);
+        if (clave) {
+            if (renderizados.has(clave)) return;
+            renderizados.add(clave);
+            contenedor.appendChild(crearCardGrupo(gruposMap[clave]));
         } else {
             contenedor.appendChild(crearCardSimple(producto));
         }
