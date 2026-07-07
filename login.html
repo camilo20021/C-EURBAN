@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión | C&E Urban Wear</title>
+    <title>Mi cuenta | C&E Urban Wear</title>
     <link rel="icon" href="IMAGENES/favicon.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/main.css">
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="stylesheet" href="CSS/login.css">
 </head>
 <body>
     <div class="fondo-estrellas"></div>
@@ -37,44 +37,52 @@
 
     <main class="auth-page">
         <section class="auth-card">
-            <h1>Iniciar sesión</h1>
 
-            <div id="g_id_onload"
-                 data-client_id="96439361582-vlr4e3bdiabhaoog22o040pbafjrrd96.apps.googleusercontent.com"
-                 data-context="signin"
-                 data-ux_mode="popup"
-                 data-callback="handleCredentialResponse"
-                 data-auto_prompt="false">
-            </div>
+            <!-- VISTA: NO LOGUEADO -->
+            <div id="vista-auth">
+                <h1>Mi cuenta</h1>
 
-            <div class="g_id_signin"
-                 data-type="standard"
-                 data-shape="rectangular"
-                 data-theme="filled_black"
-                 data-text="signin_with"
-                 data-size="large"
-                 data-logo_alignment="left">
-            </div>
-
-            <div id="logged-user" class="user-card hidden">
-                <img id="user-picture" src="" alt="Perfil">
-                <div>
-                    <h2 id="user-name"></h2>
-                    <p id="user-email"></p>
+                <div class="auth-tabs">
+                    <button id="tab-login" class="activo">Iniciar sesión</button>
+                    <button id="tab-registro">Crear cuenta</button>
                 </div>
-            </div>
 
-            <div class="auth-help">
-                <p>También puedes registrarte manualmente si no tienes cuenta de Google.</p>
-                <form id="manual-register" class="manual-form">
-                    <input type="text" id="manual-name" placeholder="Nombre completo" required>
-                    <input type="email" id="manual-email" placeholder="Correo electrónico" required>
-                    <input type="tel" id="manual-phone" placeholder="Teléfono">
+                <!-- Iniciar sesion -->
+                <form id="form-login" class="manual-form">
+                    <input type="email" id="login-email" placeholder="Correo electrónico" required>
+                    <input type="password" id="login-codigo" placeholder="Código de acceso" required>
+                    <button type="submit">Entrar</button>
+                    <p class="auth-msg" id="msg-login"></p>
+                </form>
+
+                <!-- Crear cuenta -->
+                <form id="form-registro" class="manual-form hidden">
+                    <input type="text" id="reg-nombre" placeholder="Nombre completo" required>
+                    <input type="email" id="reg-email" placeholder="Correo electrónico" required>
+                    <input type="tel" id="reg-telefono" placeholder="Teléfono / WhatsApp" required>
+                    <input type="text" id="reg-direccion" placeholder="Dirección de envío">
+                    <input type="text" id="reg-ciudad" placeholder="Ciudad">
+                    <input type="password" id="reg-codigo" placeholder="Crea un código de acceso (mín. 6 caracteres)" required minlength="6">
                     <button type="submit">Registrarme</button>
+                    <p class="auth-msg" id="msg-registro"></p>
                 </form>
             </div>
 
-            <button id="logout-btn" class="logout-btn hidden">Cerrar sesión</button>
+            <!-- VISTA: LOGUEADO -->
+            <div id="vista-cuenta" class="hidden">
+                <div id="logged-user" class="user-card">
+                    <div>
+                        <h2 id="user-name"></h2>
+                        <p id="user-email"></p>
+                    </div>
+                </div>
+
+                <h2 style="margin: 24px 0 14px;">🛍️ Mis compras</h2>
+                <div id="mis-pedidos"><p>Cargando tus pedidos...</p></div>
+
+                <button id="logout-btn" class="logout-btn">Cerrar sesión</button>
+            </div>
+
         </section>
     </main>
 
@@ -107,9 +115,140 @@
         <p>© 2026 C&E Urban Wear | Todos los derechos reservados</p>
     </div>
 
-    <script src="jvs/auth.js"></script>
+    <script>
+        const SUPA_URL = 'https://vtztpvjbhwlnspjpwhim.supabase.co';
+        const SUPA_KEY = 'sb_publishable_FdF3E71-r0Ku4NVb-uSN7A_yNvIiTqv';
+
+        const vistaAuth = document.getElementById('vista-auth');
+        const vistaCuenta = document.getElementById('vista-cuenta');
+
+        // Helper para llamar funciones de Supabase
+        async function rpc(funcion, datos) {
+            const res = await fetch(`${SUPA_URL}/rest/v1/rpc/${funcion}`, {
+                method: 'POST',
+                headers: { apikey: SUPA_KEY, 'Content-Type': 'application/json' },
+                body: JSON.stringify(datos)
+            });
+            return await res.json();
+        }
+
+        // Pestañas
+        document.getElementById('tab-login').addEventListener('click', () => cambiarTab('login'));
+        document.getElementById('tab-registro').addEventListener('click', () => cambiarTab('registro'));
+
+        function cambiarTab(tab) {
+            document.getElementById('tab-login').classList.toggle('activo', tab === 'login');
+            document.getElementById('tab-registro').classList.toggle('activo', tab === 'registro');
+            document.getElementById('form-login').classList.toggle('hidden', tab !== 'login');
+            document.getElementById('form-registro').classList.toggle('hidden', tab !== 'registro');
+        }
+
+        // Registro
+        document.getElementById('form-registro').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const msg = document.getElementById('msg-registro');
+            msg.textContent = 'Creando tu cuenta...'; msg.className = 'auth-msg';
+
+            const codigo = document.getElementById('reg-codigo').value;
+            const r = await rpc('registrar_cliente', {
+                p_email: document.getElementById('reg-email').value,
+                p_nombre: document.getElementById('reg-nombre').value,
+                p_telefono: document.getElementById('reg-telefono').value,
+                p_direccion: document.getElementById('reg-direccion').value,
+                p_ciudad: document.getElementById('reg-ciudad').value,
+                p_codigo: codigo
+            });
+
+            if (!r.ok) { msg.textContent = r.error || 'Error creando la cuenta'; msg.className = 'auth-msg error'; return; }
+
+            iniciarSesion(r.cliente, codigo);
+        });
+
+        // Login
+        document.getElementById('form-login').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const msg = document.getElementById('msg-login');
+            msg.textContent = 'Verificando...'; msg.className = 'auth-msg';
+
+            const codigo = document.getElementById('login-codigo').value;
+            const r = await rpc('login_cliente', {
+                p_email: document.getElementById('login-email').value,
+                p_codigo: codigo
+            });
+
+            if (!r.ok) { msg.textContent = r.error || 'No pudimos iniciar sesión'; msg.className = 'auth-msg error'; return; }
+
+            iniciarSesion(r.cliente, codigo);
+        });
+
+        function iniciarSesion(cliente, codigo) {
+            localStorage.setItem('ceurbanUser', JSON.stringify(cliente));
+            sessionStorage.setItem('ceurbanCodigo', codigo);
+            mostrarCuenta();
+        }
+
+        function cerrarSesion() {
+            localStorage.removeItem('ceurbanUser');
+            sessionStorage.removeItem('ceurbanCodigo');
+            location.reload();
+        }
+        document.getElementById('logout-btn').addEventListener('click', cerrarSesion);
+
+        // Vista de cuenta + pedidos
+        async function mostrarCuenta() {
+            const usuario = JSON.parse(localStorage.getItem('ceurbanUser') || 'null');
+            const codigo = sessionStorage.getItem('ceurbanCodigo');
+            if (!usuario) return;
+
+            vistaAuth.classList.add('hidden');
+            vistaCuenta.classList.remove('hidden');
+            document.getElementById('user-name').textContent = `Hola, ${usuario.nombre} 👋`;
+            document.getElementById('user-email').textContent = usuario.email;
+
+            const cont = document.getElementById('mis-pedidos');
+
+            if (!codigo) {
+                cont.innerHTML = '<p style="color:#888;">Por seguridad, vuelve a iniciar sesión para ver tus pedidos.</p>';
+                return;
+            }
+
+            const r = await rpc('mis_pedidos', { p_email: usuario.email, p_codigo: codigo });
+
+            if (!r.ok) { cont.innerHTML = `<p style="color:#ff6b6b;">${r.error}</p>`; return; }
+            if (!r.pedidos.length) {
+                cont.innerHTML = '<p style="color:#888;">Aún no tienes compras. <a href="productos.html" style="color:var(--acento-claro,#5cc0ff);">¡Explora el catálogo!</a></p>';
+                return;
+            }
+
+            const ESTADOS = ['confirmado', 'enviado', 'entregado'];
+            cont.innerHTML = r.pedidos.map(p => `
+                <div class="pedido-cliente">
+                    <div class="pc-top">
+                        <strong>Pedido #${p.id}</strong>
+                        <span class="pc-estado ${p.estado}">${p.estado.toUpperCase()}</span>
+                    </div>
+                    <div class="pc-progreso">
+                        ${ESTADOS.map(e => {
+                            const alcanzado = ESTADOS.indexOf(p.estado) >= ESTADOS.indexOf(e) || p.estado === 'entregado' && e !== '';
+                            const activo = ESTADOS.indexOf(p.estado) >= ESTADOS.indexOf(e);
+                            return activo ? `<strong>● ${e}</strong>` : `○ ${e}`;
+                        }).join(' — ')}
+                    </div>
+                    <div class="pc-items">
+                        ${(p.items || []).map(i => `• ${i.nombre}${i.talla ? ' — Talla ' + i.talla : ''} x${i.cantidad}`).join('<br>')}
+                    </div>
+                    <div style="margin-top:8px;font-weight:bold;">Total: $${Number(p.total).toLocaleString('es-CO')}</div>
+                    <div style="font-size:12px;color:#777;margin-top:4px;">${new Date(p.fecha).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                </div>
+            `).join('');
+        }
+
+        // Si ya hay sesion al abrir la pagina, mostrar la cuenta directo
+        document.addEventListener('DOMContentLoaded', () => {
+            const usuario = JSON.parse(localStorage.getItem('ceurbanUser') || 'null');
+            if (usuario && usuario.nombre) mostrarCuenta();
+        });
+    </script>
     <script src="jvs/navegacion.js"></script>
-    <script src="jvs/user-state.js"></script>
 </body>
 </html>
-

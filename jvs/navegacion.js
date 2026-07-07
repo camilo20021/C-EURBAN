@@ -163,14 +163,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (linkNosotros) {
             const enlace = linkNosotros.querySelector('a') || linkNosotros;
             enlace.textContent = '🛍️ Mis compras';
-            enlace.setAttribute('href', 'cuenta.html');
+            enlace.setAttribute('href', 'login.html');
         }
     } else {
         // No logueado: agregar enlace de iniciar sesion si no existe
         const menu = document.querySelector('nav ul');
-        if (menu && !document.querySelector('a[href*="cuenta.html"]')) {
+        if (menu && !document.querySelector('a[href*="login.html"]')) {
             const li = document.createElement('li');
-            li.innerHTML = '<a href="cuenta.html">Iniciar sesión</a>';
+            li.innerHTML = '<a href="login.html">Iniciar sesión</a>';
             menu.appendChild(li);
         }
     }

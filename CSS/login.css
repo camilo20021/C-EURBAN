@@ -1,0 +1,18 @@
+.auth-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+.auth-tabs button { flex: 1; padding: 10px; border: 1px solid var(--gris-linea, #333); background: none; color: inherit; border-radius: 8px; cursor: pointer; font-weight: 600; }
+.auth-tabs button.activo { background: var(--acento, #1c2f6e); color: #fff; border-color: var(--acento, #1c2f6e); }
+.manual-form input { width: 100%; margin-bottom: 10px; }
+.auth-msg { font-size: 13px; margin-top: 10px; min-height: 18px; }
+.auth-msg.error { color: #ff6b6b; }
+.auth-msg.ok { color: #7dff9e; }
+.pedido-cliente { background: rgba(255,255,255,0.03); border: 1px solid var(--gris-linea, #333); border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; text-align: left; }
+.pedido-cliente .pc-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.pc-estado { padding: 3px 12px; border-radius: 12px; font-size: 12px; font-weight: bold; }
+.pc-estado.pendiente { background: #5c4d10; color: #ffd85c; }
+.pc-estado.confirmado { background: #103a5c; color: #5cc0ff; }
+.pc-estado.enviado { background: #3d1d5c; color: #c88bff; }
+.pc-estado.entregado { background: #1d5c2e; color: #7dff9e; }
+.pc-estado.cancelado { background: #5c1d1d; color: #ff8b8b; }
+.pc-items { font-size: 13px; color: #bbb; line-height: 1.7; border-top: 1px solid var(--gris-linea, #333); padding-top: 8px; margin-top: 6px; }
+.pc-progreso { font-size: 11px; color: #888; margin: 8px 0; }
+.pc-progreso strong { color: var(--acento-claro, #5cc0ff); }
