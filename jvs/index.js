@@ -141,9 +141,13 @@ function buildTallaHandler(card, addBtn) {
 }
 
 // Card simple: un producto con una imagen, selector de talla
+// Card simple: un producto con una imagen, selector de talla
 function crearCardSimple(producto) {
     const card = document.createElement("article");
     card.classList.add("card");
+
+    const agotado = (producto.stock ?? 1) <= 0;
+    if (agotado) card.classList.add("agotado");
 
     const isFavorite = typeof wishlist !== 'undefined' && wishlist.isInWishlist(producto.id);
     const tallas = producto.tallas || [];
@@ -154,7 +158,7 @@ function crearCardSimple(producto) {
         ? generarPlaceholderProducto(producto)
         : `<div class="prenda-placeholder foto-real"><img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy"></div>`;
 
-    const tallasHTML = !soloUnaTalla ? `
+    const tallasHTML = (!soloUnaTalla && !agotado) ? `
         <div class="card-tallas">
             ${tallas.map(t => `<button class="talla-chip${t === tallaDefecto ? ' active' : ''}" data-talla="${t}">${t}</button>`).join('')}
         </div>` : '';
@@ -162,6 +166,7 @@ function crearCardSimple(producto) {
     card.innerHTML = `
         <div class="card-img">
             ${imagenHTML}
+            ${agotado ? '<span class="badge-agotado">AGOTADO</span>' : ''}
             <button class="wishlist-btn ${isFavorite ? 'active' : ''}" data-product-id="${producto.id}" title="Agregar a favoritos" style="position:absolute;top:12px;left:12px;z-index:2;background:rgba(10,10,15,0.7);border:none;border-radius:50%;width:32px;height:32px;font-size:14px;">
                 ${isFavorite ? '❤️' : '🤍'}
             </button>
@@ -178,8 +183,9 @@ function crearCardSimple(producto) {
                 data-price="${producto.precio}"
                 data-talla="${tallaDefecto}"
                 data-img="${producto.imagen}"
-                style="width:100%;">
-                Agregar al carrito
+                style="width:100%;"
+                ${agotado ? 'disabled' : ''}>
+                ${agotado ? 'Agotado' : 'Agregar al carrito'}
             </button>
         </div>
     `;
@@ -190,7 +196,6 @@ function crearCardSimple(producto) {
 
     return card;
 }
-
 // Card agrupada: varias variantes de color, selector de color + talla
 function crearCardGrupo(variantes) {
     const card = document.createElement("article");

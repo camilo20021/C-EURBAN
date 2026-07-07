@@ -72,9 +72,12 @@ async function cargarPedidos() {
                 <span class="estado ${p.estado}">${p.estado.toUpperCase()}</span>
             </div>
             <div class="pedido-datos">
-                👤 ${p.cliente_nombre} · 📞 ${p.cliente_telefono}<br>
-                📍 ${p.cliente_direccion || ''}, ${p.cliente_ciudad || ''} · 💳 ${p.metodo_pago || '-'}<br>
-                🕐 ${new Date(p.creado_en).toLocaleString('es-CO')}
+                <div class="pedido-datos">
+                        👤 ${p.cliente_nombre} · 📞 ${p.cliente_telefono}<br>
+                        ✉️ ${p.cliente_email || 'Sin correo'}<br>
+                        📍 ${p.cliente_direccion || ''}, ${p.cliente_ciudad || ''} · 💳 ${p.metodo_pago || '-'}<br>
+                        🕐 ${new Date(p.creado_en).toLocaleString('es-CO')}
+                </div>
             </div>
             <div class="pedido-items">
                 ${p.pedido_items.map(i =>
