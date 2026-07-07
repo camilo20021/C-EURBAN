@@ -111,9 +111,11 @@ class ShoppingCart {
     }
 
     addItem(product, quantity = 1) {
-        // Un producto es "igual" si tiene mismo ID y misma talla
-        const existingItem = this.cart.find(item => item.id === product.id && item.talla === product.talla);
-        
+        // Un producto es "igual" si tiene mismo ID, misma talla y mismo color de tela
+        const existingItem = this.cart.find(item =>
+            item.id === product.id && item.talla === product.talla && item.colorTela === (product.colorTela || null)
+        );
+
         if (existingItem) {
             existingItem.quantity += quantity;
         } else {
@@ -123,6 +125,7 @@ class ShoppingCart {
                 precio: product.precio,
                 color: product.color,
                 talla: product.talla || null,
+                colorTela: product.colorTela || null,
                 quantity
             });
         }

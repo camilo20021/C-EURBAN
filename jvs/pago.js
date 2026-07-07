@@ -32,11 +32,16 @@ document.addEventListener("DOMContentLoaded", () => {
             ? `<p style="color:var(--gris);font-size:12px;margin:2px 0;">Talla: ${producto.talla}</p>`
             : '';
 
+        const colorTelaHtml = producto.colorTela
+            ? `<p style="color:var(--gris);font-size:12px;margin:2px 0;">Color: ${producto.colorTela}</p>`
+            : '';
+
         itemRow.innerHTML = `
             ${thumbHtml}
             <div style="flex:1; min-width:0;">
                 <h4 style="font-size:14px;margin-bottom:2px;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${producto.nombre}${cantidad > 1 ? ` x${cantidad}` : ''}</h4>
                 ${tallaHtml}
+                ${colorTelaHtml}
                 <p style="color:var(--acento);font-size:13px;font-weight:bold;margin-top:2px;">$${(producto.precio * cantidad).toLocaleString('es-CO')}</p>
             </div>
         `;
@@ -132,6 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             producto_id: producto.id || null,
                             nombre_producto: producto.nombre,
                             talla: producto.talla || null,
+                            color_tela: producto.colorTela || null,
                             cantidad: producto.quantity || 1,
                             precio_unitario: producto.precio
                         }))

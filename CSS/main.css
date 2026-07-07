@@ -1198,6 +1198,7 @@ button {
     height: 22px;
     border-radius: 50%;
     border: 2px solid transparent;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
     outline: 2px solid transparent;
     cursor: pointer;
     transition: transform 0.15s, outline-color 0.15s;

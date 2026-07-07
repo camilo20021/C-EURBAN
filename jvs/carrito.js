@@ -38,7 +38,8 @@ function actualizarInterfazInicial() {
                 prod.id || index,
                 prod.quantity || 1,
                 prod.talla || null,
-                prod.imagen || null
+                prod.imagen || null,
+                prod.colorTela || null
             );
         });
     } else {
@@ -85,6 +86,7 @@ document.addEventListener("click", (e) => {
     const id = parseInt(boton.dataset.id) || Date.now();
     const tallaSelect = boton.closest('.card')?.querySelector('.talla-select');
     const talla = tallaSelect?.value || boton.dataset.talla || null;
+    const colorTela = boton.dataset.colorTela || null;
 
     if (tallaSelect && !tallaSelect.value) {
         if (typeof notifier !== 'undefined') notifier.info('Selecciona una talla primero');
@@ -98,14 +100,14 @@ document.addEventListener("click", (e) => {
     const imagenFinal = imagen || (productoCompleto ? productoCompleto.imagen : null);
 
     if (typeof cart !== 'undefined' && cart.addItem) {
-        const product = { id, nombre, precio, color, talla, imagen: imagenFinal };
+        const product = { id, nombre, precio, color, talla, colorTela, imagen: imagenFinal };
         cart.addItem(product, 1);
     } else {
-        const existente = carrito.find(p => p.id === id && p.talla === talla);
+        const existente = carrito.find(p => p.id === id && p.talla === talla && p.colorTela === colorTela);
         if (existente) {
             existente.quantity = (existente.quantity || 1) + 1;
         } else {
-            carrito.push({ id, nombre, precio, color, talla, imagen: imagenFinal, quantity: 1 });
+            carrito.push({ id, nombre, precio, color, talla, colorTela, imagen: imagenFinal, quantity: 1 });
         }
         localStorage.setItem("carrito", JSON.stringify(carrito));
     }
@@ -126,7 +128,7 @@ function updateCartUI() {
     actualizarInterfazInicial();
 }
 
-function crearItemEnCarritoHTML(nombre, precio, color, index, productId = index, quantity = 1, talla = null, imagen = null) {
+function crearItemEnCarritoHTML(nombre, precio, color, index, productId = index, quantity = 1, talla = null, imagen = null, colorTela = null) {
     const item = document.createElement("div");
     item.classList.add("cart-item");
     item.setAttribute("data-index", index);
@@ -141,6 +143,7 @@ function crearItemEnCarritoHTML(nombre, precio, color, index, productId = index,
         <div class="cart-item-info">
             <h4>${nombre}</h4>
             ${talla ? `<span class="cart-item-talla">Talla: ${talla}</span>` : ''}
+            ${colorTela ? `<span class="cart-item-talla">Color: ${colorTela}</span>` : ''}
             <span class="precio">$${precio.toLocaleString('es-CO')}</span>
             <div class="cart-item-qty">
                 <button class="qty-decrease" data-product-id="${productId}">-</button>

@@ -31,6 +31,44 @@ function actualizarAdminLink() {
 const SUPABASE_URL = 'https://vtztpvjbhwlnspjpwhim.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_FdF3E71-r0Ku4NVb-uSN7A_yNvIiTqv';
 
+// Colores de tela disponibles solo para buzos (no tienen foto por color,
+// a diferencia de los polos, asi que el cliente elige el color al pedirlo).
+const PALETA_COLORES_BUZO = [
+    { nombre: 'Negro', hex: '#0d0d0d' },
+    { nombre: 'Gris oscuro', hex: '#5a5a5a' },
+    { nombre: 'Kaki oscuro', hex: '#6b5a3a' },
+    { nombre: 'Gris', hex: '#b3b3b3' },
+    { nombre: 'Gris claro', hex: '#dcdcdc' },
+    { nombre: 'Azul marino', hex: '#050533' },
+    { nombre: 'Azul noche', hex: '#1f3a63' },
+    { nombre: 'Azul rey', hex: '#0000d6' },
+    { nombre: 'Azul', hex: '#1174d4' },
+    { nombre: 'Azul cielo', hex: '#8fd0fb' },
+    { nombre: 'Verde oscuro', hex: '#0b4d0a' },
+    { nombre: 'Verde', hex: '#159c13' },
+    { nombre: 'Verde salvia', hex: '#7fac91' },
+    { nombre: 'Verde menta', hex: '#74f2cd' },
+    { nombre: 'Verde agua', hex: '#cafcf7' },
+    { nombre: 'Mostaza', hex: '#c99615' },
+    { nombre: 'Dorado', hex: '#ffc61a' },
+    { nombre: 'Naranja', hex: '#ff9633' },
+    { nombre: 'Amarillo', hex: '#fff107' },
+    { nombre: 'Amarillo claro', hex: '#fdf6ad' },
+    { nombre: 'Morado', hex: '#4a1064' },
+    { nombre: 'Vinotinto', hex: '#8c0f37' },
+    { nombre: 'Rojo', hex: '#ee1111' },
+    { nombre: 'Rosado', hex: '#f993cc' },
+    { nombre: 'Rosado claro', hex: '#f9b7c2' },
+    { nombre: 'Rosado pastel', hex: '#fbdbe0' },
+    { nombre: 'Lila', hex: '#ddcdf6' },
+    { nombre: 'Lila claro', hex: '#fbe9fb' },
+    { nombre: 'Kaki', hex: '#c3b28d' },
+    { nombre: 'Beige', hex: '#e8dbc3' },
+    { nombre: 'Azul pastel', hex: '#dbe8f1' },
+    { nombre: 'Hueso', hex: '#f8f3ea' },
+    { nombre: 'Blanco', hex: '#ffffff' }
+];
+
 async function cargarProductos() {
     try {
         const respuesta = await fetch(
@@ -198,6 +236,21 @@ function buildTallaHandler(card, addBtn) {
     });
 }
 
+function buildColorTelaHandler(card, addBtn) {
+    const swatches = card.querySelectorAll('.tela-swatch');
+    if (!swatches.length) return;
+    const label = card.querySelector('.color-tela-actual');
+    swatches.forEach(swatch => {
+        swatch.addEventListener('click', (e) => {
+            swatches.forEach(s => s.classList.remove('active'));
+            e.currentTarget.classList.add('active');
+            const nombre = e.currentTarget.dataset.colorNombre;
+            addBtn.dataset.colorTela = nombre;
+            if (label) label.textContent = nombre;
+        });
+    });
+}
+
 // Card simple: un producto con una imagen, selector de talla
 // Card simple: un producto con una imagen, selector de talla
 function crearCardSimple(producto) {
@@ -221,6 +274,19 @@ function crearCardSimple(producto) {
             ${tallas.map(t => `<button class="talla-chip${t === tallaDefecto ? ' active' : ''}" data-talla="${t}">${t}</button>`).join('')}
         </div>` : '';
 
+    // Los buzos no tienen foto por color, asi que se elige el color de tela
+    // de una paleta fija y se guarda como dato aparte (no cambia la imagen).
+    const esBuzo = producto.categoria === 'buzos';
+    const colorTelaDefecto = PALETA_COLORES_BUZO[0].nombre;
+    const coloresTelaHTML = (esBuzo && !agotado) ? `
+        <div class="card-colores">
+            <span class="colores-label">Color: <strong class="color-tela-actual">${colorTelaDefecto}</strong></span>
+            <div class="colores-swatches">
+                ${PALETA_COLORES_BUZO.map((c, i) => `
+                    <button type="button" class="color-swatch tela-swatch${i === 0 ? ' active' : ''}" data-color-nombre="${c.nombre}" style="background:${c.hex};" title="${c.nombre}"></button>`).join('')}
+            </div>
+        </div>` : '';
+
     card.innerHTML = `
         <div class="card-img">
             ${imagenHTML}
@@ -233,6 +299,7 @@ function crearCardSimple(producto) {
             <span class="categoria-tag">${producto.categoria}</span>
             <h4>${producto.nombre}</h4>
             <span class="precio">$${producto.precio.toLocaleString('es-CO')}</span>
+            ${coloresTelaHTML}
             ${tallasHTML}
             <button
                 class="btn-agregar add-cart"
@@ -240,6 +307,7 @@ function crearCardSimple(producto) {
                 data-id="${producto.id}"
                 data-price="${producto.precio}"
                 data-talla="${tallaDefecto}"
+                ${esBuzo ? `data-color-tela="${colorTelaDefecto}"` : ''}
                 data-img="${producto.imagen}"
                 style="width:100%;"
                 ${agotado ? 'disabled' : ''}>
@@ -250,6 +318,7 @@ function crearCardSimple(producto) {
 
     const addBtn = card.querySelector('.add-cart');
     buildTallaHandler(card, addBtn);
+    buildColorTelaHandler(card, addBtn);
     buildWishlistHandler(card, () => producto.id);
 
     return card;
